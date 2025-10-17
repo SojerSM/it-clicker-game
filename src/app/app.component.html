@@ -1,12 +1,13 @@
 <div class="app">
   <header class="app__header">
-    <p>IT clicker</p>
+    <app-header-resources-counter />
   </header>
   <main class="app__container">
     <section class="app__shop">
       <p>Hero shop in progress</p>
     </section>
     <section class="app__impact-area">
+      <app-impact-summary />
       <app-progress-bar [progress]="20" [max]="100" />
       <app-ticket />
     </section>
