@@ -6,6 +6,18 @@ import { TicketType } from './types/ticket-type.enum';
 export class ProgressService {
   readonly ticket = signal<Ticket>(this.getRandomTicket());
 
+  applyProgress(value: number) {
+    this.ticket.update((current) => {
+      const remaining = current.remainingCp - value;
+
+      if (remaining <= 0) {
+        return this.getRandomTicket();
+      }
+
+      return { ...current, remainingCp: remaining };
+    });
+  }
+
   private getRandomTicket(): Ticket {
     const types: string[] = Object.keys(TicketType);
 

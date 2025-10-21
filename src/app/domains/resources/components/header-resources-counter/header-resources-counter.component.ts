@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { ResourcesService } from '../../resources.service';
-import { NumberFormatPipe } from '../../../../core/pipes/number-format-pipe.pipe';
+import { NumberFormat } from '../../../../core/pipes/number-format.pipe';
 
 @Component({
   selector: 'app-header-resources-counter',
-  imports: [NumberFormatPipe],
+  imports: [NumberFormat],
   templateUrl: './header-resources-counter.component.html',
   styleUrl: './header-resources-counter.component.scss',
 })

@@ -11,10 +11,10 @@ export class ImpactSummaryComponent {
   constructor(private impactService: ImpactService) {}
 
   get pps() {
-    return this.impactService.getPps();
+    return this.impactService.pps();
   }
 
   get mpi() {
-    return this.impactService.getMpi();
+    return this.impactService.mpi();
   }
 }

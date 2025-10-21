@@ -1,10 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { ProgressService } from '../../progress.service';
 import { Ticket } from '../../types/ticket.model';
+import { NumberFormat } from '../../../../core/pipes/number-format.pipe';
 
 @Component({
   selector: 'app-progress-bar',
-  imports: [],
+  imports: [NumberFormat],
   templateUrl: './progress-bar.component.html',
   styleUrl: './progress-bar.component.scss',
 })
