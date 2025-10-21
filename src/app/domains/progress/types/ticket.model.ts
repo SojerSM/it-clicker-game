@@ -1,7 +1,6 @@
 import { TicketType } from './ticket-type.enum';
 
 export interface Ticket {
-  id: string;
   type: TicketType;
   totalCp: number;
   remainingCp: number;

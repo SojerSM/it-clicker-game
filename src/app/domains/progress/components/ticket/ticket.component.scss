@@ -25,4 +25,9 @@
       transform: scale(0.95);
     }
   }
+
+  .ticket__sprint-summary {
+    display: flex;
+    gap: 2rem;
+  }
 }

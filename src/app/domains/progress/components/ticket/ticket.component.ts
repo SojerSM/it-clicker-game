@@ -20,6 +20,10 @@ export class TicketComponent {
     return this.progress.ticket();
   }
 
+  get sprint() {
+    return this.progress.sprint();
+  }
+
   onClick(): void {
     this.progress.applyProgress(this.impact.mpi());
     this.resource.increaseExp(1);
