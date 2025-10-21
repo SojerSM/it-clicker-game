@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ResourcesService } from '../../../resources/resources.service';
+import { ProgressService } from '../../progress.service';
 
 @Component({
   selector: 'app-ticket',
@@ -8,9 +9,13 @@ import { ResourcesService } from '../../../resources/resources.service';
   styleUrl: './ticket.component.scss',
 })
 export class TicketComponent {
-  constructor(private resourceService: ResourcesService) {}
+  constructor(private resource: ResourcesService, private progress: ProgressService) {}
+
+  get ticket() {
+    return this.progress.ticket();
+  }
 
   onClick(): void {
-    this.resourceService.increaseExp(1);
+    this.resource.increaseExp(1);
   }
 }
