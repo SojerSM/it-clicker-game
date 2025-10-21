@@ -1,16 +1,22 @@
 import { Component, Input } from '@angular/core';
+import { ProgressService } from '../../progress.service';
+import { Ticket } from '../../types/ticket.model';
+import { NumberFormat } from '../../../../core/pipes/number-format.pipe';
 
 @Component({
   selector: 'app-progress-bar',
-  imports: [],
+  imports: [NumberFormat],
   templateUrl: './progress-bar.component.html',
   styleUrl: './progress-bar.component.scss',
 })
 export class ProgressBarComponent {
-  @Input({ required: false }) progress?: number;
-  @Input({ required: true }) max!: number;
+  constructor(private progress: ProgressService) {}
 
   get percentage(): number {
-    return this.progress ? Math.min((this.progress / this.max) * 100, 100) : 100;
+    const ticket: Ticket = this.progress.ticket();
+    const max = ticket.totalCp;
+    const value = ticket.remainingCp;
+
+    return Math.min((value / max) * 100, 100);
   }
 }
