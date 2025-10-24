@@ -3,23 +3,21 @@ import { Ticket } from './types/ticket.model';
 import { TicketType } from './types/ticket-type.enum';
 import { ResourcesService } from '../resources/resources.service';
 import { Sprint } from './types/sprint.model';
-import { BASE_VALUES } from '../../core/config/base-values.config';
+import { MULTIPLIERS } from '../../core/config/balance/multipliers';
+import { BALANCE } from '../../core/config/balance/balance';
 
 @Injectable({ providedIn: 'root' })
 export class ProgressService {
-  readonly ticket = signal<Ticket>(this.getRandomTicket());
   readonly sprint = signal<Sprint>(this.getFirstSprint());
+  readonly ticket = signal<Ticket>(this.getRandomTicket());
 
   constructor(private resource: ResourcesService) {
     effect(() => {
-      const currentTicket = this.ticket();
-      const currentSprint = this.sprint();
-
-      if (currentTicket.remainingCp <= 0) {
+      if (this.ticket().remainingCp <= 0) {
         this.completeTicket();
       }
 
-      if (currentSprint.requiredTickets === currentSprint.finished) {
+      if (this.sprint().requiredTickets === this.sprint().finished) {
         this.levelUp();
       }
     });
@@ -41,11 +39,17 @@ export class ProgressService {
 
   private getRandomTicket(): Ticket {
     const types: string[] = Object.keys(TicketType);
-
-    const totalCp = 20;
-    const rewardMoney = 50;
-
     const randomType = types[Math.floor(Math.random() * types.length)] as TicketType;
+
+    let totalCp: number;
+
+    if (this.sprint().current === 1) {
+      totalCp = BALANCE.TICKET_CP;
+    } else {
+      totalCp = BALANCE.TICKET_CP * Math.pow(MULTIPLIERS.TICKET_CP, this.sprint().current);
+    }
+
+    const rewardMoney = Math.floor(totalCp / 2);
 
     return {
       type: randomType,
@@ -58,8 +62,8 @@ export class ProgressService {
 
   private getFirstSprint(): Sprint {
     return {
-      current: BASE_VALUES.progress.sprint,
-      requiredTickets: BASE_VALUES.progress.sprintRequiredTickets,
+      current: 1,
+      requiredTickets: BALANCE.SPRINT_SIZE,
       finished: 0,
     };
   }
@@ -67,18 +71,19 @@ export class ProgressService {
   private getRandomSprintSize(previous: number): number {
     const variation = 0.07;
     const randomFactor = 1 + (Math.random() * 2 - 1) * variation;
-    return Math.round(previous * 1.12 * randomFactor);
+    return Math.round(previous * MULTIPLIERS.SPRINT_SIZE * randomFactor);
   }
 
   private levelUp(): void {
     const newRequired = this.getRandomSprintSize(this.sprint().requiredTickets);
 
-    this.sprint.update(() => {
-      return {
-        current: this.sprint().current + 1,
-        requiredTickets: newRequired,
-        finished: 0,
-      };
-    });
+    const newSprint: Sprint = {
+      current: this.sprint().current + 1,
+      requiredTickets: newRequired,
+      finished: 0,
+    };
+
+    this.sprint.set(newSprint);
+    this.ticket.set(this.getRandomTicket());
   }
 }

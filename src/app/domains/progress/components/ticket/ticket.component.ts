@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { ResourcesService } from '../../../resources/resources.service';
 import { ProgressService } from '../../progress.service';
 import { ImpactService } from '../../../impact/impact.service';
+import { NumberFormat } from '../../../../core/pipes/number-format.pipe';
 
 @Component({
   selector: 'app-ticket',
-  imports: [],
+  imports: [NumberFormat],
   templateUrl: './ticket.component.html',
   styleUrl: './ticket.component.scss',
 })
