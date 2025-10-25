@@ -1,0 +1,4 @@
+<div class="ticket">
+  <button type="button" class="ticket__btn" (click)="onClick()">Solve {{ ticket.type }}</button>
+  <span>Remaining CP: {{ ticket.remainingCp | numberFormat : 3 }}</span>
+</div>

@@ -1,10 +1,10 @@
 import { Injectable, signal } from '@angular/core';
-import { BASE_VALUES } from '../../core/config/base-values.config';
+import { BALANCE } from '../../core/config/balance/balance';
 
 @Injectable({ providedIn: 'root' })
 export class ResourcesService {
-  private money = signal(BASE_VALUES.resources.money);
-  private exp = signal(BASE_VALUES.resources.exp);
+  private money = signal(BALANCE.RESOURCE_MONEY);
+  private exp = signal(BALANCE.RESOURCE_EXP);
 
   getMoney() {
     return this.money.asReadonly();

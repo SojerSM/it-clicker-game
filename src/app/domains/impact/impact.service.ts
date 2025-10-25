@@ -1,8 +1,8 @@
 import { Injectable, signal } from '@angular/core';
-import { BASE_VALUES } from '../../core/config/base-values.config';
+import { BALANCE } from '../../core/config/balance/balance';
 
 @Injectable({ providedIn: 'root' })
 export class ImpactService {
-  readonly pps = signal(BASE_VALUES.impact.pps);
-  readonly mpi = signal(BASE_VALUES.impact.mpi);
+  readonly pps = signal(BALANCE.IMPACT_PPS);
+  readonly mpi = signal(BALANCE.IMPACT_MPI);
 }

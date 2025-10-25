@@ -1,0 +1,14 @@
+<section class="project-progress">
+  <div class="project-progress__header">
+    <div class="project-progress__header-bar">
+      <div class="project-progress__header-bar-fill" [style.width]="`${percentage}%`"></div>
+      <span class="project-progress__header-bar-percentage">{{ percentage | numberFormat }}%</span>
+    </div>
+    <div class="project-progress__header-summary">
+      <span>Remaining CP: {{ project.remainingCp }}</span>
+    </div>
+  </div>
+  <div class="project-progress__project-description">
+    <p>{{ project.description }}</p>
+  </div>
+</section>
