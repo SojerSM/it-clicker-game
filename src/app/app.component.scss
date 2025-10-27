@@ -26,9 +26,13 @@
     }
 
     .app__impact-area {
-      width: 30%;
-      padding: 0.5rem;
+      display: flex;
+      flex-direction: column;
+
+      background-color: rgb(240, 240, 240);
+      padding: 1rem;
       height: 100%;
+      width: 25rem;
     }
   }
 }
