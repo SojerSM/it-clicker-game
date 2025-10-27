@@ -4,12 +4,19 @@ import { TicketType } from '../types/ticket-type.enum';
 import { ResourcesService } from '../../../resources/resources.service';
 import { BALANCE } from '../../../../core/config/balance/balance';
 import { ProjectService } from '../../projects/services/project.service';
+import { TicketNameGeneratorService } from './ticket-name-generator.service';
 
 @Injectable({ providedIn: 'root' })
 export class TicketService {
-  readonly ticket = signal<Ticket>(this.getRandomTicket());
+  readonly ticket: WritableSignal<Ticket>;
 
-  constructor(private resourceService: ResourcesService, private projectService: ProjectService) {
+  constructor(
+    private resourceService: ResourcesService,
+    private projectService: ProjectService,
+    private ticketNameGeneratorService: TicketNameGeneratorService
+  ) {
+    this.ticket = signal(this.getRandomTicket());
+
     effect(() => {
       if (this.ticket().remainingCp <= 0) {
         this.completeTicket();
@@ -36,8 +43,11 @@ export class TicketService {
     let totalCp = BALANCE.TICKET_CP;
 
     const rewardMoney = Math.floor(totalCp / 2);
+    const description = this.ticketNameGeneratorService.generateName(randomType);
 
     return {
+      alias: 'test-1',
+      description,
       type: randomType,
       totalCp,
       remainingCp: totalCp,

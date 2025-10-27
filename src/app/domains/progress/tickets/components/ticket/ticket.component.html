@@ -1,4 +1,12 @@
-<div class="ticket">
-  <button type="button" class="ticket__btn" (click)="onClick()">Solve {{ ticket.type }}</button>
-  <span>Remaining CP: {{ ticket.remainingCp | numberFormat : 3 }}</span>
+@if (ticket) {
+<div class="ticket" (click)="onClick()">
+  <h4 class="ticket__title">{{ ticket.description }}</h4>
+  <div class="ticket__type-tag" [style.background]="tagColor">
+    <span>{{ ticket.type }}</span>
+  </div>
+  <div class="ticket__details-bottom">
+    <span>{{ ticket.alias }}</span>
+    <span>CP: {{ ticket.remainingCp | numberFormat }}</span>
+  </div>
 </div>
+}
