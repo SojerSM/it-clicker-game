@@ -38,6 +38,7 @@ export class TicketService {
     const rewardMoney = Math.floor(totalCp / 2);
 
     return {
+      alias: 'test-1',
       type: randomType,
       totalCp,
       remainingCp: totalCp,
