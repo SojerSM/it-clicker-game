@@ -1,6 +1,6 @@
 @if (ticket) {
 <div class="ticket" (click)="onClick()">
-  <h4 class="ticket__title">Some title</h4>
+  <h4 class="ticket__title">{{ ticket.description }}</h4>
   <div class="ticket__type-tag" [style.background]="tagColor">
     <span>{{ ticket.type }}</span>
   </div>
