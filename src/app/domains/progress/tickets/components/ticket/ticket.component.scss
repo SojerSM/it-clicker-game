@@ -21,20 +21,43 @@
     font-weight: 400;
   }
 
-  .ticket__type-tag {
-    width: fit-content;
-    border-radius: 0.25rem;
-    padding: 0.15rem 0.5rem;
-
-    span {
-      color: white;
-      font-weight: 800;
-    }
-  }
-
-  .ticket__details-bottom {
-    width: 100%;
+  .ticket__details {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
+
+    .ticket__details__info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      .ticket__type-tag {
+        width: fit-content;
+        border-radius: 0.25rem;
+        padding: 0.15rem 0.5rem;
+
+        span {
+          color: white;
+          font-weight: 800;
+        }
+      }
+    }
+
+    .ticket__details__progress {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      justify-content: flex-end;
+      align-items: flex-end;
+
+      span {
+        font-size: 0.75rem;
+      }
+
+      div {
+        width: 5rem;
+        height: 1rem;
+      }
+    }
   }
 }

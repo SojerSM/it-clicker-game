@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { NumberFormat } from '../../../../../core/pipes/number-format.pipe';
 import { ProjectService } from '../../services/project.service';
 import { Project } from '../../types/project.model';
+import { ProgressBarComponent } from '../../../../../shared/components/progress-bar/progress-bar/progress-bar.component';
 
 @Component({
   selector: 'app-project-progress',
-  imports: [NumberFormat],
+  imports: [ProgressBarComponent],
   templateUrl: './project-progress.component.html',
   styleUrl: './project-progress.component.scss',
 })
@@ -14,12 +14,5 @@ export class ProjectProgressComponent {
 
   get project(): Project {
     return this.projectService.project();
-  }
-
-  get percentage(): number {
-    const totalCp = this.projectService.project().totalCp;
-    const remainingCp = this.projectService.project().remainingCp;
-
-    return Math.ceil((remainingCp / totalCp) * 100);
   }
 }

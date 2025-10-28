@@ -1,0 +1,10 @@
+<div class="project-progress__header-bar">
+  <div
+    class="project-progress__header-bar-fill"
+    [style.width]="`${percentage}%`"
+    [style.background-color]="fill"
+  ></div>
+  @if (displayPercentage) {
+  <span class="project-progress__header-bar-percentage">{{ percentage | numberFormat }}%</span>
+  }
+</div>

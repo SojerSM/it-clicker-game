@@ -1,32 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ResourcesService } from '../../../../resources/resources.service';
 import { TicketService } from '../../services/ticket.service';
 import { ImpactService } from '../../../../impact/impact.service';
 import { NumberFormat } from '../../../../../core/pipes/number-format.pipe';
 import { Ticket } from '../../types/ticket.model';
 import { TicketType } from '../../types/ticket-type.enum';
+import { ProgressBarComponent } from '../../../../../shared/components/progress-bar/progress-bar/progress-bar.component';
 
 @Component({
   selector: 'app-ticket',
-  imports: [NumberFormat],
+  imports: [NumberFormat, ProgressBarComponent],
   templateUrl: './ticket.component.html',
   styleUrl: './ticket.component.scss',
 })
 export class TicketComponent {
+  @Input({ required: true }) ticket!: Ticket;
+
   constructor(
     private resourceService: ResourcesService,
-    private ticketService: TicketService,
-    private impactService: ImpactService
+    private impactService: ImpactService,
+    private ticketService: TicketService
   ) {}
 
-  get ticket(): Ticket {
-    return this.ticketService.ticket();
-  }
-
   get tagColor(): string {
-    const ticket = this.ticketService.ticket();
-
-    switch (ticket.type) {
+    switch (this.ticket.type) {
       case TicketType.FEATURE:
         return '#4CAF50';
       case TicketType.MAINTENANCE:
@@ -45,7 +42,7 @@ export class TicketComponent {
   }
 
   onClick(): void {
-    this.ticketService.applyProgress(this.impactService.mpi());
+    this.ticketService.applyProgress(this.impactService.mpi(), this.ticket.id);
     this.resourceService.increaseExp(1);
   }
 }

@@ -1,8 +1,7 @@
 <section class="project-progress">
   <div class="project-progress__header">
-    <div class="project-progress__header-bar">
-      <div class="project-progress__header-bar-fill" [style.width]="`${percentage}%`"></div>
-      <span class="project-progress__header-bar-percentage">{{ percentage | numberFormat }}%</span>
+    <div class="project-progress__bar">
+      <app-progress-bar [maxValue]="project.totalCp" [remaining]="project.remainingCp" />
     </div>
     <div class="project-progress__header-summary">
       <span>Remaining CP: {{ project.remainingCp }}</span>
