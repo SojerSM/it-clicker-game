@@ -49,7 +49,6 @@ export class TicketService {
 
   private completeTicket(ticket: Ticket): void {
     this.grantReward(ticket);
-
     this.tickets.update((current) => current.filter((t) => t.id !== ticket.id));
   }
 

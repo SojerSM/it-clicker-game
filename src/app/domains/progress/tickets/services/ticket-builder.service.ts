@@ -12,9 +12,7 @@ export class TicketBuilderService {
   getRandomTicket(project: Project, previousId?: number): Ticket {
     let totalCp = BALANCE.TICKET_CP;
     const id = previousId ? previousId + 1 : 1;
-
-    const types: string[] = Object.keys(TicketType);
-    const randomType = types[Math.floor(Math.random() * types.length)] as TicketType;
+    const randomType = this.getRandomTicketType(id);
     const rewardMoney = Math.floor(totalCp / 2);
     const description = this.ticketNameGeneratorService.generateName(randomType);
     const alias = `${this.generateAlias(project.description)}-${id}`;
@@ -32,13 +30,43 @@ export class TicketBuilderService {
   }
 
   private generateAlias(name: string): string {
-    const words = name.split(' ').filter((w) => w.length >= 3);
+    const words = name.split(' ').filter((word) => word.length >= 3);
 
     const alias = words
       .slice(0, 3)
-      .map((w) => w[0].toUpperCase())
+      .map((word) => word[0].toUpperCase())
       .join('');
 
     return alias;
+  }
+
+  private getRandomTicketType(ticketId: number) {
+    const LIMIT_ID = 100;
+
+    const earlyTypes: TicketType[] = [TicketType.FEATURE, TicketType.DOCUMENTATION];
+
+    const lateTypes: TicketType[] = [
+      TicketType.BUGFIX,
+      TicketType.HOTFIX,
+      TicketType.MAINTENANCE,
+      TicketType.REFACTORING,
+      TicketType.TESTING,
+    ];
+
+    const lateWeight = Math.min(ticketId / LIMIT_ID, 1);
+
+    const random = Math.random();
+    let randomType: TicketType;
+
+    console.log(random, lateWeight);
+
+    if (random < lateWeight) {
+      const allTypes = [...earlyTypes, ...lateTypes];
+      randomType = allTypes[Math.floor(Math.random() * allTypes.length)];
+    } else {
+      randomType = earlyTypes[Math.floor(Math.random() * earlyTypes.length)];
+    }
+
+    return randomType;
   }
 }
