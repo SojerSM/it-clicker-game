@@ -58,8 +58,6 @@ export class TicketBuilderService {
     const random = Math.random();
     let randomType: TicketType;
 
-    console.log(random, lateWeight);
-
     if (random < lateWeight) {
       const allTypes = [...earlyTypes, ...lateTypes];
       randomType = allTypes[Math.floor(Math.random() * allTypes.length)];

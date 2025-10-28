@@ -1,0 +1,23 @@
+.project-progress__header-bar {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #ddd;
+  border: 1px solid #4caf50;
+  overflow: hidden;
+
+  .project-progress__header-bar-fill {
+    height: 100%;
+    transition: width 0.3s ease;
+  }
+
+  .project-progress__header-bar-percentage {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
+  }
+}

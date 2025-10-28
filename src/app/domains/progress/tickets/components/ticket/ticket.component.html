@@ -1,12 +1,24 @@
 @if (ticket) {
 <div class="ticket" (click)="onClick()">
   <h4 class="ticket__title">{{ ticket.description }}</h4>
-  <div class="ticket__type-tag" [style.background]="tagColor">
-    <span>{{ ticket.type }}</span>
-  </div>
-  <div class="ticket__details-bottom">
-    <span>{{ ticket.alias }}</span>
-    <span>CP: {{ ticket.remainingCp | numberFormat }}</span>
+  <div class="ticket__details">
+    <div class="ticket__details__info">
+      <div class="ticket__type-tag" [style.background]="tagColor">
+        <span>{{ ticket.type }}</span>
+      </div>
+      <span>{{ ticket.alias }}</span>
+    </div>
+    <div class="ticket__details__progress">
+      <span>{{ ticket.remainingCp | numberFormat }}/{{ ticket.totalCp | numberFormat }}</span>
+      <div>
+        <app-progress-bar
+          [maxValue]="ticket.totalCp"
+          [remaining]="ticket.remainingCp"
+          [fill]="'#79BAEC'"
+          [displayPercentage]="false"
+        />
+      </div>
+    </div>
   </div>
 </div>
 }

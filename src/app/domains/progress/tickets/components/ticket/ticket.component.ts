@@ -5,10 +5,11 @@ import { ImpactService } from '../../../../impact/impact.service';
 import { NumberFormat } from '../../../../../core/pipes/number-format.pipe';
 import { Ticket } from '../../types/ticket.model';
 import { TicketType } from '../../types/ticket-type.enum';
+import { ProgressBarComponent } from '../../../../../shared/components/progress-bar/progress-bar/progress-bar.component';
 
 @Component({
   selector: 'app-ticket',
-  imports: [NumberFormat],
+  imports: [NumberFormat, ProgressBarComponent],
   templateUrl: './ticket.component.html',
   styleUrl: './ticket.component.scss',
 })
