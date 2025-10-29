@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ImpactService } from '../../impact.service';
+import { GameStateService } from '../../../../core/services/game-state.service';
 
 @Component({
   selector: 'app-impact-summary',
@@ -8,13 +9,13 @@ import { ImpactService } from '../../impact.service';
   styleUrl: './impact-summary.component.scss',
 })
 export class ImpactSummaryComponent {
-  constructor(private impactService: ImpactService) {}
+  constructor(private gameStateService: GameStateService) {}
 
   get pps() {
-    return this.impactService.pps();
+    return this.gameStateService.impact()().pps;
   }
 
   get mpi() {
-    return this.impactService.mpi();
+    return this.gameStateService.impact()().mpi;
   }
 }

@@ -1,34 +1,33 @@
 import { Injectable, signal } from '@angular/core';
-import { BALANCE } from '../../core/config/balance/balance';
+import { GameStateService } from '../../core/services/game-state.service';
 
 @Injectable({ providedIn: 'root' })
 export class ResourcesService {
-  private money = signal(BALANCE.RESOURCE_MONEY);
-  private exp = signal(BALANCE.RESOURCE_EXP);
-
-  getMoney() {
-    return this.money.asReadonly();
-  }
-
-  getExp() {
-    return this.exp.asReadonly();
-  }
+  constructor(private gameStateService: GameStateService) {}
 
   increaseMoney(value: number) {
-    this.money.update((money) => money + value);
+    this.gameStateService.updateState((state) => {
+      state.resource.money = state.resource.money + value;
+    });
   }
 
   decreaseMoney(value: number) {
-    const result = this.money() - value;
-    this.money.set(result >= 0 ? result : 0);
+    this.gameStateService.updateState((state) => {
+      const result = state.resource.money - value;
+      state.resource.money = result >= 0 ? result : 0;
+    });
   }
 
   increaseExp(value: number) {
-    this.exp.update((exp) => exp + value);
+    this.gameStateService.updateState((state) => {
+      state.resource.exp = state.resource.exp + value;
+    });
   }
 
   decreaseExp(value: number) {
-    const result = this.exp() - value;
-    this.exp.set(result >= 0 ? result : 0);
+    this.gameStateService.updateState((state) => {
+      const result = state.resource.exp - value;
+      state.resource.exp = result >= 0 ? result : 0;
+    });
   }
 }

@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { TicketNameGeneratorService } from './ticket-name-generator.service';
 import { TicketType } from '../types/ticket-type.enum';
-import { BALANCE } from '../../../../core/config/balance/balance';
 import { Project } from '../../projects/types/project.model';
 import { Ticket } from '../types/ticket.model';
+import { BALANCE } from '../../../../core/config/state/balance';
 
 @Injectable({ providedIn: 'root' })
 export class TicketBuilderService {
   constructor(private ticketNameGeneratorService: TicketNameGeneratorService) {}
 
   getRandomTicket(project: Project, previousId?: number): Ticket {
-    let totalCp = BALANCE.TICKET_CP;
+    let totalCp = BALANCE.TICKET_INITIAL_CP;
     const id = previousId ? previousId + 1 : 1;
     const randomType = this.getRandomTicketType(id);
     const rewardMoney = Math.floor(totalCp / 2);
@@ -31,7 +31,6 @@ export class TicketBuilderService {
 
   private generateAlias(name: string): string {
     const words = name.split(' ').filter((word) => word.length >= 3);
-
     const alias = words
       .slice(0, 3)
       .map((word) => word[0].toUpperCase())

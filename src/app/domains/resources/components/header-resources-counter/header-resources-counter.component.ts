@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ResourcesService } from '../../resources.service';
 import { NumberFormat } from '../../../../core/pipes/number-format.pipe';
+import { GameStateService } from '../../../../core/services/game-state.service';
 
 @Component({
   selector: 'app-header-resources-counter',
@@ -9,13 +9,13 @@ import { NumberFormat } from '../../../../core/pipes/number-format.pipe';
   styleUrl: './header-resources-counter.component.scss',
 })
 export class HeaderResourcesCounterComponent {
-  constructor(private resourceService: ResourcesService) {}
+  constructor(private gameStateService: GameStateService) {}
 
   get money() {
-    return this.resourceService.getMoney();
+    return this.gameStateService.resources()().money;
   }
 
   get exp() {
-    return this.resourceService.getExp();
+    return this.gameStateService.resources()().exp;
   }
 }

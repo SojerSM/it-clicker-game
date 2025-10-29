@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Project } from '../types/project.model';
-import { BALANCE } from '../../../../core/config/balance/balance';
+import { BALANCE } from '../../../../core/config/state/balance';
 
 @Injectable({ providedIn: 'root' })
 export class ProjectGeneratorService {
@@ -13,7 +13,7 @@ export class ProjectGeneratorService {
   constructor() {}
 
   generateProject(): Project {
-    const totalCp = BALANCE.PROJECT_COMPLEXITY;
+    const totalCp = BALANCE.PROJECT_INITIAL_CP;
     const description = this.getRandomProjectDescription();
 
     return {

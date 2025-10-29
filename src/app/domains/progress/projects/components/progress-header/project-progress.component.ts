@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { ProjectService } from '../../services/project.service';
 import { Project } from '../../types/project.model';
 import { ProgressBarComponent } from '../../../../../shared/components/progress-bar/progress-bar/progress-bar.component';
+import { GameStateService } from '../../../../../core/services/game-state.service';
 
 @Component({
   selector: 'app-project-progress',
@@ -10,9 +10,9 @@ import { ProgressBarComponent } from '../../../../../shared/components/progress-
   styleUrl: './project-progress.component.scss',
 })
 export class ProjectProgressComponent {
-  constructor(private projectService: ProjectService) {}
+  constructor(private gameStateService: GameStateService) {}
 
   get project(): Project {
-    return this.projectService.project();
+    return this.gameStateService.project()();
   }
 }
