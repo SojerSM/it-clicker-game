@@ -1,11 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { ResourcesService } from '../../../../resources/resources.service';
 import { TicketService } from '../../services/ticket.service';
-import { ImpactService } from '../../../../impact/impact.service';
 import { NumberFormat } from '../../../../../core/pipes/number-format.pipe';
 import { Ticket } from '../../types/ticket.model';
 import { TicketType } from '../../types/ticket-type.enum';
 import { ProgressBarComponent } from '../../../../../shared/components/progress-bar/progress-bar/progress-bar.component';
+import { GameStateService } from '../../../../../core/services/game-state.service';
+import { INITIAL_GAME_STATE } from '../../../../../core/config/state/game-state';
 
 @Component({
   selector: 'app-ticket',
@@ -18,8 +19,8 @@ export class TicketComponent {
 
   constructor(
     private resourceService: ResourcesService,
-    private impactService: ImpactService,
-    private ticketService: TicketService
+    private ticketService: TicketService,
+    private gameStateService: GameStateService
   ) {}
 
   get tagColor(): string {
@@ -42,7 +43,7 @@ export class TicketComponent {
   }
 
   onClick(): void {
-    this.ticketService.applyProgress(this.impactService.mpi(), this.ticket.id);
+    this.ticketService.applyProgress(this.gameStateService.impact()().mpi, this.ticket.id);
     this.resourceService.increaseExp(1);
   }
 }
