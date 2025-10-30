@@ -1,0 +1,4 @@
+<section class="actions-panel">
+  <p>{{ activeTab().title }}</p>
+  <app-vertical-navbar [tabs]="tabs" (activeTab)="switchTab($event)" />
+</section>

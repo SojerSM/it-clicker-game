@@ -1,0 +1,9 @@
+<nav class="vertical-navbar">
+  <ul class="vertical-navbar__list">
+    @for (tab of tabs; track tab.id) {
+    <li class="vertical-navbar__list-item" (click)="switchTab(tab)">
+      <span>{{ tab.title }}</span>
+    </li>
+    }
+  </ul>
+</nav>

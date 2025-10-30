@@ -1,0 +1,22 @@
+.vertical-navbar {
+  height: 100%;
+  width: 4rem;
+  background-color: rgb(80, 80, 80);
+  padding: 0.5rem;
+
+  .vertical-navbar__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    list-style: none;
+
+    .vertical-navbar__list-item {
+      background-color: rgb(121, 121, 121);
+      width: 3rem;
+      height: 3rem;
+
+      cursor: pointer;
+    }
+  }
+}

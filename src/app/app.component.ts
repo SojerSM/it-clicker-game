@@ -1,20 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ImpactSummaryComponent } from './domains/impact/components/impact-summary/impact-summary.component';
-import { HeaderResourcesCounterComponent } from './domains/resources/components/header-resources-counter/header-resources-counter.component';
-import { ProjectProgressComponent } from './domains/progress/projects/components/progress-header/project-progress.component';
-import { TicketListComponent } from './domains/progress/tickets/components/ticket-list/ticket-list.component';
+import { GameComponent } from './layout/game/game.component';
 import { ProjectService } from './domains/progress/projects/services/project.service';
 import { GameSaveService } from './core/services/game-save.service';
 import { GameStateService } from './core/services/game-state.service';
 
 @Component({
   selector: 'app-root',
-  imports: [
-    ImpactSummaryComponent,
-    HeaderResourcesCounterComponent,
-    ProjectProgressComponent,
-    TicketListComponent,
-  ],
+  imports: [GameComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
