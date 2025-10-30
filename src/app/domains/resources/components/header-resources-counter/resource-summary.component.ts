@@ -3,12 +3,12 @@ import { NumberFormat } from '../../../../core/pipes/number-format.pipe';
 import { GameStateService } from '../../../../core/services/game-state.service';
 
 @Component({
-  selector: 'app-header-resources-counter',
+  selector: 'app-resource-summary',
   imports: [NumberFormat],
-  templateUrl: './header-resources-counter.component.html',
-  styleUrl: './header-resources-counter.component.scss',
+  templateUrl: './resource-summary.component.html',
+  styleUrl: './resource-summary.component.scss',
 })
-export class HeaderResourcesCounterComponent {
+export class ResourceSummaryComponent {
   constructor(private gameStateService: GameStateService) {}
 
   get money() {

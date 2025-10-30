@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { HeaderResourcesCounterComponent } from '../../../domains/resources/components/header-resources-counter/header-resources-counter.component';
+import { ResourceSummaryComponent } from '../../../domains/resources/components/header-resources-counter/resource-summary.component';
 
 @Component({
   selector: 'app-left-side-panel',
-  imports: [HeaderResourcesCounterComponent],
+  imports: [ResourceSummaryComponent],
   templateUrl: './left-side-panel.component.html',
   styleUrl: './left-side-panel.component.scss',
 })
