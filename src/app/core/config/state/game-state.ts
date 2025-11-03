@@ -7,9 +7,15 @@ export const INITIAL_GAME_STATE: GameState = {
     mpi: 1,
     pps: 0,
   },
+  player: {
+    name: 'John Doe',
+    avatar: 'assets/player/player_male_avatar_01.png',
+    lvl: 1,
+    exp: 0,
+    expToLevelUp: 100,
+  },
   resource: {
     money: 0,
-    exp: 0,
   },
   project: {
     current: {} as Project,

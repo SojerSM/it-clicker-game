@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ProgressBarComponent } from '../../../../shared/components/progress-bar/progress-bar/progress-bar.component';
+import { GameStateService } from '../../../../core/services/game-state.service';
 import { Player } from '../../types/player.model';
 
 @Component({
@@ -9,15 +10,17 @@ import { Player } from '../../types/player.model';
   styleUrl: './player-info.component.scss',
 })
 export class PlayerInfoComponent {
-  player: Player = {
-    name: 'John Doe',
-    avatar: 'assets/player/player_male_avatar_01.png',
-    lvl: 1,
-    expToLevelUp: 100,
-    exp: 0,
-  };
+  constructor(private gameStateService: GameStateService) {}
 
   get remainingExp(): number {
-    return this.player.expToLevelUp - this.player.exp;
+    console.log(this.gameStateService.getState().player.expToLevelUp);
+    return (
+      this.gameStateService.getState().player.expToLevelUp -
+      this.gameStateService.getState().player.exp
+    );
+  }
+
+  get player(): Player {
+    return this.gameStateService.getState().player;
   }
 }

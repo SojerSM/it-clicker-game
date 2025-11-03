@@ -14,8 +14,4 @@ export class ResourceSummaryComponent {
   get money() {
     return this.gameStateService.resources()().money;
   }
-
-  get exp() {
-    return this.gameStateService.resources()().exp;
-  }
 }

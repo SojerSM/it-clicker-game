@@ -20,7 +20,7 @@ export class GameStateService {
     return computed(() => this.state().impact);
   }
 
-  resources(): Signal<{ money: number; exp: number }> {
+  resources(): Signal<{ money: number }> {
     return computed(() => this.state().resource);
   }
 

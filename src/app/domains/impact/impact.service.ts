@@ -1,5 +1,4 @@
-import { Injectable, signal } from '@angular/core';
-import { INITIAL_GAME_STATE } from '../../core/config/state/game-state';
+import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class ImpactService {}

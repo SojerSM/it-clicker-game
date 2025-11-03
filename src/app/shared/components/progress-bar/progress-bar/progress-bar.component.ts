@@ -20,8 +20,7 @@ export class ProgressBarComponent {
 
   get percentage(): number {
     if (this.remaining && this.descending === false) {
-      console.log(this.remaining);
-      return this.maxValue - this.remaining;
+      return Math.ceil(((this.maxValue - this.remaining) / this.maxValue) * 100);
     } else if (this.remaining) {
       return Math.ceil((this.remaining / this.maxValue) * 100);
     } else {
