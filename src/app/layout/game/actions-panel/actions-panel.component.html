@@ -1,4 +1,4 @@
 <section class="actions-panel">
-  <p>{{ activeTab().title }}</p>
+  <ng-container *ngComponentOutlet="activeTab().component"></ng-container>
   <app-vertical-navbar [tabs]="tabs" (activeTab)="switchTab($event)" />
 </section>
