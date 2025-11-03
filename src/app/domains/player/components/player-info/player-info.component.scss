@@ -24,6 +24,11 @@
     justify-content: space-between;
     width: 100%;
 
+    span {
+      font-size: 1.25rem;
+      font-weight: bolder;
+    }
+
     .player-info__summary-progress {
       display: flex;
       align-items: flex-end;
@@ -33,8 +38,13 @@
       .player-info__summary-progress__exp-bar {
         display: flex;
         flex-direction: column;
+        justify-content: flex-end;
         height: 3rem;
         width: 100%;
+
+        span {
+          font-size: 0.75rem;
+        }
       }
 
       .player-info__summary-progress__lvl-badge {
