@@ -6,7 +6,7 @@ import { Ticket } from '../../types/ticket.model';
 import { TicketType } from '../../types/ticket-type.enum';
 import { ProgressBarComponent } from '../../../../../shared/components/progress-bar/progress-bar/progress-bar.component';
 import { GameStateService } from '../../../../../core/services/game-state.service';
-import { INITIAL_GAME_STATE } from '../../../../../core/config/state/game-state';
+import { PlayerService } from '../../../../player/services/player.service';
 
 @Component({
   selector: 'app-ticket',
@@ -18,9 +18,9 @@ export class TicketComponent {
   @Input({ required: true }) ticket!: Ticket;
 
   constructor(
-    private resourceService: ResourcesService,
     private ticketService: TicketService,
-    private gameStateService: GameStateService
+    private gameStateService: GameStateService,
+    private playerService: PlayerService
   ) {}
 
   get tagColor(): string {
@@ -44,6 +44,6 @@ export class TicketComponent {
 
   onClick(): void {
     this.ticketService.applyProgress(this.gameStateService.impact()().mpi, this.ticket.id);
-    this.resourceService.increaseExp(1);
+    this.playerService.increaseExp(1);
   }
 }

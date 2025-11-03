@@ -1,3 +1,4 @@
+import { Player } from '../../../domains/player/types/player.model';
 import { Project } from '../../../domains/progress/projects/types/project.model';
 import { Ticket } from '../../../domains/progress/tickets/types/ticket.model';
 
@@ -6,9 +7,9 @@ export interface GameState {
     mpi: number;
     pps: number;
   };
+  player: Player;
   resource: {
     money: number;
-    exp: number;
   };
   project: {
     current: Project;

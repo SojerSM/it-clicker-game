@@ -14,11 +14,14 @@ import { NumberFormat } from '../../../../core/pipes/number-format.pipe';
 export class ProgressBarComponent {
   @Input({ required: true }) maxValue!: number;
   @Input({ required: false }) remaining?: number;
+  @Input({ required: false }) descending: boolean = true;
   @Input({ required: false }) displayPercentage: boolean = true;
   @Input({ required: false }) fill: string = '#4caf50';
 
   get percentage(): number {
-    if (this.remaining) {
+    if (this.remaining && this.descending === false) {
+      return Math.ceil(((this.maxValue - this.remaining) / this.maxValue) * 100);
+    } else if (this.remaining) {
       return Math.ceil((this.remaining / this.maxValue) * 100);
     } else {
       return 100;
