@@ -1,18 +1,24 @@
-import { Injectable } from '@angular/core';
+import { computed, Injectable } from '@angular/core';
 import { TicketNameGeneratorService } from './ticket-name-generator.service';
 import { TicketType } from '../types/ticket-type.enum';
 import { Project } from '../../projects/types/project.model';
 import { Ticket } from '../types/ticket.model';
 import { BALANCE } from '../../../../core/config/state/balance';
+import { GameStateService } from '../../../../core/services/game-state.service';
 
 @Injectable({ providedIn: 'root' })
 export class TicketBuilderService {
-  constructor(private ticketNameGeneratorService: TicketNameGeneratorService) {}
+  private readonly finishedTickets = computed(() => this.gameStateService.ticketState().finished);
 
-  getRandomTicket(project: Project, previousId?: number): Ticket {
+  constructor(
+    private ticketNameGeneratorService: TicketNameGeneratorService,
+    private gameStateService: GameStateService
+  ) {}
+
+  getRandomTicket(project: Project): Ticket {
     let totalCp = BALANCE.TICKET_INITIAL_CP;
-    const id = previousId ? previousId + 1 : 1;
-    const randomType = this.getRandomTicketType(id);
+    const id = this.finishedTickets() + 1;
+    const randomType = this.getRandomTicketType();
     const rewardMoney = Math.floor(totalCp / 2);
     const description = this.ticketNameGeneratorService.generateName(randomType);
     const alias = `${this.generateAlias(project.description)}-${id}`;
@@ -39,11 +45,9 @@ export class TicketBuilderService {
     return alias;
   }
 
-  private getRandomTicketType(ticketId: number) {
-    const LIMIT_ID = 100;
-
+  private getRandomTicketType() {
+    const LIMIT = 100;
     const earlyTypes: TicketType[] = [TicketType.FEATURE, TicketType.DOCUMENTATION];
-
     const lateTypes: TicketType[] = [
       TicketType.BUGFIX,
       TicketType.HOTFIX,
@@ -51,9 +55,7 @@ export class TicketBuilderService {
       TicketType.REFACTORING,
       TicketType.TESTING,
     ];
-
-    const lateWeight = Math.min(ticketId / LIMIT_ID, 1);
-
+    const lateWeight = Math.min(this.finishedTickets() / LIMIT, 1);
     const random = Math.random();
     let randomType: TicketType;
 

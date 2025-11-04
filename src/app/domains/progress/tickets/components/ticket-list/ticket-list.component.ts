@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { TicketComponent } from '../ticket/ticket.component';
 import { Ticket } from '../../types/ticket.model';
-import { TicketService } from '../../services/ticket.service';
+import { GameStateService } from '../../../../../core/services/game-state.service';
 
 @Component({
   selector: 'app-ticket-list',
@@ -10,9 +10,9 @@ import { TicketService } from '../../services/ticket.service';
   styleUrl: './ticket-list.component.scss',
 })
 export class TicketListComponent {
-  constructor(private ticketService: TicketService) {}
+  constructor(private gameStateService: GameStateService) {}
 
   get tickets(): Ticket[] {
-    return this.ticketService.tickets();
+    return this.gameStateService.ticketState().active;
   }
 }
