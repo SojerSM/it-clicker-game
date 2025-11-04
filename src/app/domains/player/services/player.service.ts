@@ -21,11 +21,17 @@ export class PlayerService {
   private levelUp(state: GameState): void {
     state.player.exp = 0;
     state.player.lvl += 1;
+    state.player.expToLevelUp = this.calcNextRequiredExp(state.player.lvl);
+  }
 
+  private calcNextRequiredExp(lvl: number): number {
+    const baseExp = INITIAL_GAME_STATE.player.expToLevelUp;
+
+    // hybrid: slow growth at the beginning and rapid growth further on
     const newRequiredExp =
-      Math.pow(state.player.lvl, BALANCE.PLAYER_REQUIRED_EXP_MULTIPLIER) *
-      INITIAL_GAME_STATE.player.expToLevelUp;
+      baseExp *
+      (Math.pow(lvl - 1, BALANCE.PLAYER_REQUIRED_EXP_MULTIPLIER) * 0.5 + Math.exp(lvl / 20));
 
-    state.player.expToLevelUp = Math.floor(newRequiredExp);
+    return Math.round(newRequiredExp);
   }
 }
