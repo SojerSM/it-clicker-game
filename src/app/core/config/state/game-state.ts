@@ -13,7 +13,7 @@ export const INITIAL_GAME_STATE: GameState = {
     lvl: 1,
     exp: 0,
     expToLevelUp: 100,
-    stressFactor: 0.5,
+    stressFactor: 0.72,
   },
   resource: {
     money: 0,
@@ -23,7 +23,7 @@ export const INITIAL_GAME_STATE: GameState = {
     finished: 0,
   },
   tickets: {
-    current: [] as Ticket[],
+    active: [] as Ticket[],
     finished: 0,
   },
 };

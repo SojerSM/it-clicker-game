@@ -10,11 +10,11 @@ export class ProjectService {
   ) {}
 
   applyProgress(value: number): void {
-    this.gameStateService.updateState((state) => {
-      if (state.project.current) {
-        const updatedRemainingCp = state.project.current.remainingCp - value;
-        state.project.current = {
-          ...state.project.current,
+    this.gameStateService.updateProject((state) => {
+      if (state.current) {
+        const updatedRemainingCp = state.current.remainingCp - value;
+        state.current = {
+          ...state.current,
           remainingCp: updatedRemainingCp,
         };
       }
@@ -23,8 +23,8 @@ export class ProjectService {
 
   setFirstProject(): void {
     const newProject = this.projectGenerator.generateProject();
-    this.gameStateService.updateState((state) => {
-      state.project.current = newProject;
+    this.gameStateService.updateProject((state) => {
+      state.current = newProject;
     });
   }
 }

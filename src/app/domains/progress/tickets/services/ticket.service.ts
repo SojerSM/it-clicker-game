@@ -15,10 +15,10 @@ export class TicketService {
     private ticketBuilder: TicketBuilderService,
     private gameStateService: GameStateService
   ) {
-    this.tickets = computed(() => this.gameStateService.tickets()());
+    this.tickets = computed(() => this.gameStateService.ticketState().active);
 
     effect(() => {
-      const project = this.gameStateService.project()();
+      const project = this.gameStateService.projectState().current;
 
       if (!project?.description) return;
 
@@ -37,14 +37,14 @@ export class TicketService {
   }
 
   private addTicket(ticket: Ticket) {
-    this.gameStateService.updateState((state) => {
-      state.tickets.current.push(ticket);
+    this.gameStateService.updateTicket((state) => {
+      state.active.push(ticket);
     });
   }
 
   applyProgress(value: number, ticketId: number): void {
-    this.gameStateService.updateState((state) => {
-      state.tickets.current = state.tickets.current.map((ticket) =>
+    this.gameStateService.updateTicket((state) => {
+      state.active = state.active.map((ticket) =>
         ticket.id === ticketId
           ? { ...ticket, remainingCp: Math.max(ticket.remainingCp - value, 0) }
           : ticket
@@ -54,8 +54,8 @@ export class TicketService {
 
   private completeTicket(ticket: Ticket): void {
     this.grantReward(ticket);
-    this.gameStateService.updateState((state) => {
-      state.tickets.current = state.tickets.current.filter((t) => t.id !== ticket.id);
+    this.gameStateService.updateTicket((state) => {
+      state.active = state.active.filter((t) => t.id !== ticket.id);
     });
   }
 

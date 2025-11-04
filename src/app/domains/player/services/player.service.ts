@@ -2,27 +2,26 @@ import { Injectable, signal } from '@angular/core';
 import { GameStateService } from '../../../core/services/game-state.service';
 import { INITIAL_GAME_STATE } from '../../../core/config/state/game-state';
 import { BALANCE } from '../../../core/config/state/balance';
-import { GameState } from '../../../core/config/state/game-state.model';
-import { PlayerStatsService } from './player-stats.service';
+import { PlayerState } from '../../../core/types/state.model';
 
 @Injectable({ providedIn: 'root' })
 export class PlayerService {
   constructor(private gameStateService: GameStateService) {}
 
   increaseExp(value: number): void {
-    this.gameStateService.updateState((state) => {
-      state.player.exp += value;
+    this.gameStateService.updatePlayer((state) => {
+      state.exp += value;
 
-      if (state.player.exp >= state.player.expToLevelUp) {
+      if (state.exp >= state.expToLevelUp) {
         this.levelUp(state);
       }
     });
   }
 
-  private levelUp(state: GameState): void {
-    state.player.exp = 0;
-    state.player.lvl += 1;
-    state.player.expToLevelUp = this.calcNextRequiredExp(state.player.lvl);
+  private levelUp(state: PlayerState): void {
+    state.exp = 0;
+    state.lvl += 1;
+    state.expToLevelUp = this.calcNextRequiredExp(state.lvl);
   }
 
   private calcNextRequiredExp(lvl: number): number {

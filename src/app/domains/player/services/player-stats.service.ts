@@ -1,4 +1,4 @@
-import { effect, Injectable } from '@angular/core';
+import { effect, Injectable, untracked } from '@angular/core';
 import { GameStateService } from '../../../core/services/game-state.service';
 import { Player } from '../types/player.model';
 import { INITIAL_GAME_STATE } from '../../../core/config/state/game-state';
@@ -12,7 +12,7 @@ import { INITIAL_GAME_STATE } from '../../../core/config/state/game-state';
 export class PlayerStatsService {
   constructor(private gameStateService: GameStateService) {
     effect(() => {
-      const player = this.gameStateService.getState().player;
+      const player = this.gameStateService.playerState();
 
       this.handleStressFactorEffect(player);
     });
@@ -31,6 +31,14 @@ export class PlayerStatsService {
       // low stress -> higher MPI
       const normalized = 1 - player.stressFactor / lowerBreakpoint;
       mpiTarget += Math.pow(normalized, 1.6) * 0.5;
+    }
+
+    const currentMpi = untracked(() => this.gameStateService.impactState().mpi);
+
+    if (mpiTarget !== currentMpi) {
+      this.gameStateService.updateImpact((impact) => {
+        impact.mpi = Number(mpiTarget.toFixed(2));
+      });
     }
   }
 }

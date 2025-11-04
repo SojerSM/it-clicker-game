@@ -12,10 +12,10 @@ export class PlayerStatsOverviewComponent {
   constructor(private gameStateService: GameStateService) {}
 
   get mpi(): number {
-    return this.gameStateService.impact()().mpi;
+    return this.gameStateService.impactState().mpi;
   }
 
   get player(): Player {
-    return this.gameStateService.getState().player;
+    return this.gameStateService.playerState();
   }
 }

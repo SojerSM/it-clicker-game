@@ -6,15 +6,15 @@ export class ResourcesService {
   constructor(private gameStateService: GameStateService) {}
 
   increaseMoney(value: number) {
-    this.gameStateService.updateState((state) => {
-      state.resource.money = state.resource.money + value;
+    this.gameStateService.updateResource((state) => {
+      state.money = state.money + value;
     });
   }
 
   decreaseMoney(value: number) {
-    this.gameStateService.updateState((state) => {
-      const result = state.resource.money - value;
-      state.resource.money = result >= 0 ? result : 0;
+    this.gameStateService.updateResource((state) => {
+      const result = state.money - value;
+      state.money = result >= 0 ? result : 0;
     });
   }
 }
