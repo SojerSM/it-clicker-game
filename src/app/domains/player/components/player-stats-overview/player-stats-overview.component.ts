@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { GameStateService } from '../../../../core/services/game-state.service';
+import { Player } from '../../types/player.model';
 
 @Component({
   selector: 'app-player-stats-overview',
@@ -12,5 +13,9 @@ export class PlayerStatsOverviewComponent {
 
   get mpi(): number {
     return this.gameStateService.impact()().mpi;
+  }
+
+  get player(): Player {
+    return this.gameStateService.getState().player;
   }
 }

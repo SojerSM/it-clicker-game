@@ -3,6 +3,7 @@ import { GameStateService } from '../../../core/services/game-state.service';
 import { INITIAL_GAME_STATE } from '../../../core/config/state/game-state';
 import { BALANCE } from '../../../core/config/state/balance';
 import { GameState } from '../../../core/config/state/game-state.model';
+import { PlayerStatsService } from './player-stats.service';
 
 @Injectable({ providedIn: 'root' })
 export class PlayerService {
