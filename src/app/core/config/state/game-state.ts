@@ -7,6 +7,9 @@ export const INITIAL_GAME_STATE: GameState = {
     mpi: 1,
     pps: 0,
   },
+  effects: {
+    active: [],
+  },
   player: {
     name: 'John Doe',
     avatar: 'assets/player/player_male_avatar_01.png',
