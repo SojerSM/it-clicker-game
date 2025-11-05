@@ -4,7 +4,7 @@ import { GameState } from './game-state.model';
 
 export const INITIAL_GAME_STATE: GameState = {
   impact: {
-    mpi: 1,
+    mpi: 100,
     pps: 0,
   },
   effects: {
