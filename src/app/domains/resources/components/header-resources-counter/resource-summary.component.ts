@@ -12,6 +12,6 @@ export class ResourceSummaryComponent {
   constructor(private gameStateService: GameStateService) {}
 
   get money() {
-    return this.gameStateService.resources()().money;
+    return this.gameStateService.resourceState().money;
   }
 }

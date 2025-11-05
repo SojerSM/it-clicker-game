@@ -16,6 +16,7 @@ import { PlayerService } from '../../../../player/services/player.service';
 })
 export class TicketComponent {
   @Input({ required: true }) ticket!: Ticket;
+  @Input({ required: true }) queueId!: number;
 
   constructor(
     private ticketService: TicketService,
@@ -43,7 +44,7 @@ export class TicketComponent {
   }
 
   onClick(): void {
-    this.ticketService.applyProgress(this.gameStateService.impact()().mpi, this.ticket.id);
+    this.ticketService.applyProgress(this.gameStateService.impactState().mpi, this.ticket.id);
     this.playerService.increaseExp(1);
   }
 }

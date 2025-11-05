@@ -13,14 +13,12 @@ export class PlayerInfoComponent {
   constructor(private gameStateService: GameStateService) {}
 
   get remainingExp(): number {
-    console.log(this.gameStateService.getState().player.expToLevelUp);
     return (
-      this.gameStateService.getState().player.expToLevelUp -
-      this.gameStateService.getState().player.exp
+      this.gameStateService.playerState().expToLevelUp - this.gameStateService.playerState().exp
     );
   }
 
   get player(): Player {
-    return this.gameStateService.getState().player;
+    return this.gameStateService.playerState();
   }
 }

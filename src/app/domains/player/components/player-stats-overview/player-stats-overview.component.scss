@@ -1,0 +1,21 @@
+.player-stats-overview {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  .player-stats-overview__list {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem;
+
+    .player-stats-overview__list-item {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      span:first-of-type {
+        font-style: italic;
+      }
+    }
+  }
+}

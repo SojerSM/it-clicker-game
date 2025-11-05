@@ -1,22 +1,15 @@
-import { Player } from '../../../domains/player/types/player.model';
-import { Project } from '../../../domains/progress/projects/types/project.model';
-import { Ticket } from '../../../domains/progress/tickets/types/ticket.model';
+import {
+  ImpactState,
+  PlayerState,
+  ProjectState,
+  ResourceState,
+  TicketState,
+} from '../../types/state.model';
 
 export interface GameState {
-  impact: {
-    mpi: number;
-    pps: number;
-  };
-  player: Player;
-  resource: {
-    money: number;
-  };
-  project: {
-    current: Project;
-    finished: number;
-  };
-  tickets: {
-    current: Ticket[];
-    finished: number;
-  };
+  impact: ImpactState;
+  player: PlayerState;
+  resource: ResourceState;
+  project: ProjectState;
+  tickets: TicketState;
 }

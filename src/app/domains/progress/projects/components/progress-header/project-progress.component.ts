@@ -13,6 +13,6 @@ export class ProjectProgressComponent {
   constructor(private gameStateService: GameStateService) {}
 
   get project(): Project {
-    return this.gameStateService.project()();
+    return this.gameStateService.projectState().current;
   }
 }

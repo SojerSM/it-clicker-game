@@ -1,22 +1,22 @@
 import { Injectable, NgZone } from '@angular/core';
 import { interval, Subscription } from 'rxjs';
-import { GameStateService } from './game-state.service';
 import { GameState } from '../config/state/game-state.model';
+import { GameStateBuilder } from './game-state-builder.service';
 
 @Injectable({ providedIn: 'root' })
 export class GameSaveService {
   private readonly STORAGE_KEY: string = 'gameState';
-  private readonly INTERVAL_MS: number = 1000;
+  private readonly INTERVAL_MS: number = 5000;
   private autoSaveJob?: Subscription;
 
-  constructor(private gameStateService: GameStateService, private zone: NgZone) {}
+  constructor(private gameStateBuilder: GameStateBuilder, private zone: NgZone) {}
 
   startAutoSave(intervalMs: number = this.INTERVAL_MS): void {
     if (this.autoSaveJob) return;
 
     this.zone.runOutsideAngular(() => {
       this.autoSaveJob = interval(intervalMs).subscribe(() => {
-        const state = this.gameStateService.getState();
+        const state = this.gameStateBuilder.buildState();
         this.save(state);
       });
     });
