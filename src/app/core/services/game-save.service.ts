@@ -6,7 +6,7 @@ import { GameStateBuilder } from './game-state-builder.service';
 @Injectable({ providedIn: 'root' })
 export class GameSaveService {
   private readonly STORAGE_KEY: string = 'gameState';
-  private readonly INTERVAL_MS: number = 1000;
+  private readonly INTERVAL_MS: number = 5000;
   private autoSaveJob?: Subscription;
 
   constructor(private gameStateBuilder: GameStateBuilder, private zone: NgZone) {}

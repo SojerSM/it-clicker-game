@@ -16,6 +16,7 @@ import { PlayerService } from '../../../../player/services/player.service';
 })
 export class TicketComponent {
   @Input({ required: true }) ticket!: Ticket;
+  @Input({ required: true }) queueId!: number;
 
   constructor(
     private ticketService: TicketService,

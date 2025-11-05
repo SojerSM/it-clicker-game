@@ -3,12 +3,13 @@ import { TicketService } from './ticket.service';
 import { interval, Subscription } from 'rxjs';
 import { TicketBuilderService } from './ticket-builder.service';
 import { GameStateService } from '../../../../core/services/game-state.service';
+import { BALANCE } from '../../../../core/config/state/balance';
 
 @Injectable({ providedIn: 'root' })
 export class TicketQueueService {
   readonly tickets = computed(() => this.gameStateService.ticketState().active);
 
-  private readonly BASE_INTERVAL_MS = 30_000;
+  private readonly BASE_INTERVAL_MS = BALANCE.TICKET_QUEUE_INTERVAL;
   private ticketSpawnJob?: Subscription;
 
   constructor(

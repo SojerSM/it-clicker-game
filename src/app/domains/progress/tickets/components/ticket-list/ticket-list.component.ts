@@ -10,9 +10,15 @@ import { GameStateService } from '../../../../../core/services/game-state.servic
   styleUrl: './ticket-list.component.scss',
 })
 export class TicketListComponent {
+  readonly VISIBLE_TICKETS_AMOUNT = 5;
+
   constructor(private gameStateService: GameStateService) {}
 
   get tickets(): Ticket[] {
     return this.gameStateService.ticketState().active;
+  }
+
+  get hiddenTickets(): number {
+    return this.gameStateService.ticketState().active.length - this.VISIBLE_TICKETS_AMOUNT;
   }
 }

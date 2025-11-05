@@ -22,6 +22,7 @@ export class TicketService {
 
   addTicket(ticket: Ticket) {
     this.gameStateService.updateTicket((state) => {
+      state.finished += 1;
       state.active.push(ticket);
     });
   }
@@ -40,7 +41,6 @@ export class TicketService {
     this.grantReward(ticket);
     this.gameStateService.updateTicket((state) => {
       state.active = state.active.filter((t) => t.id !== ticket.id);
-      state.finished += 1;
     });
   }
 
