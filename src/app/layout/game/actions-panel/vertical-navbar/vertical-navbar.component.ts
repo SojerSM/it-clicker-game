@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ActionsPanelTab } from '../actions-panel.model';
+import { Tab } from '../../../../shared/types/tab';
 
 @Component({
   selector: 'app-vertical-navbar',
@@ -8,10 +8,10 @@ import { ActionsPanelTab } from '../actions-panel.model';
   styleUrl: './vertical-navbar.component.scss',
 })
 export class VerticalNavbarComponent {
-  @Input({ required: true }) tabs!: ActionsPanelTab[];
-  @Output() activeTab = new EventEmitter<ActionsPanelTab>();
+  @Input({ required: true }) tabs!: Tab[];
+  @Output() activeTab = new EventEmitter<Tab>();
 
-  switchTab(tab: ActionsPanelTab): void {
+  switchTab(tab: Tab): void {
     this.activeTab.emit(tab);
   }
 }

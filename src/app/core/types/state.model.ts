@@ -1,3 +1,4 @@
+import { Effect } from '../../domains/effect/types/effect.model';
 import { Player } from '../../domains/player/types/player.model';
 import { Project } from '../../domains/progress/projects/types/project.model';
 import { Ticket } from '../../domains/progress/tickets/types/ticket.model';
@@ -5,6 +6,10 @@ import { Ticket } from '../../domains/progress/tickets/types/ticket.model';
 export interface ImpactState {
   mpi: number;
   pps: number;
+}
+
+export interface EffectState {
+  active: Effect[];
 }
 
 export interface PlayerState extends Player {}

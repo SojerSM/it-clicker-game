@@ -1,0 +1,44 @@
+:host {
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .hero-actions__overview {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+
+    .hero-actions__overview-info {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 0.5rem;
+
+      .hero-actions__overview-info-tabs {
+        border: 2px solid lightgray;
+        padding: 0.25rem;
+        list-style: none;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        li {
+          border-radius: 0.25rem;
+          background-color: blanchedalmond;
+          padding: 0.25rem 0.5rem;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .hero-actions__overview-equipment {
+      flex: 1;
+    }
+  }
+}

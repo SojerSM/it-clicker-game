@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { GameComponent } from './layout/game/game.component';
 import { ProjectService } from './domains/progress/projects/services/project.service';
 import { GameSaveService } from './core/services/game-save.service';
@@ -16,8 +16,16 @@ export class AppComponent implements OnInit {
     private projectService: ProjectService,
     private gameSaveService: GameSaveService,
     private gameStateService: GameStateService,
-    private ticketQueueService: TicketQueueService
-  ) {}
+    private ticketQueueService: TicketQueueService,
+    private zone: NgZone
+  ) {
+    this.zone.onUnstable.subscribe(() =>
+      console.log('%c[Zone] -> Angular detected async event (entering zone)', 'color: red;')
+    );
+    this.zone.onStable.subscribe(() =>
+      console.log('%c[Zone] <- Angular stable (after CD)', 'color: green;')
+    );
+  }
 
   ngOnInit(): void {
     this.projectService.setFirstProject();

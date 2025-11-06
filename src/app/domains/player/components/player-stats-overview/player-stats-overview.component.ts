@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { GameStateService } from '../../../../core/services/game-state.service';
 import { Player } from '../../types/player.model';
+import { NumberFormat } from '../../../../core/pipes/number-format.pipe';
 
 @Component({
   selector: 'app-player-stats-overview',
-  imports: [],
+  imports: [NumberFormat],
   templateUrl: './player-stats-overview.component.html',
   styleUrl: './player-stats-overview.component.scss',
 })
