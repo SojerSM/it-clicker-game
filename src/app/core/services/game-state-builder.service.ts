@@ -9,7 +9,7 @@ export class GameStateBuilder {
   buildState(): GameState {
     const state: GameState = {
       impact: this.gameStateService.impactState(),
-      effects: { active: [] },
+      effects: this.gameStateService.effectState(),
       player: this.gameStateService.playerState(),
       resource: this.gameStateService.resourceState(),
       project: this.gameStateService.projectState(),

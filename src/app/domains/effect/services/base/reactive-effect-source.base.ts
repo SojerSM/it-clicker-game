@@ -1,17 +1,22 @@
-import { effect, Injectable, untracked } from '@angular/core';
+import { effect, Injectable, NgZone, untracked } from '@angular/core';
 import { GameStateService } from '../../../../core/services/game-state.service';
 import { EffectService } from '../effect.service';
 import { EffectTarget } from '../../types/enum/effect-target.enum';
 import { EffectType } from '../../types/enum/effect-type.enum';
 import { EffectSource } from '../../types/enum/effect-source.enum';
+import { GameLoopService } from '../../../../core/services/game-loop.service';
 
 @Injectable()
 export abstract class ReactiveEffectSourceBase {
   protected constructor(
+    protected readonly gameLoopService: GameLoopService,
     protected readonly gameStateService: GameStateService,
     protected readonly effectService: EffectService
   ) {
-    effect(() => this.observeAndReact());
+    effect(() => {
+      this.gameLoopService.tick();
+      untracked(() => this.observeAndReact());
+    });
   }
 
   /** decides what needs to be observed and what supposed to be an impact */
