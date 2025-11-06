@@ -45,7 +45,7 @@ export class StressEffect extends ReactiveEffectSourceBase {
       newStress = Math.min(currentStress + growthRate * (1 - currentStress), this.MAX_STRESS);
       this.active = true;
     } else {
-      newStress = Math.max(currentStress - this.RELAX_RATE, this.BASE_STRESS);
+      newStress = Math.max(currentStress - this.RELAX_RATE * relaxFactor, this.BASE_STRESS);
       if (newStress <= this.BASE_STRESS) this.active = false;
     }
 
