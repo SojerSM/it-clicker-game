@@ -1,4 +1,5 @@
 import { HeroRole } from '../../../domains/heroes/types/enums/hero-role.enum';
+import { HeroType } from '../../../domains/heroes/types/enums/hero-type.enum';
 import { Project } from '../../../domains/progress/projects/types/project.model';
 import { Ticket } from '../../../domains/progress/tickets/types/ticket.model';
 import { GameState } from './game-state.model';
@@ -15,9 +16,10 @@ export const INITIAL_GAME_STATE: GameState = {
     owned: [
       {
         id: 'hero-ceo',
+        type: HeroType.PLAYER,
         role: HeroRole.CEO,
         name: 'John Doe',
-        avatar: 'assets/player/player_male_avatar_01.png',
+        avatar: 'assets/heroes/hero_male_avatar_01.png',
         lvl: 1,
         exp: 0,
         expToLevelUp: 100,

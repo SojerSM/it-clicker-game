@@ -1,4 +1,4 @@
-import { Component, signal, WritableSignal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { HeroCardComponent } from '../../../../../domains/heroes/components/hero-card/hero-card.component';
 import { HeroEquipmentComponent } from '../../../../../domains/heroes/components/hero-equipment/hero-equipment.component';
 import { HeroUpgradesComponent } from '../../../../../domains/heroes/components/hero-upgrades/hero-upgrades.component';
@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { GameStateService } from '../../../../../core/services/game-state.service';
 import { Hero } from '../../../../../domains/heroes/types/hero.model';
 import { HeroStatsOverviewComponent } from '../../../../../domains/heroes/components/hero-stats-overview/hero-stats-overview.component';
+import { HireService } from '../../../../../domains/recruitment/services/hire.service';
 
 @Component({
   selector: 'app-hero-actions',
@@ -24,7 +25,7 @@ export class HeroActionsComponent {
   activeTab = signal<Tab>(this.tabs[0]);
   selectedHeroId = signal(0);
 
-  constructor(private gameStateService: GameStateService) {}
+  constructor(private gameStateService: GameStateService, private hireService: HireService) {}
 
   get heroes(): Hero[] {
     return this.gameStateService.heroState().owned;
@@ -34,7 +35,20 @@ export class HeroActionsComponent {
     return this.heroes[this.selectedHeroId()];
   }
 
+  selectHero(id: string): void {
+    const heroId = this.heroes.findIndex((hero) => hero.id === id);
+    this.selectedHeroId.set(heroId);
+  }
+
   switchTab(tab: Tab): void {
     this.activeTab.set(tab);
+  }
+
+  hire(): void {
+    const heroesAmount = this.gameStateService.heroState().owned.length;
+
+    if (heroesAmount >= 2) return;
+
+    this.hireService.hire();
   }
 }

@@ -28,13 +28,19 @@
     justify-content: space-between;
     width: 100%;
 
-    span {
-      font-size: 1.25rem;
-      font-weight: bolder;
-    }
+    .hero-card__summary-header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
 
-    .name-simplified {
-      font-size: 1rem;
+      span {
+        font-size: 1.25rem;
+        font-weight: bolder;
+      }
+
+      .name-simplified {
+        font-size: 1rem;
+      }
     }
 
     .hero-card__summary-progress {

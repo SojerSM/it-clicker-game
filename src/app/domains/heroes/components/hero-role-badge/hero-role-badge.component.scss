@@ -1,0 +1,16 @@
+.hero-role-badge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: fit-content;
+  background-color: rgb(172, 51, 51);
+  border-radius: 0.5rem;
+  padding: 0.15rem 0.3rem;
+
+  span {
+    color: white;
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+}

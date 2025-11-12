@@ -15,10 +15,13 @@
     </div>
     <ul class="hero-actions__overview-hero-list">
       @for (hero of heroes; track hero.id) {
-      <li>
+      <li (click)="selectHero(hero.id)">
         <app-hero-card [isSimplified]="true" [hero]="hero" />
       </li>
       }
+      <li class="hero-actions__overview-hero-list__hire-button">
+        <button (click)="hire()">Hire</button>
+      </li>
     </ul>
   </div>
 </div>

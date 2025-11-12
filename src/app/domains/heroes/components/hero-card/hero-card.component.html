@@ -4,7 +4,10 @@
     <img [src]="hero.avatar" alt="hero" />
   </div>
   <div class="hero-card__summary">
-    <span>{{ hero.name }}</span>
+    <div class="hero-card__summary-header">
+      <span>{{ hero.name }}</span>
+      <app-hero-role-badge [role]="hero.role" />
+    </div>
     <div class="hero-card__summary-progress">
       <div class="hero-card__summary-progress__exp-bar">
         <span>{{ hero.exp }} / {{ hero.expToLevelUp }}</span>
