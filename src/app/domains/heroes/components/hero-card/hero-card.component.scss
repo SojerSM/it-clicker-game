@@ -1,10 +1,10 @@
-.player-info {
+.hero-card {
   display: flex;
   padding: 0.5rem;
   gap: 0.5rem;
   border: 2px solid lightgray;
 
-  .player-info__avatar {
+  .hero-card__avatar {
     min-width: 128px;
     min-height: 128px;
     border: 2px solid gray;
@@ -17,7 +17,12 @@
     }
   }
 
-  .player-info__summary {
+  .avatar-simplified {
+    min-width: 32px !important;
+    min-height: 32px !important;
+  }
+
+  .hero-card__summary {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -28,13 +33,17 @@
       font-weight: bolder;
     }
 
-    .player-info__summary-progress {
+    .name-simplified {
+      font-size: 1rem;
+    }
+
+    .hero-card__summary-progress {
       display: flex;
       align-items: flex-end;
       gap: 0.5rem;
       width: 100%;
 
-      .player-info__summary-progress__exp-bar {
+      .hero-card__summary-progress__exp-bar {
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
@@ -46,7 +55,7 @@
         }
       }
 
-      .player-info__summary-progress__lvl-badge {
+      .hero-card__summary-progress__lvl-badge {
         width: 2rem;
         height: 2rem;
         border-radius: 0.25rem;
@@ -59,4 +68,8 @@
       }
     }
   }
+}
+
+.card-simplified {
+  padding: 0.25rem;
 }

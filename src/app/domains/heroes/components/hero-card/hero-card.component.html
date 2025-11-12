@@ -1,0 +1,35 @@
+@if (!isSimplified) {
+<section class="hero-card">
+  <div class="hero-card__avatar">
+    <img [src]="hero.avatar" alt="hero" />
+  </div>
+  <div class="hero-card__summary">
+    <span>{{ hero.name }}</span>
+    <div class="hero-card__summary-progress">
+      <div class="hero-card__summary-progress__exp-bar">
+        <span>{{ hero.exp }} / {{ hero.expToLevelUp }}</span>
+        <app-progress-bar
+          [maxValue]="hero.expToLevelUp"
+          [remaining]="remainingExp"
+          [descending]="false"
+          [fill]="'#79BAEC'"
+          [displayPercentage]="false"
+          [style.height.rem]="1"
+        />
+      </div>
+      <div class="hero-card__summary-progress__lvl-badge">
+        <span>{{ hero.lvl }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+} @else if (isSimplified) {
+<section class="hero-card card-simplified">
+  <div class="hero-card__avatar avatar-simplified">
+    <img [src]="hero.avatar" alt="hero" />
+  </div>
+  <div class="hero-card__summary">
+    <span class="hero-card__summary name-simplified">{{ hero.name }}</span>
+  </div>
+</section>
+}

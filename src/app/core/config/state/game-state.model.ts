@@ -1,7 +1,7 @@
 import {
   EffectState,
   ImpactState,
-  PlayerState,
+  HeroState,
   ProjectState,
   ResourceState,
   TicketState,
@@ -10,7 +10,7 @@ import {
 export interface GameState {
   impact: ImpactState;
   effects: EffectState;
-  player: PlayerState;
+  heroes: HeroState;
   resource: ResourceState;
   project: ProjectState;
   tickets: TicketState;

@@ -6,14 +6,16 @@ import { GameLoopService } from '../../../core/services/game-loop.service';
 import { GameStateService } from '../../../core/services/game-state.service';
 import { EffectService } from './effect.service';
 import { EffectTarget } from '../types/enum/effect-target.enum';
+import { Hero } from '../../heroes/types/hero.model';
+
+type Stressors = Record<string, { value: number; weight: number }>;
 
 @Injectable({ providedIn: 'root' })
 export class StressEffect extends ReactiveEffectSourceBase {
   private readonly EFFECT_ID = 'global_stress_effect';
-  private readonly BASE_STRESS = INITIAL_GAME_STATE.player.stressFactor;
   private readonly MAX_STRESS = 1;
   private readonly RELAX_RATE = 0.01;
-  private readonly GROWTH_SCALE = 0.00002;
+  private readonly GROWTH_SCALE = 0.0002;
   private readonly MAX_GROWTH = 0.05;
   private active = false;
 
@@ -30,8 +32,35 @@ export class StressEffect extends ReactiveEffectSourceBase {
   }
 
   protected override observeAndReact(): void {
-    const currentStress = this.gameStateService.playerState().stressFactor;
-    const stressors = this.collectStressors();
+    const stressors: Stressors = this.collectStressors();
+
+    this.gameStateService.updateHeroes((state) => {
+      state.owned = state.owned.map((hero) => {
+        const baseHero = INITIAL_GAME_STATE.heroes.owned.find((h) => h.id === hero.id);
+        if (!baseHero) return hero;
+
+        const baseStress = baseHero.stressFactor;
+
+        const newStress = this.calculateNewStress(stressors, baseStress, hero);
+
+        const modifier = newStress / baseStress - 1;
+
+        if (this.active) {
+          this.setEffect(`${this.EFFECT_ID}_${hero.id}`, EffectTarget.HEROES, modifier);
+        } else {
+          this.removeEffect(`${this.EFFECT_ID}_${hero.id}`);
+        }
+
+        return {
+          ...hero,
+          stressFactor: newStress,
+        };
+      });
+    });
+  }
+
+  private calculateNewStress(stressors: Stressors, baseStress: number, hero: Hero): number {
+    const currentStress = hero.stressFactor ?? baseStress;
     const weightedSum = Object.values(stressors).reduce((sum, s) => sum + s.value * s.weight, 0);
 
     let growthRate = this.GROWTH_SCALE * Math.pow(weightedSum, 2);
@@ -45,23 +74,17 @@ export class StressEffect extends ReactiveEffectSourceBase {
       newStress = Math.min(currentStress + growthRate * (1 - currentStress), this.MAX_STRESS);
       this.active = true;
     } else {
-      newStress = Math.max(currentStress - this.RELAX_RATE * relaxFactor, this.BASE_STRESS);
-      if (newStress <= this.BASE_STRESS) this.active = false;
+      newStress = Math.max(currentStress - this.RELAX_RATE * relaxFactor, baseStress);
+      if (newStress <= baseStress) this.active = false;
     }
 
-    const modifier = newStress / this.BASE_STRESS - 1;
-
-    if (this.active) {
-      this.setEffect(this.EFFECT_ID, EffectTarget.PLAYER_STRESS_FACTOR, modifier);
-    } else {
-      this.removeEffect(this.EFFECT_ID);
-    }
+    return newStress;
   }
 
-  private collectStressors(): Record<string, { value: number; weight: number }> {
+  private collectStressors(): Stressors {
     const ticketsCount = this.gameStateService.ticketState().active.length;
 
-    const stressors: Record<string, { value: number; weight: number }> = {};
+    const stressors: Stressors = {};
 
     if (ticketsCount > 10) {
       stressors['tickets'] = {

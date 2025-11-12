@@ -1,18 +1,24 @@
 <div class="hero-actions">
   <div class="hero-actions__overview">
     <div class="hero-actions__overview-info">
-      <app-player-info />
+      <app-hero-card [hero]="heroes[selectedHeroId()]" />
       <ul class="hero-actions__overview-info-tabs">
         @for(tab of tabs; track tab.id) {
         <li (click)="switchTab(tab)">{{ tab.title }}</li>
         }
       </ul>
       <div>
-        <ng-container *ngComponentOutlet="activeTab().component"></ng-container>
+        <ng-container
+          *ngComponentOutlet="activeTab().component; inputs: { hero: selectedHero }"
+        ></ng-container>
       </div>
     </div>
-    <div class="hero-actions__overview-equipment">
-      <span>Equipment coming soon</span>
-    </div>
+    <ul class="hero-actions__overview-hero-list">
+      @for (hero of heroes; track hero.id) {
+      <li>
+        <app-hero-card [isSimplified]="true" [hero]="hero" />
+      </li>
+      }
+    </ul>
   </div>
 </div>

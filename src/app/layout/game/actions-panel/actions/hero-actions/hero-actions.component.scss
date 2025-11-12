@@ -11,7 +11,7 @@
   .hero-actions__overview {
     display: flex;
     flex-direction: row;
-    gap: 0.5rem;
+    gap: 2rem;
 
     .hero-actions__overview-info {
       display: flex;
@@ -37,8 +37,19 @@
       }
     }
 
-    .hero-actions__overview-equipment {
+    .hero-actions__overview-hero-list {
       flex: 1;
+      list-style: none;
+
+      li {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        h4 {
+          text-align: center;
+        }
+      }
     }
   }
 }

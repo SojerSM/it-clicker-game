@@ -9,10 +9,15 @@ export class EffectApplierService {
 
   applyModifierToState(target: EffectTarget, modifier: number): void {
     switch (target) {
-      case EffectTarget.PLAYER_STRESS_FACTOR:
-        this.gameStateService.updatePlayer((player) => {
-          const base = INITIAL_GAME_STATE.player.stressFactor;
-          player.stressFactor = this.clamp(base * (1 + modifier), 0.5, 1);
+      case EffectTarget.HEROES:
+        this.gameStateService.updateHeroes((state) => {
+          state.owned.forEach((hero) => {
+            const baseHero = INITIAL_GAME_STATE.heroes.owned.find((h) => h.id === hero.id);
+            if (!baseHero) return;
+
+            const base = baseHero.stressFactor;
+            hero.stressFactor = this.clamp(base * (1 + modifier), 0.5, 1);
+          });
         });
         break;
       case EffectTarget.IMPACT_MPI:
@@ -28,9 +33,14 @@ export class EffectApplierService {
 
   resetToBaseState(target: EffectTarget): void {
     switch (target) {
-      case EffectTarget.PLAYER_STRESS_FACTOR:
-        this.gameStateService.updatePlayer((player) => {
-          player.stressFactor = INITIAL_GAME_STATE.player.stressFactor;
+      case EffectTarget.HEROES:
+        this.gameStateService.updateHeroes((state) => {
+          state.owned.forEach((hero) => {
+            const baseHero = INITIAL_GAME_STATE.heroes.owned.find((h) => h.id === hero.id);
+            if (!baseHero) return;
+
+            hero.stressFactor = baseHero.stressFactor;
+          });
         });
         break;
       case EffectTarget.IMPACT_MPI:
