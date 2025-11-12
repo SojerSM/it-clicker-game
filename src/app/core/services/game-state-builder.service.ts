@@ -10,7 +10,7 @@ export class GameStateBuilder {
     const state: GameState = {
       impact: this.gameStateService.impactState(),
       effects: this.gameStateService.effectState(),
-      player: this.gameStateService.playerState(),
+      heroes: this.gameStateService.heroState(),
       resource: this.gameStateService.resourceState(),
       project: this.gameStateService.projectState(),
       tickets: this.gameStateService.ticketState(),

@@ -1,10 +1,10 @@
 import { effect, Injectable, NgZone, untracked } from '@angular/core';
 import { GameStateService } from '../../../../core/services/game-state.service';
 import { EffectService } from '../effect.service';
-import { EffectTarget } from '../../types/enum/effect-target.enum';
 import { EffectType } from '../../types/enum/effect-type.enum';
 import { EffectSource } from '../../types/enum/effect-source.enum';
 import { GameLoopService } from '../../../../core/services/game-loop.service';
+import { EffectTarget } from '../../types/enum/effect-target.enum';
 
 @Injectable()
 export abstract class ReactiveEffectSourceBase {

@@ -3,7 +3,7 @@ import { INITIAL_GAME_STATE } from '../config/state/game-state';
 import {
   EffectState,
   ImpactState,
-  PlayerState,
+  HeroState,
   ProjectState,
   ResourceState,
   TicketState,
@@ -14,7 +14,7 @@ import { GameState } from '../config/state/game-state.model';
 export class GameStateService {
   readonly impactState = signal<ImpactState>(INITIAL_GAME_STATE.impact);
   readonly effectState = signal<EffectState>(INITIAL_GAME_STATE.effects);
-  readonly playerState = signal<PlayerState>(INITIAL_GAME_STATE.player);
+  readonly heroState = signal<HeroState>(INITIAL_GAME_STATE.heroes);
   readonly resourceState = signal<ResourceState>(INITIAL_GAME_STATE.resource);
   readonly projectState = signal<ProjectState>(INITIAL_GAME_STATE.project);
   readonly ticketState = signal<TicketState>(INITIAL_GAME_STATE.tickets);
@@ -22,7 +22,7 @@ export class GameStateService {
   reset(): void {
     this.impactState.set(INITIAL_GAME_STATE.impact);
     this.effectState.set(INITIAL_GAME_STATE.effects);
-    this.playerState.set(INITIAL_GAME_STATE.player);
+    this.heroState.set(INITIAL_GAME_STATE.heroes);
     this.resourceState.set(INITIAL_GAME_STATE.resource);
     this.projectState.set(INITIAL_GAME_STATE.project);
     this.ticketState.set(INITIAL_GAME_STATE.tickets);
@@ -31,7 +31,7 @@ export class GameStateService {
   setState(state: GameState): void {
     this.impactState.set(state.impact);
     this.effectState.set(state.effects);
-    this.playerState.set(state.player);
+    this.heroState.set(state.heroes);
     this.resourceState.set(state.resource);
     this.projectState.set(state.project);
     this.ticketState.set(state.tickets);
@@ -45,8 +45,8 @@ export class GameStateService {
     this.effectState.set(effects);
   }
 
-  setPlayer(player: PlayerState): void {
-    this.playerState.set(player);
+  setHeroes(hero: HeroState): void {
+    this.heroState.set(hero);
   }
 
   setResource(resource: ResourceState): void {
@@ -69,8 +69,8 @@ export class GameStateService {
     this.updateSlice(this.effectState, mutator);
   }
 
-  updatePlayer(mutator: (player: PlayerState) => void) {
-    this.updateSlice(this.playerState, mutator);
+  updateHeroes(mutator: (hero: HeroState) => void) {
+    this.updateSlice(this.heroState, mutator);
   }
 
   updateResource(mutator: (resource: ResourceState) => void) {

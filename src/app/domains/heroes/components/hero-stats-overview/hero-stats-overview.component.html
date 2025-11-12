@@ -1,0 +1,13 @@
+<div class="hero-stats-overview">
+  <h4>STATS</h4>
+  <ul class="hero-stats-overview__list">
+    <li class="hero-stats-overview__list-item">
+      <span>{{ impactLabel }}</span>
+      <span> {{ impact }}</span>
+    </li>
+    <li class="hero-stats-overview__list-item">
+      <span>Stress factor</span>
+      <span> {{ hero.stressFactor | numberFormat : 2 }}</span>
+    </li>
+  </ul>
+</div>
