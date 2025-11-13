@@ -10,7 +10,7 @@
     </div>
     <div class="hero-card__summary-progress">
       <div class="hero-card__summary-progress__exp-bar">
-        <span>{{ hero.exp }} / {{ hero.expToLevelUp }}</span>
+        <span>{{ hero.exp.toFixed() }} / {{ hero.expToLevelUp }}</span>
         <app-progress-bar
           [maxValue]="hero.expToLevelUp"
           [remaining]="remainingExp"

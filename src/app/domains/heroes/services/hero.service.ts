@@ -2,30 +2,43 @@ import { Injectable, signal } from '@angular/core';
 import { GameStateService } from '../../../core/services/game-state.service';
 import { BALANCE } from '../../../core/config/state/balance';
 import { Hero } from '../types/hero.model';
+import { HeroType } from '../types/enums/hero-type.enum';
 
 @Injectable({ providedIn: 'root' })
 export class HeroService {
   constructor(private gameStateService: GameStateService) {}
 
-  increaseExp(value: number, heroId: string): void {
-    this.gameStateService.updateHeroes((state) => {
-      const hero = state.owned.find((h) => h.id === heroId);
-      if (!hero) return;
+  increaseExp(heroId?: string): void {
+    if (heroId) {
+      this.gameStateService.updateHeroes((state) => {
+        const hero = state.owned.find((h) => h.id === heroId);
+        if (!hero) return;
 
-      hero.exp += value;
-
-      if (hero.exp >= hero.expToLevelUp) {
-        this.levelUp(hero);
-      }
-    });
+        hero.exp += hero.expRatio * this.gameStateService.impactState().mpi;
+        this.levelUpIfAchieved(hero);
+      });
+    } else {
+      this.gameStateService.updateHeroes((state) => {
+        state.owned.forEach((hero) => {
+          if (hero.type === HeroType.MINION) {
+            hero.exp += hero.expRatio * hero.pps;
+            this.levelUpIfAchieved(hero);
+          }
+        });
+      });
+    }
   }
 
-  private levelUp(hero: Hero): void {
+  private levelUpIfAchieved(hero: Hero): void {
     if (!hero) return;
 
-    hero.lvl += 1;
-    hero.exp = 0;
-    hero.expToLevelUp = this.calcNextRequiredExp(hero.lvl, hero);
+    if (hero.exp >= hero.expToLevelUp) {
+      const expSurplus = hero.exp - hero.expToLevelUp;
+
+      hero.lvl += 1;
+      hero.exp = expSurplus;
+      hero.expToLevelUp = this.calcNextRequiredExp(hero.lvl, hero);
+    }
   }
 
   private calcNextRequiredExp(lvl: number, hero: Hero): number {

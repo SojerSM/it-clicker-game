@@ -10,6 +10,7 @@ export interface PlayerHero {
   avatar: string;
   lvl: number;
   exp: number;
+  expRatio: number;
   expToLevelUp: number;
   stressFactor: number;
 }
@@ -22,6 +23,7 @@ export interface MinionHero extends MinionStats {
   avatar: string;
   lvl: number;
   exp: number;
+  expRatio: number;
   expToLevelUp: number;
   stressFactor: number;
 }

@@ -22,6 +22,7 @@ export const INITIAL_GAME_STATE: GameState = {
         avatar: 'assets/heroes/hero_male_avatar_01.png',
         lvl: 1,
         exp: 0,
+        expRatio: 1,
         expToLevelUp: 100,
         stressFactor: 0.5,
       },
