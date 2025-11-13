@@ -1,7 +1,7 @@
 <div class="hero-actions">
   <div class="hero-actions__overview">
     <div class="hero-actions__overview-info">
-      <app-hero-card [hero]="heroes[selectedHeroId()]" />
+      <app-hero-card-regular [hero]="heroes[selectedHeroId()]" />
       <ul class="hero-actions__overview-info-tabs">
         @for(tab of tabs; track tab.id) {
         <li (click)="switchTab(tab)">{{ tab.title }}</li>
@@ -16,7 +16,7 @@
     <ul class="hero-actions__overview-hero-list">
       @for (hero of heroes; track hero.id) {
       <li (click)="selectHero(hero.id)">
-        <app-hero-card [isSimplified]="true" [hero]="hero" />
+        <app-hero-card-simplified [hero]="hero" />
       </li>
       }
       <li class="hero-actions__overview-hero-list__hire-button">

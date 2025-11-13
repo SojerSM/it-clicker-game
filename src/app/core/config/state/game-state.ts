@@ -24,6 +24,7 @@ export const INITIAL_GAME_STATE: GameState = {
         exp: 0,
         expRatio: 1,
         expToLevelUp: 100,
+        baseRequiredExp: 100,
         stressFactor: 0.5,
       },
     ],

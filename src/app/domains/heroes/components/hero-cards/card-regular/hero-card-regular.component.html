@@ -1,4 +1,3 @@
-@if (!isSimplified) {
 <section class="hero-card">
   <div class="hero-card__avatar">
     <img [src]="hero.avatar" alt="hero" />
@@ -26,13 +25,3 @@
     </div>
   </div>
 </section>
-} @else if (isSimplified) {
-<section class="hero-card card-simplified">
-  <div class="hero-card__avatar avatar-simplified">
-    <img [src]="hero.avatar" alt="hero" />
-  </div>
-  <div class="hero-card__summary">
-    <span class="hero-card__summary name-simplified">{{ hero.name }}</span>
-  </div>
-</section>
-}

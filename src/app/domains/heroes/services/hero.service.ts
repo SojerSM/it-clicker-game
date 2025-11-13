@@ -42,7 +42,7 @@ export class HeroService {
   }
 
   private calcNextRequiredExp(lvl: number, hero: Hero): number {
-    const baseExp = hero.expToLevelUp;
+    const baseExp = hero.baseRequiredExp;
 
     const newRequiredExp =
       baseExp *
