@@ -1,0 +1,23 @@
+<section class="hero-card-simplified">
+  <div class="hero-card-simplified__avatar">
+    <img [src]="hero.avatar" alt="hero" />
+  </div>
+  <div class="hero-card-simplified__description">
+    <div class="hero-card-simplified__description-left">
+      <span>{{ hero.name }}</span>
+      <div class="hero-card-simplified__description-left__lvl">
+        <span>Lvl:</span>
+        <span class="hero-card-simplified__description-left__lvl-value">{{ hero.lvl }}</span>
+      </div>
+    </div>
+    <div class="hero-card-simplified__description-right">
+      <div class="hero-card-simplified__description-right__role-badge">
+        <app-hero-role-badge [role]="hero.role" />
+      </div>
+      <div class="hero-card-simplified__description-right__impact">
+        <span>{{ impact.label }}</span>
+        <span>{{ impact.value }}</span>
+      </div>
+    </div>
+  </div>
+</section>

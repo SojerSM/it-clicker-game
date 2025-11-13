@@ -17,11 +17,6 @@
     }
   }
 
-  .avatar-simplified {
-    min-width: 32px !important;
-    min-height: 32px !important;
-  }
-
   .hero-card__summary {
     display: flex;
     flex-direction: column;
@@ -36,10 +31,6 @@
       span {
         font-size: 1.25rem;
         font-weight: bolder;
-      }
-
-      .name-simplified {
-        font-size: 1rem;
       }
     }
 
@@ -74,8 +65,4 @@
       }
     }
   }
-}
-
-.card-simplified {
-  padding: 0.25rem;
 }

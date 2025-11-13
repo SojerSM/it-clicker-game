@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HeroBuilderService } from '../../heroes/services/hero-builder.service';
 import { GameStateService } from '../../../core/services/game-state.service';
+import { MinionHero } from '../../heroes/types/hero.model';
+import { HeroType } from '../../heroes/types/enums/hero-type.enum';
 
 @Injectable({ providedIn: 'root' })
 export class HireService {
@@ -16,8 +18,10 @@ export class HireService {
       state.owned.push(hero);
     });
 
-    this.gameStateService.updateImpact((state) => {
-      state.pps += hero.pps;
-    });
+    if (hero.type === HeroType.MINION) {
+      this.gameStateService.updateImpact((state) => {
+        state.pps += hero.pps;
+      });
+    }
   }
 }

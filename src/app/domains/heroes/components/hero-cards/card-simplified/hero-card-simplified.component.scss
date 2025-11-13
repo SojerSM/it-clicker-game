@@ -1,0 +1,71 @@
+.hero-card-simplified {
+  border: 2px solid lightgray;
+  padding: 0.25rem;
+  gap: 0.5rem;
+
+  display: flex;
+
+  .hero-card-simplified__avatar {
+    min-width: 48px;
+    min-height: 48px;
+    border: 2px solid gray;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      image-rendering: pixelated;
+    }
+  }
+
+  .hero-card-simplified__description {
+    width: 100%;
+    display: flex;
+    gap: 0.25rem;
+    justify-content: space-between;
+
+    .hero-card-simplified__description-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.25rem;
+
+      .hero-card-simplified__description-left__lvl {
+        font-size: 0.8rem;
+
+        display: flex;
+        gap: 0.25rem;
+        align-items: center;
+
+        .hero-card-simplified__description-left__lvl-value {
+          font-weight: bolder;
+        }
+      }
+    }
+
+    .hero-card-simplified__description-right {
+      height: 100%;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 0.25rem;
+
+      .hero-card-simplified__description-right__role-badge {
+        transform: scale(0.9);
+        opacity: 0.9;
+      }
+
+      .hero-card-simplified__description-right__impact {
+        font-size: 0.8rem;
+        font-style: italic;
+        margin-right: 0.25rem;
+
+        display: flex;
+        gap: 0.25rem;
+      }
+    }
+  }
+}

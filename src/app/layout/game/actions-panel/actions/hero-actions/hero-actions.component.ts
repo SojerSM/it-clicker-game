@@ -1,5 +1,4 @@
 import { Component, signal } from '@angular/core';
-import { HeroCardComponent } from '../../../../../domains/heroes/components/hero-card/hero-card.component';
 import { HeroEquipmentComponent } from '../../../../../domains/heroes/components/hero-equipment/hero-equipment.component';
 import { HeroUpgradesComponent } from '../../../../../domains/heroes/components/hero-upgrades/hero-upgrades.component';
 import { Tab } from '../../../../../shared/types/tab';
@@ -8,10 +7,12 @@ import { GameStateService } from '../../../../../core/services/game-state.servic
 import { Hero } from '../../../../../domains/heroes/types/hero.model';
 import { HeroStatsOverviewComponent } from '../../../../../domains/heroes/components/hero-stats-overview/hero-stats-overview.component';
 import { HireService } from '../../../../../domains/recruitment/services/hire.service';
+import { HeroCardRegularComponent } from '../../../../../domains/heroes/components/hero-cards/card-regular/hero-card-regular.component';
+import { HeroCardSimplifiedComponent } from '../../../../../domains/heroes/components/hero-cards/card-simplified/hero-card-simplified.component';
 
 @Component({
   selector: 'app-hero-actions',
-  imports: [HeroCardComponent, CommonModule],
+  imports: [HeroCardRegularComponent, CommonModule, HeroCardSimplifiedComponent],
   templateUrl: './hero-actions.component.html',
   styleUrl: './hero-actions.component.scss',
 })
