@@ -20,7 +20,7 @@ export class HireService {
 
     if (hero.type === HeroType.MINION) {
       this.gameStateService.updateImpact((state) => {
-        state.pps += hero.pps;
+        state.totalPps += hero.organicPps;
       });
     }
   }

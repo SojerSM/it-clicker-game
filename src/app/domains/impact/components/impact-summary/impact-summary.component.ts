@@ -11,10 +11,10 @@ export class ImpactSummaryComponent {
   constructor(private gameStateService: GameStateService) {}
 
   get pps() {
-    return this.gameStateService.impactState().pps;
+    return this.gameStateService.impactState().totalPps;
   }
 
   get mpi() {
-    return this.gameStateService.impactState().mpi;
+    return this.gameStateService.impactState().totalMpi;
   }
 }

@@ -8,7 +8,7 @@ export class ImpactService {
   constructor(private ticketService: TicketService, private gameStateService: GameStateService) {}
 
   applyPpsDamage(): void {
-    const totalPps = this.gameStateService.impactState().pps;
+    const totalPps = this.gameStateService.impactState().totalPps;
     const firstTicket = this.gameStateService.ticketState().active[0];
 
     this.ticketService.applyProgress(totalPps, firstTicket.id);

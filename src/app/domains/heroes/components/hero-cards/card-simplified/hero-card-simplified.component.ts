@@ -22,7 +22,7 @@ export class HeroCardSimplifiedComponent {
 
   get impact(): HeroCardImpactData {
     return this.hero.type === HeroType.MINION
-      ? { label: 'PPS:', value: this.hero.pps }
-      : { label: 'MPI:', value: this.gameStateService.impactState().mpi };
+      ? { label: 'PPS:', value: this.hero.totalPps }
+      : { label: 'MPI:', value: this.gameStateService.impactState().totalMpi };
   }
 }

@@ -14,14 +14,14 @@ export class HeroService {
         const hero = state.owned.find((h) => h.id === heroId);
         if (!hero) return;
 
-        hero.exp += hero.expRatio * this.gameStateService.impactState().mpi;
+        hero.exp += hero.expRatio * this.gameStateService.impactState().organicMpi;
         this.levelUpIfAchieved(hero);
       });
     } else {
       this.gameStateService.updateHeroes((state) => {
         state.owned.forEach((hero) => {
           if (hero.type === HeroType.MINION) {
-            hero.exp += hero.expRatio * hero.pps;
+            hero.exp += hero.expRatio * hero.organicPps;
             this.levelUpIfAchieved(hero);
           }
         });
