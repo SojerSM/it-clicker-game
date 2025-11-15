@@ -9,7 +9,7 @@ export class HeroBuilderService {
     return {
       id: 'mocked-hero-01',
       type: HeroType.MINION,
-      role: HeroRole.INTERN,
+      role: HeroRole.PROGRAMMER,
       name: 'Peter Lookatyou',
       avatar: 'assets/heroes/hero_male_avatar_02.png',
       lvl: 1,

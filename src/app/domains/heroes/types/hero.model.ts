@@ -19,7 +19,7 @@ export interface PlayerHero {
 export interface MinionHero extends MinionStats {
   id: string;
   type: HeroType.MINION;
-  role: HeroRole.INTERN;
+  role: HeroRole;
   name: string;
   avatar: string;
   lvl: number;
