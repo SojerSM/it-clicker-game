@@ -8,8 +8,7 @@ import { HeroStatsOverviewComponent } from '../../../../../domains/heroes/compon
 import { HireService } from '../../../../../domains/recruitment/services/hire.service';
 import { HeroCardRegularComponent } from '../../../../../domains/heroes/components/hero-cards/card-regular/hero-card-regular.component';
 import { HeroCardSimplifiedComponent } from '../../../../../domains/heroes/components/hero-cards/card-simplified/hero-card-simplified.component';
-import { HeroAttributesComponent } from '../../../../../domains/heroes/components/hero-attributes/hero-attributes.component';
-
+import { AttributesGridComponent } from '../../../../../domains/upgrades/attributes/components/attributes-grid/attributes-grid.component';
 @Component({
   selector: 'app-hero-actions',
   imports: [HeroCardRegularComponent, CommonModule, HeroCardSimplifiedComponent],
@@ -21,7 +20,7 @@ export class HeroActionsComponent {
     { id: 1, title: 'Overview', component: HeroStatsOverviewComponent },
     { id: 2, title: 'Equipment', component: HeroEquipmentComponent },
     { id: 3, title: 'Stats', component: HeroStatsOverviewComponent },
-    { id: 4, title: 'Attributes', component: HeroAttributesComponent },
+    { id: 4, title: 'Attributes', component: AttributesGridComponent },
   ];
   activeTab = signal<Tab>(this.tabs[0]);
   selectedHeroId = signal(0);

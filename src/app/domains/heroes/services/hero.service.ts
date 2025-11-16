@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { effect, Injectable, signal } from '@angular/core';
 import { GameStateService } from '../../../core/services/game-state.service';
 import { BALANCE } from '../../../core/config/state/balance';
 import { Hero } from '../types/hero.model';

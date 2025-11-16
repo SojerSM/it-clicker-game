@@ -18,6 +18,7 @@ export class HeroBuilderService {
       expToLevelUp: 50,
       baseRequiredExp: 50,
       stressFactor: 0.5,
+      purchasedAttributes: [],
       organicPps: 0.2,
       totalPps: 0.2,
     };

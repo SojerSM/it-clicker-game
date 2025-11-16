@@ -1,0 +1,7 @@
+<ul class="hero-attributes-grid">
+  @for (attribute of attributes; track attribute.id) {
+  <li class="hero-attributes-grid__item">
+    <app-attribute [attribute]="attribute" [hero]="hero" />
+  </li>
+  }
+</ul>
