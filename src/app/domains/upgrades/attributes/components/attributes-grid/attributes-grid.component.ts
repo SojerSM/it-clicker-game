@@ -4,6 +4,7 @@ import { AttributeComponent } from '../attributes/attribute.component';
 import { Hero } from '../../../../heroes/types/hero.model';
 import { DEV_ATTRIBUTES } from '../../presets/dev-attributes';
 import { HeroRole } from '../../../../heroes/types/enums/hero-role.enum';
+import { CEO_ATTRIBUTES } from '../../presets/ceo-attributes';
 
 @Component({
   selector: 'app-attributes-grid',
@@ -17,7 +18,7 @@ export class AttributesGridComponent {
   get attributes(): HeroAttribute[] {
     switch (this.hero.role) {
       case HeroRole.CEO:
-        return [];
+        return this.getAvailableAttributes(CEO_ATTRIBUTES);
       case HeroRole.PROGRAMMER:
         return this.getAvailableAttributes(DEV_ATTRIBUTES);
     }

@@ -23,7 +23,7 @@ export class AttributeService {
         }
       });
 
-      this.impactService.recalculateTotalPps();
+      this.impactService.recalculate();
     }
   }
 

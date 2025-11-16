@@ -1,7 +1,7 @@
 import { Injectable, signal } from '@angular/core';
-import { BALANCE } from '../config/state/balance';
-import { ImpactService } from '../../domains/impact/impact.service';
 import { HeroService } from '../../domains/heroes/services/hero.service';
+import { ImpactService } from '../../domains/impact/impact.service';
+import { BALANCE } from '../config/state/balance';
 
 @Injectable({ providedIn: 'root' })
 export class GameLoopService {

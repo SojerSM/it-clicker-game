@@ -7,15 +7,13 @@ export class GameStateBuilder {
   constructor(private gameStateService: GameStateService) {}
 
   buildState(): GameState {
-    const state: GameState = {
-      impact: this.gameStateService.impactState(),
-      effects: this.gameStateService.effectState(),
-      heroes: this.gameStateService.heroState(),
-      resource: this.gameStateService.resourceState(),
-      project: this.gameStateService.projectState(),
-      tickets: this.gameStateService.ticketState(),
+    return {
+      impact: structuredClone(this.gameStateService.impactState()),
+      effects: structuredClone(this.gameStateService.effectState()),
+      heroes: structuredClone(this.gameStateService.heroState()),
+      resource: structuredClone(this.gameStateService.resourceState()),
+      project: structuredClone(this.gameStateService.projectState()),
+      tickets: structuredClone(this.gameStateService.ticketState()),
     };
-
-    return state;
   }
 }

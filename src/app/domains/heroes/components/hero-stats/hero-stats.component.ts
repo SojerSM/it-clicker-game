@@ -5,12 +5,12 @@ import { NumberFormat } from '../../../../core/pipes/number-format.pipe';
 import { HeroType } from '../../types/enums/hero-type.enum';
 
 @Component({
-  selector: 'app-hero-stats-overview',
+  selector: 'app-hero-stats',
   imports: [NumberFormat],
-  templateUrl: './hero-stats-overview.component.html',
-  styleUrl: './hero-stats-overview.component.scss',
+  templateUrl: './hero-stats.component.html',
+  styleUrl: './hero-stats.component.scss',
 })
-export class HeroStatsOverviewComponent {
+export class HeroStatsComponent {
   @Input({ required: true }) hero!: Hero;
 
   constructor(private gameStateService: GameStateService) {}

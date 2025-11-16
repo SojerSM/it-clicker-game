@@ -1,14 +1,14 @@
-.hero-stats-overview {
+.hero-stats {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 
-  .hero-stats-overview__list {
+  .hero-stats__list {
     display: flex;
     flex-direction: column;
     padding: 0 1rem;
 
-    .hero-stats-overview__list-item {
+    .hero-stats__list-item {
       display: flex;
       justify-content: space-between;
       width: 100%;
