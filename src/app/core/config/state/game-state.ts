@@ -6,8 +6,9 @@ import { GameState } from './game-state.model';
 
 export const INITIAL_GAME_STATE: GameState = {
   impact: {
-    mpi: 1,
-    pps: 0,
+    organicMpi: 1,
+    totalMpi: 1,
+    totalPps: 0,
   },
   effects: {
     active: [],
@@ -26,6 +27,7 @@ export const INITIAL_GAME_STATE: GameState = {
         expToLevelUp: 100,
         baseRequiredExp: 100,
         stressFactor: 0.5,
+        purchasedAttributes: [],
       },
     ],
   },

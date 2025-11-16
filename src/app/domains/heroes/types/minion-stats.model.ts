@@ -1,3 +1,4 @@
 export interface MinionStats {
-  pps: number;
+  organicPps: number;
+  totalPps: number;
 }

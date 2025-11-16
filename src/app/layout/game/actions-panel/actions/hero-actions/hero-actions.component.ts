@@ -1,6 +1,5 @@
 import { Component, signal } from '@angular/core';
 import { HeroEquipmentComponent } from '../../../../../domains/heroes/components/hero-equipment/hero-equipment.component';
-import { HeroUpgradesComponent } from '../../../../../domains/heroes/components/hero-upgrades/hero-upgrades.component';
 import { Tab } from '../../../../../shared/types/tab';
 import { CommonModule } from '@angular/common';
 import { GameStateService } from '../../../../../core/services/game-state.service';
@@ -9,7 +8,7 @@ import { HeroStatsOverviewComponent } from '../../../../../domains/heroes/compon
 import { HireService } from '../../../../../domains/recruitment/services/hire.service';
 import { HeroCardRegularComponent } from '../../../../../domains/heroes/components/hero-cards/card-regular/hero-card-regular.component';
 import { HeroCardSimplifiedComponent } from '../../../../../domains/heroes/components/hero-cards/card-simplified/hero-card-simplified.component';
-
+import { AttributesGridComponent } from '../../../../../domains/upgrades/attributes/components/attributes-grid/attributes-grid.component';
 @Component({
   selector: 'app-hero-actions',
   imports: [HeroCardRegularComponent, CommonModule, HeroCardSimplifiedComponent],
@@ -21,7 +20,7 @@ export class HeroActionsComponent {
     { id: 1, title: 'Overview', component: HeroStatsOverviewComponent },
     { id: 2, title: 'Equipment', component: HeroEquipmentComponent },
     { id: 3, title: 'Stats', component: HeroStatsOverviewComponent },
-    { id: 4, title: 'Upgrades', component: HeroUpgradesComponent },
+    { id: 4, title: 'Attributes', component: AttributesGridComponent },
   ];
   activeTab = signal<Tab>(this.tabs[0]);
   selectedHeroId = signal(0);

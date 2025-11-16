@@ -4,8 +4,9 @@ import { Project } from '../../domains/progress/projects/types/project.model';
 import { Ticket } from '../../domains/progress/tickets/types/ticket.model';
 
 export interface ImpactState {
-  mpi: number;
-  pps: number;
+  organicMpi: number;
+  totalMpi: number;
+  totalPps: number;
 }
 
 export interface EffectState {

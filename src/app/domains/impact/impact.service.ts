@@ -1,16 +1,34 @@
-import { Injectable } from '@angular/core';
-import { TicketService } from '../progress/tickets/services/ticket.service';
+import { effect, Injectable } from '@angular/core';
 import { GameStateService } from '../../core/services/game-state.service';
-import { GameLoopService } from '../../core/services/game-loop.service';
+import { TicketService } from '../progress/tickets/services/ticket.service';
+import { HeroType } from '../heroes/types/enums/hero-type.enum';
 
 @Injectable({ providedIn: 'root' })
 export class ImpactService {
   constructor(private ticketService: TicketService, private gameStateService: GameStateService) {}
 
   applyPpsDamage(): void {
-    const totalPps = this.gameStateService.impactState().pps;
-    const firstTicket = this.gameStateService.ticketState().active[0];
+    const totalPps = this.gameStateService.impactState().totalPps;
+    const tickets = this.gameStateService.ticketState().active;
 
-    this.ticketService.applyProgress(totalPps, firstTicket.id);
+    if (tickets.length > 0) {
+      this.ticketService.applyProgress(totalPps, tickets[0].id);
+    }
+  }
+
+  recalculateTotalPps(): void {
+    const heroes = this.gameStateService.heroState().owned;
+
+    this.gameStateService.updateImpact((state) => {
+      let totalPps: number = 0;
+
+      heroes.forEach((hero) => {
+        if (hero.type === HeroType.MINION) {
+          totalPps += hero.totalPps;
+        }
+      });
+
+      state.totalPps = totalPps;
+    });
   }
 }

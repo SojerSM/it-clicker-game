@@ -1,0 +1,126 @@
+import { HeroRole } from '../../../heroes/types/enums/hero-role.enum';
+import { AttributeTarget } from '../types/enums/attribute-target.enum';
+import { AttributeType } from '../types/enums/attribute-type.enum';
+import { HeroAttribute } from '../types/hero-attribute';
+
+export const DEV_ATTRIBUTES: HeroAttribute[] = [
+  {
+    id: 'dev_attr_1',
+    heroRole: HeroRole.PROGRAMMER,
+    type: AttributeType.MULTIPLY,
+    target: AttributeTarget.PPS,
+    title: '"How to center a div" crash course',
+    description:
+      '“1/10, instructor barely spoke English. It must be something about his name Rajeesh, but I am not sure. ~/ some frustrated user',
+    value: 2,
+    imgBadge: '',
+    price: 100,
+  },
+  {
+    id: 'dev_attr_2',
+    heroRole: HeroRole.PROGRAMMER,
+    type: AttributeType.MULTIPLY,
+    target: AttributeTarget.PPS,
+    title: 'Git for Absolute Beginners',
+    description:
+      'The mysterious art of committing, pushing, and accidentally merging conflicts in less than 10 minutes.',
+    value: 2,
+    imgBadge: '',
+    price: 500,
+  },
+  {
+    id: 'dev_attr_3',
+    heroRole: HeroRole.PROGRAMMER,
+    type: AttributeType.MULTIPLY,
+    target: AttributeTarget.PPS,
+    title: 'Stack Overflow Survival Guide',
+    description:
+      'Master the ancient skill of copy-pasting code snippets while praying they actually work.',
+    value: 1.5,
+    imgBadge: '',
+    price: 2000,
+  },
+  {
+    id: 'dev_attr_4',
+    heroRole: HeroRole.PROGRAMMER,
+    type: AttributeType.MULTIPLY,
+    target: AttributeTarget.PPS,
+    title: 'Debugging 101: Console.log Everything',
+    description:
+      'Nothing beats dumping your life into the console to find out why nothing really works.',
+    value: 2,
+    imgBadge: '',
+    price: 5000,
+  },
+  {
+    id: 'dev_attr_5',
+    heroRole: HeroRole.PROGRAMMER,
+    type: AttributeType.MULTIPLY,
+    target: AttributeTarget.PPS,
+    title: 'Enterprise Agile Transformation Masterclass',
+    description:
+      'A certified workshop teaching how to say “we are agile now” while still holding 3-hour status meetings.',
+    value: 2,
+    imgBadge: '',
+    price: 10000,
+  },
+  {
+    id: 'dev_attr_6',
+    heroRole: HeroRole.PROGRAMMER,
+    type: AttributeType.MULTIPLY,
+    target: AttributeTarget.PPS,
+    title: 'Full-Stack Synergy Alignment Summit',
+    description: 'A corporate conference where buzzwords evolve faster than JavaScript frameworks.',
+    value: 1.5,
+    imgBadge: '',
+    price: 20000,
+  },
+  {
+    id: 'dev_attr_7',
+    heroRole: HeroRole.PROGRAMMER,
+    type: AttributeType.MULTIPLY,
+    target: AttributeTarget.PPS,
+    title: 'Advanced JIRA Navigation Training',
+    description:
+      'Deep-dive training into the ancient maze known as JIRA. Includes a bonus module: “Why is this ticket still in Review?”.',
+    value: 2,
+    imgBadge: '',
+    price: 50000,
+  },
+  {
+    id: 'dev_attr_8',
+    heroRole: HeroRole.PROGRAMMER,
+    type: AttributeType.MULTIPLY,
+    target: AttributeTarget.PPS,
+    title: 'Corporate Communication Excellence Panel',
+    description:
+      'A panel teaching the sacred art of saying “per my last email” without sounding passive-aggressive. (You will fail.)',
+    value: 1.5,
+    imgBadge: '',
+    price: 100000,
+  },
+  {
+    id: 'dev_attr_9',
+    heroRole: HeroRole.PROGRAMMER,
+    type: AttributeType.MULTIPLY,
+    target: AttributeTarget.PPS,
+    title: 'International Stacktrace Appreciation Forum',
+    description:
+      'A prestigious symposium where developers gather to stare at stacktraces and pretend they understand them.',
+    value: 2,
+    imgBadge: '',
+    price: 200000,
+  },
+  {
+    id: 'dev_attr_10',
+    heroRole: HeroRole.PROGRAMMER,
+    type: AttributeType.MULTIPLY,
+    target: AttributeTarget.PPS,
+    title: 'Certified Zoom Fatigue Expert Program',
+    description:
+      'A highly respected certification earned by surviving 8 hours of back-to-back Zoom calls with your camera on.',
+    value: 1.5,
+    imgBadge: '',
+    price: 200000,
+  },
+];

@@ -43,7 +43,7 @@ export class TicketComponent {
   }
 
   onClick(): void {
-    this.ticketService.applyProgress(this.gameStateService.impactState().mpi, this.ticket.id);
+    this.ticketService.applyProgress(this.gameStateService.impactState().totalMpi, this.ticket.id);
     this.heroService.increaseExp(this.gameStateService.heroState().owned[0].id);
   }
 }

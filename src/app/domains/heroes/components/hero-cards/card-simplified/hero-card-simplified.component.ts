@@ -3,6 +3,7 @@ import { Hero } from '../../../types/hero.model';
 import { HeroRoleBadgeComponent } from '../../hero-role-badge/hero-role-badge.component';
 import { HeroType } from '../../../types/enums/hero-type.enum';
 import { GameStateService } from '../../../../../core/services/game-state.service';
+import { NumberFormat } from '../../../../../core/pipes/number-format.pipe';
 
 interface HeroCardImpactData {
   label: string;
@@ -11,7 +12,7 @@ interface HeroCardImpactData {
 
 @Component({
   selector: 'app-hero-card-simplified',
-  imports: [HeroRoleBadgeComponent],
+  imports: [HeroRoleBadgeComponent, NumberFormat],
   templateUrl: './hero-card-simplified.component.html',
   styleUrl: './hero-card-simplified.component.scss',
 })
@@ -22,7 +23,7 @@ export class HeroCardSimplifiedComponent {
 
   get impact(): HeroCardImpactData {
     return this.hero.type === HeroType.MINION
-      ? { label: 'PPS:', value: this.hero.pps }
-      : { label: 'MPI:', value: this.gameStateService.impactState().mpi };
+      ? { label: 'PPS:', value: this.hero.totalPps }
+      : { label: 'MPI:', value: this.gameStateService.impactState().totalMpi };
   }
 }

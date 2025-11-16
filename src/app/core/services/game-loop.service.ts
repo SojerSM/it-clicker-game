@@ -20,6 +20,9 @@ export class GameLoopService {
     }, this.interval);
   }
 
+  /**
+   * Passive mechanics that has to be invoked each tick
+   */
   private handlePassiveMechanics(): void {
     this.impactService.applyPpsDamage();
     this.heroService.increaseExp();

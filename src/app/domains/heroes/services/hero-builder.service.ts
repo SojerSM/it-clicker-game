@@ -9,7 +9,7 @@ export class HeroBuilderService {
     return {
       id: 'mocked-hero-01',
       type: HeroType.MINION,
-      role: HeroRole.INTERN,
+      role: HeroRole.PROGRAMMER,
       name: 'Peter Lookatyou',
       avatar: 'assets/heroes/hero_male_avatar_02.png',
       lvl: 1,
@@ -18,7 +18,9 @@ export class HeroBuilderService {
       expToLevelUp: 50,
       baseRequiredExp: 50,
       stressFactor: 0.5,
-      pps: 0.2,
+      purchasedAttributes: [],
+      organicPps: 0.2,
+      totalPps: 0.2,
     };
   }
 }

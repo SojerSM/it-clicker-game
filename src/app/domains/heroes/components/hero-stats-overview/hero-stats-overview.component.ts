@@ -18,7 +18,7 @@ export class HeroStatsOverviewComponent {
   get impact(): number {
     const impact = this.gameStateService.impactState();
 
-    return this.hero.type === HeroType.PLAYER ? impact.mpi : this.hero.pps;
+    return this.hero.type === HeroType.PLAYER ? impact.totalMpi : this.hero.totalPps;
   }
 
   get impactLabel(): string {
