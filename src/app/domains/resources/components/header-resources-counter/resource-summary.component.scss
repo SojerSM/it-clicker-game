@@ -1,8 +1,5 @@
 .resource-summary {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  font-size: 1.25rem;
-  padding: 1rem;
+  width: 100%;
+  border: 2px solid gray;
+  padding: 0.25rem 0.5rem;
 }

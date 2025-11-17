@@ -12,7 +12,6 @@ import { Hero } from '../../../../heroes/types/hero.model';
 })
 export class AttributeComponent {
   @Input({ required: true }) attribute!: HeroAttribute;
-  @Input({ required: true }) hero!: Hero;
 
   constructor(
     private gameStateService: GameStateService,
@@ -27,7 +26,7 @@ export class AttributeComponent {
 
   onPurchase(): void {
     if (this.isAffordable) {
-      this.attributeService.purchase(this.attribute, this.hero);
+      this.attributeService.purchase(this.attribute);
     }
   }
 }

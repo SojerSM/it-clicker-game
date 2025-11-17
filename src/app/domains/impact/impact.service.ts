@@ -16,7 +16,7 @@ export class ImpactService {
     }
   }
 
-  recalculateTotalPps(): void {
+  recalculate(): void {
     const heroes = this.gameStateService.heroState().owned;
 
     this.gameStateService.updateImpact((state) => {
@@ -29,6 +29,7 @@ export class ImpactService {
       });
 
       state.totalPps = totalPps;
+      state.totalMpi = state.organicMpi;
     });
   }
 }

@@ -1,3 +1,4 @@
+import { HeroAttribute } from '../../upgrades/attributes/types/hero-attribute';
 import { HeroRole } from './enums/hero-role.enum';
 import { HeroType } from './enums/hero-type.enum';
 import { MinionStats } from './minion-stats.model';
@@ -14,7 +15,7 @@ export interface PlayerHero {
   expToLevelUp: number;
   baseRequiredExp: number;
   stressFactor: number;
-  purchasedAttributes: string[];
+  attributes: HeroAttribute[];
 }
 
 export interface MinionHero extends MinionStats {
@@ -29,7 +30,7 @@ export interface MinionHero extends MinionStats {
   expToLevelUp: number;
   baseRequiredExp: number;
   stressFactor: number;
-  purchasedAttributes: string[];
+  attributes: HeroAttribute[];
 }
 
 export type Hero = PlayerHero | MinionHero;

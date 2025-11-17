@@ -1,7 +1,9 @@
+:host {
+  flex: 1;
+}
+
 .left-side-panel {
   height: 100%;
-  width: 20rem;
-
   display: flex;
   flex-direction: column;
 }

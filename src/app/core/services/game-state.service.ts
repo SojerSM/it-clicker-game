@@ -1,14 +1,14 @@
 import { Injectable, signal, WritableSignal } from '@angular/core';
 import { INITIAL_GAME_STATE } from '../config/state/game-state';
+import { GameState } from '../config/state/game-state.model';
 import {
   EffectState,
-  ImpactState,
   HeroState,
+  ImpactState,
   ProjectState,
   ResourceState,
   TicketState,
 } from '../types/state.model';
-import { GameState } from '../config/state/game-state.model';
 
 @Injectable({ providedIn: 'root' })
 export class GameStateService {

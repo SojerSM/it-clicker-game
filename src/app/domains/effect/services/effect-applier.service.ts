@@ -22,7 +22,7 @@ export class EffectApplierService {
         break;
       case EffectTarget.IMPACT_MPI:
         this.gameStateService.updateImpact((impact) => {
-          const base = INITIAL_GAME_STATE.impact.totalMpi;
+          const base = impact.organicMpi;
           impact.totalMpi = this.clamp(base * (1 + modifier), 0, Infinity);
         });
         break;
@@ -45,7 +45,7 @@ export class EffectApplierService {
         break;
       case EffectTarget.IMPACT_MPI:
         this.gameStateService.updateImpact((impact) => {
-          impact.totalMpi = INITIAL_GAME_STATE.impact.organicMpi;
+          impact.totalMpi = impact.organicMpi;
         });
         break;
       default:

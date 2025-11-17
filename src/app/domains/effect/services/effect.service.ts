@@ -1,10 +1,10 @@
-import { effect, Injectable, untracked } from '@angular/core';
+import { effect, Injectable } from '@angular/core';
+import { BALANCE } from '../../../core/config/state/balance';
+import { GameLoopService } from '../../../core/services/game-loop.service';
 import { GameStateService } from '../../../core/services/game-state.service';
 import { Effect } from '../types/effect.model';
 import { EffectTarget } from '../types/enum/effect-target.enum';
 import { EffectType } from '../types/enum/effect-type.enum';
-import { GameLoopService } from '../../../core/services/game-loop.service';
-import { BALANCE } from '../../../core/config/state/balance';
 import { EffectApplierService } from './effect-applier.service';
 
 @Injectable({ providedIn: 'root' })

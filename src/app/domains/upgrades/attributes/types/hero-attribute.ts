@@ -4,6 +4,7 @@ import { HeroRole } from '../../../heroes/types/enums/hero-role.enum';
 
 export interface HeroAttribute {
   id: string;
+  heroId?: string;
   heroRole: HeroRole;
   type: AttributeType;
   target: AttributeTarget;
@@ -12,4 +13,5 @@ export interface HeroAttribute {
   value: number;
   imgBadge: string;
   price: number;
+  isPurchased: boolean;
 }

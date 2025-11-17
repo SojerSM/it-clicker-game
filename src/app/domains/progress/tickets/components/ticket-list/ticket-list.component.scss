@@ -7,8 +7,9 @@
   align-items: center;
   overflow: hidden;
 
-  .ticket-list__queue-counter {
-    align-self: flex-end;
+  .ticket-list__header-counter {
+    display: flex;
+    justify-content: space-between;
   }
 
   ul {
@@ -20,7 +21,7 @@
     flex-direction: column;
     gap: 1rem;
 
-    .ticket-list__hidden-counter {
+    .ticket-list__hidden-tickets-counter {
       background-color: rgb(202, 202, 202);
       border-radius: 0.25rem;
       padding: 0.25rem 0.5rem;
