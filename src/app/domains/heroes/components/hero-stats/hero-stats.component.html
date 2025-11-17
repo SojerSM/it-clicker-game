@@ -3,7 +3,7 @@
   <ul class="hero-stats__list">
     <li class="hero-stats__list-item">
       <span>{{ impactLabel }}</span>
-      <span> {{ impact }}</span>
+      <span> {{ impact | numberFormat : 2 }}</span>
     </li>
     <li class="hero-stats__list-item">
       <span>Stress factor</span>

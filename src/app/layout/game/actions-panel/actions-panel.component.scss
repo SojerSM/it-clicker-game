@@ -5,4 +5,12 @@
 
   height: 100%;
   width: 65rem;
+
+  .actions-panel__content {
+    display: flex;
+    flex-direction: column;
+
+    width: inherit;
+    height: inherit;
+  }
 }

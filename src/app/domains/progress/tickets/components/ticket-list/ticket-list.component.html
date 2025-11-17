@@ -1,6 +1,7 @@
 <section class="ticket-list">
   <ul>
-    <div class="ticket-list__queue-counter">
+    <div class="ticket-list__header-counter">
+      <span>PPS: {{ pps | numberFormat : 2 }}</span>
       <span>In queue: {{ tickets.length }}</span>
     </div>
     @for (ticket of tickets; track ticket.id; let i = $index) { @if (i <= VISIBLE_TICKETS_AMOUNT -
@@ -9,7 +10,7 @@
       <app-ticket [ticket]="ticket" [queueId]="i" />
     </li>
     } } @if (tickets.length > VISIBLE_TICKETS_AMOUNT) {
-    <li class="ticket-list__hidden-counter">+ {{ hiddenTickets }}</li>
+    <li class="ticket-list__hidden-tickets-counter">+ {{ hiddenTickets }}</li>
     }
   </ul>
 </section>

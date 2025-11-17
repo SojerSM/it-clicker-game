@@ -3,10 +3,11 @@ import { VerticalNavbarComponent } from './vertical-navbar/vertical-navbar.compo
 import { Tab } from '../../../shared/types/tab';
 import { CommonModule } from '@angular/common';
 import { HeroActionsComponent } from './actions/hero-actions/hero-actions.component';
+import { ProjectProgressComponent } from '../../../domains/progress/projects/components/progress-header/project-progress.component';
 
 @Component({
   selector: 'app-actions-panel',
-  imports: [VerticalNavbarComponent, CommonModule],
+  imports: [VerticalNavbarComponent, CommonModule, ProjectProgressComponent],
   templateUrl: './actions-panel.component.html',
   styleUrl: './actions-panel.component.scss',
 })
