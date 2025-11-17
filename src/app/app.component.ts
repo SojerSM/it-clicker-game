@@ -1,4 +1,4 @@
-import { Component, NgZone, OnInit } from '@angular/core';
+import { Component, computed, NgZone, OnInit, signal, WritableSignal } from '@angular/core';
 import { GameComponent } from './layout/game/game.component';
 import { ProjectService } from './domains/progress/projects/services/project.service';
 import { GameSaveService } from './core/services/game-save.service';

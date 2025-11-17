@@ -27,7 +27,7 @@ export class AttributeComponent {
 
   onPurchase(): void {
     if (this.isAffordable) {
-      this.attributeService.purchase(this.attribute, this.hero);
+      this.attributeService.purchase(this.attribute.id, this.hero);
     }
   }
 }

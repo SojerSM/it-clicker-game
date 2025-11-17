@@ -15,6 +15,7 @@ export const CEO_ATTRIBUTES: HeroAttribute[] = [
     value: 2,
     imgBadge: '',
     price: 250,
+    isPurchased: false,
   },
   {
     id: 'ceo_attr_2',
@@ -27,6 +28,7 @@ export const CEO_ATTRIBUTES: HeroAttribute[] = [
     value: 1.5,
     imgBadge: '',
     price: 1000,
+    isPurchased: false,
   },
   {
     id: 'ceo_attr_3',
@@ -39,6 +41,7 @@ export const CEO_ATTRIBUTES: HeroAttribute[] = [
     value: 1.5,
     imgBadge: '',
     price: 2000,
+    isPurchased: false,
   },
   {
     id: 'ceo_attr_4',
@@ -51,6 +54,7 @@ export const CEO_ATTRIBUTES: HeroAttribute[] = [
     value: 2,
     imgBadge: '',
     price: 5000,
+    isPurchased: false,
   },
   {
     id: 'ceo_attr_5',
@@ -63,5 +67,6 @@ export const CEO_ATTRIBUTES: HeroAttribute[] = [
     value: 2,
     imgBadge: '',
     price: 10000,
+    isPurchased: false,
   },
 ];

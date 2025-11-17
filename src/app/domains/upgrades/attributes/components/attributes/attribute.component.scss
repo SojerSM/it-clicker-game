@@ -9,8 +9,13 @@
 
   cursor: pointer;
 
-  .hero-attribute__price {
+  .hero-attribute__price,
+  .hero-attribute__hero-name {
     font-size: 0.5rem;
+  }
+
+  .hero-attribute__hero-id {
+    font-size: 0.4rem;
   }
 }
 

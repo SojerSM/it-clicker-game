@@ -15,6 +15,7 @@ export const DEV_ATTRIBUTES: HeroAttribute[] = [
     value: 2,
     imgBadge: '',
     price: 100,
+    isPurchased: false,
   },
   {
     id: 'dev_attr_2',
@@ -27,6 +28,7 @@ export const DEV_ATTRIBUTES: HeroAttribute[] = [
     value: 2,
     imgBadge: '',
     price: 500,
+    isPurchased: false,
   },
   {
     id: 'dev_attr_3',
@@ -39,6 +41,7 @@ export const DEV_ATTRIBUTES: HeroAttribute[] = [
     value: 1.5,
     imgBadge: '',
     price: 2000,
+    isPurchased: false,
   },
   {
     id: 'dev_attr_4',
@@ -51,6 +54,7 @@ export const DEV_ATTRIBUTES: HeroAttribute[] = [
     value: 2,
     imgBadge: '',
     price: 5000,
+    isPurchased: false,
   },
   {
     id: 'dev_attr_5',
@@ -63,6 +67,7 @@ export const DEV_ATTRIBUTES: HeroAttribute[] = [
     value: 2,
     imgBadge: '',
     price: 10000,
+    isPurchased: false,
   },
   {
     id: 'dev_attr_6',
@@ -74,6 +79,7 @@ export const DEV_ATTRIBUTES: HeroAttribute[] = [
     value: 1.5,
     imgBadge: '',
     price: 20000,
+    isPurchased: false,
   },
   {
     id: 'dev_attr_7',
@@ -86,6 +92,7 @@ export const DEV_ATTRIBUTES: HeroAttribute[] = [
     value: 2,
     imgBadge: '',
     price: 50000,
+    isPurchased: false,
   },
   {
     id: 'dev_attr_8',
@@ -98,6 +105,7 @@ export const DEV_ATTRIBUTES: HeroAttribute[] = [
     value: 1.5,
     imgBadge: '',
     price: 100000,
+    isPurchased: false,
   },
   {
     id: 'dev_attr_9',
@@ -110,6 +118,7 @@ export const DEV_ATTRIBUTES: HeroAttribute[] = [
     value: 2,
     imgBadge: '',
     price: 200000,
+    isPurchased: false,
   },
   {
     id: 'dev_attr_10',
@@ -122,5 +131,6 @@ export const DEV_ATTRIBUTES: HeroAttribute[] = [
     value: 1.5,
     imgBadge: '',
     price: 200000,
+    isPurchased: false,
   },
 ];
