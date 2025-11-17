@@ -10,15 +10,23 @@ import { ImpactService } from '../../../impact/impact.service';
 export class AttributeService {
   constructor(private gameStateService: GameStateService, private impactService: ImpactService) {}
 
-  purchase(attributeId: string, hero: Hero): void {
-    const attribute = hero.attributes.find((a) => a.id === attributeId);
+  purchase(attributeArg: HeroAttribute): void {
+    const hero = this.gameStateService
+      .heroState()
+      .owned.find((hero) => hero.id === attributeArg.heroId);
+
+    if (!hero) {
+      throw new Error('Hero not found based on provided ' + attributeArg);
+    }
+
+    const attribute = hero.attributes.find((a) => a.id === attributeArg.id);
 
     if (attribute && !attribute.isPurchased) {
       this.gameStateService.updateHeroes((state) => {
         const targetHero = state.owned.find((h) => h.id === hero.id);
 
         if (targetHero) {
-          const targetAttribute = targetHero.attributes.find((a) => a.id === attributeId);
+          const targetAttribute = targetHero.attributes.find((a) => a.id === attributeArg.id);
 
           if (targetAttribute) {
             targetAttribute.isPurchased = true;

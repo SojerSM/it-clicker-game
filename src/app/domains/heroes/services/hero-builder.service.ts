@@ -5,6 +5,7 @@ import { Hero } from '../types/hero.model';
 import { DEV_ATTRIBUTES } from '../../upgrades/attributes/presets/dev-attributes';
 import { GameStateService } from '../../../core/services/game-state.service';
 import { CEO_ATTRIBUTES } from '../../upgrades/attributes/presets/ceo-attributes';
+import { AttributeMapperService } from '../../upgrades/attributes/services/attribute-mapper.service';
 
 @Injectable({ providedIn: 'root' })
 export class HeroBuilderService {
@@ -13,7 +14,10 @@ export class HeroBuilderService {
     [HeroRole.PROGRAMMER]: () => this.buildProgrammer(),
   };
 
-  constructor(private gameStateService: GameStateService) {}
+  constructor(
+    private gameStateService: GameStateService,
+    private attributeMapper: AttributeMapperService
+  ) {}
 
   build(role: HeroRole): Hero {
     console.log(role);
@@ -27,8 +31,10 @@ export class HeroBuilderService {
   }
 
   private buildCEO(): Hero {
+    const id = 'hero-ceo';
+
     return {
-      id: 'hero-ceo',
+      id: id,
       type: HeroType.PLAYER,
       role: HeroRole.CEO,
       name: 'John Doe',
@@ -39,13 +45,14 @@ export class HeroBuilderService {
       expToLevelUp: 100,
       baseRequiredExp: 100,
       stressFactor: 0.5,
-      attributes: structuredClone(CEO_ATTRIBUTES),
+      attributes: this.attributeMapper.getMappedClone(id, CEO_ATTRIBUTES),
     };
   }
 
   private buildProgrammer(): Hero {
+    const id = 'mocked-hero-'.concat(this.getNextHeroIdStringified());
     return {
-      id: 'mocked-hero-'.concat(this.getNextHeroIdStringified()),
+      id: id,
       type: HeroType.MINION,
       role: HeroRole.PROGRAMMER,
       name: 'Peter Lookatyou',
@@ -56,7 +63,7 @@ export class HeroBuilderService {
       expToLevelUp: 50,
       baseRequiredExp: 50,
       stressFactor: 0.5,
-      attributes: structuredClone(DEV_ATTRIBUTES),
+      attributes: this.attributeMapper.getMappedClone(id, DEV_ATTRIBUTES),
       organicPps: 0.2,
       totalPps: 0.2,
     };

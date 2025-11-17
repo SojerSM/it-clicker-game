@@ -1,14 +1,14 @@
-import { Component, signal } from '@angular/core';
-import { HeroEquipmentComponent } from '../../../../../domains/heroes/components/hero-equipment/hero-equipment.component';
-import { Tab } from '../../../../../shared/types/tab';
 import { CommonModule } from '@angular/common';
+import { Component, signal } from '@angular/core';
 import { GameStateService } from '../../../../../core/services/game-state.service';
-import { Hero } from '../../../../../domains/heroes/types/hero.model';
-import { HeroStatsComponent } from '../../../../../domains/heroes/components/hero-stats/hero-stats.component';
-import { HireService } from '../../../../../domains/recruitment/services/hire.service';
 import { HeroCardRegularComponent } from '../../../../../domains/heroes/components/hero-cards/card-regular/hero-card-regular.component';
 import { HeroCardSimplifiedComponent } from '../../../../../domains/heroes/components/hero-cards/card-simplified/hero-card-simplified.component';
-import { AttributesGridComponent } from '../../../../../domains/upgrades/attributes/components/attributes-grid/attributes-grid.component';
+import { HeroEquipmentComponent } from '../../../../../domains/heroes/components/hero-equipment/hero-equipment.component';
+import { HeroStatsComponent } from '../../../../../domains/heroes/components/hero-stats/hero-stats.component';
+import { Hero } from '../../../../../domains/heroes/types/hero.model';
+import { HireService } from '../../../../../domains/recruitment/services/hire.service';
+import { HeroAttributesComponent } from '../../../../../domains/heroes/components/hero-attributes/hero-attributes.component';
+import { Tab } from '../../../../../shared/types/tab';
 
 @Component({
   selector: 'app-hero-actions',
@@ -21,7 +21,7 @@ export class HeroActionsComponent {
     { id: 1, title: 'Overview', component: HeroStatsComponent },
     { id: 2, title: 'Equipment', component: HeroEquipmentComponent },
     { id: 3, title: 'Stats', component: HeroStatsComponent },
-    { id: 4, title: 'Attributes', component: AttributesGridComponent },
+    { id: 4, title: 'Attributes', component: HeroAttributesComponent },
   ];
   activeTab = signal<Tab>(this.tabs[0]);
   selectedHeroId = signal(0);

@@ -1,5 +1,5 @@
 <div class="hero-attribute" [class.hero-attribute__disabled]="!isAffordable" (click)="onPurchase()">
   <span>x{{ attribute.value }}</span>
-  <span class="hero-attribute__hero-id">{{ hero.id }}</span>
+  <span class="hero-attribute__hero-id">{{ attribute.id }}</span>
   <span class="hero-attribute__price">{{ attribute.price }} $</span>
 </div>
