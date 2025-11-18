@@ -12,10 +12,7 @@ export class EffectApplierService {
       case EffectTarget.HEROES:
         this.gameStateService.updateHeroes((state) => {
           state.owned.forEach((hero) => {
-            const baseHero = INITIAL_GAME_STATE.heroes.owned.find((h) => h.id === hero.id);
-            if (!baseHero) return;
-
-            const base = baseHero.stressFactor;
+            const base = hero.stressFactor;
             hero.stressFactor = this.clamp(base * (1 + modifier), 0.5, 1);
           });
         });

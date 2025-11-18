@@ -1,3 +1,7 @@
+h4 {
+  margin-bottom: 0.5rem;
+}
+
 .hero-attributes-grid {
   display: flex;
   flex-wrap: wrap;
@@ -5,4 +9,31 @@
   justify-content: flex-start;
 
   list-style: none;
+}
+
+.hero-attributes-grid__defined {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  list-style: none;
+
+  .hero-attributes-grid__defined-row {
+    list-style: none;
+  }
+
+  .hero-attributes-grid__defined-row-inner {
+    display: flex;
+    flex-direction: row;
+    gap: 0.25rem;
+    list-style: none;
+  }
+
+  .hero-attributes-grid__defined-item {
+    list-style: none;
+  }
+}
+
+.border {
+  border: 2px solid lightgray;
+  padding: 0.25rem;
 }

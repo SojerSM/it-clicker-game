@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { HeroAttribute } from '../../types/hero-attribute';
 import { AttributeComponent } from '../attributes/attribute.component';
+import { Dimensions } from '../../../../../core/types/dimensions.model';
+import { AttributeGridBuilderService } from '../../services/attribute-grid-builder.service';
 
 @Component({
   selector: 'app-attributes-grid',
@@ -10,8 +12,23 @@ import { AttributeComponent } from '../attributes/attribute.component';
 })
 export class AttributesGridComponent {
   @Input({ required: true }) attributes!: HeroAttribute[];
+  @Input({ required: false }) gridSize?: Dimensions;
+  @Input({ required: false }) hasTitle?: boolean;
+  @Input({ required: false }) hasBorder?: boolean;
 
-  get availableAttributes(): HeroAttribute[] {
-    return this.attributes.filter((attribute) => !attribute.isPurchased);
+  constructor(private attributeGridBuilder: AttributeGridBuilderService) {}
+
+  get availableAttributes(): HeroAttribute[][] {
+    const filtered = Array.of(this.attributes.filter((a) => !a.isPurchased));
+
+    if (!this.gridSize) {
+      return filtered;
+    }
+
+    return this.attributeGridBuilder.buildGridWithDimensions(
+      this.attributes,
+      this.gridSize.x,
+      this.gridSize.y
+    );
   }
 }

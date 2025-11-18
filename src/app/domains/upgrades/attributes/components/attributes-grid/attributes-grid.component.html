@@ -1,7 +1,23 @@
-<ul class="hero-attributes-grid">
-  @for (attribute of availableAttributes; track attribute.id) {
-  <li class="hero-attributes-grid__item">
-    <app-attribute [attribute]="attribute" />
+@if (hasTitle) {
+<h4>ATTRIBUTES</h4>
+} @if (gridSize) {
+<ul class="hero-attributes-grid__defined" [class.border]="hasBorder">
+  @for (row of availableAttributes; track $index) {
+  <li class="hero-attributes-grid__defined-row">
+    <ul class="hero-attributes-grid__defined-row-inner">
+      @for (attribute of row; track attribute.id) {
+      <li class="hero-attributes-grid__defined-item">
+        <app-attribute [attribute]="attribute" />
+      </li>
+      }
+    </ul>
   </li>
   }
 </ul>
+} @else {
+<ul class="hero-attributes-grid" [class.border]="hasBorder">
+  @for (attribute of availableAttributes[0]; track attribute.id) {
+  <li class="hero-attributes-grid__item"><app-attribute [attribute]="attribute" /></li>
+  }
+</ul>
+}

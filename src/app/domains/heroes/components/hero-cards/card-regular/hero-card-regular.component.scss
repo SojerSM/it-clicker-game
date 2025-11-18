@@ -5,6 +5,7 @@
   border: 2px solid lightgray;
 
   .hero-card__avatar {
+    position: relative;
     min-width: 128px;
     min-height: 128px;
     border: 2px solid gray;
@@ -13,7 +14,22 @@
     img {
       width: 100%;
       height: 100%;
+      position: relative;
       image-rendering: pixelated;
+      z-index: 2;
+    }
+
+    &-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('/assets/effects/stress-status_high.png');
+      background-size: cover;
+      background-position: center;
+      z-index: 1;
+      transition: opacity 1s;
     }
   }
 

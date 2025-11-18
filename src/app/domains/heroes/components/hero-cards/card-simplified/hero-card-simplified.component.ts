@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Hero } from '../../../types/hero.model';
-import { HeroRoleBadgeComponent } from '../../hero-role-badge/hero-role-badge.component';
+import { TagComponent } from '../../../../../shared/components/tag/tag.component';
 import { HeroType } from '../../../types/enums/hero-type.enum';
 import { GameStateService } from '../../../../../core/services/game-state.service';
 import { NumberFormat } from '../../../../../core/pipes/number-format.pipe';
@@ -12,7 +12,7 @@ interface HeroCardImpactData {
 
 @Component({
   selector: 'app-hero-card-simplified',
-  imports: [HeroRoleBadgeComponent, NumberFormat],
+  imports: [TagComponent, NumberFormat],
   templateUrl: './hero-card-simplified.component.html',
   styleUrl: './hero-card-simplified.component.scss',
 })
