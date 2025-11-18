@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { NumberFormat } from '../../../../core/pipes/number-format.pipe';
-
+import { NumberFormat } from '../../../core/pipes/number-format.pipe';
 /**
  * Basic progress bar component
  *

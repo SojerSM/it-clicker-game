@@ -36,13 +36,8 @@ export class StressEffect extends ReactiveEffectSourceBase {
 
     this.gameStateService.updateHeroes((state) => {
       state.owned = state.owned.map((hero) => {
-        const baseHero = INITIAL_GAME_STATE.heroes.owned.find((h) => h.id === hero.id);
-        if (!baseHero) return hero;
-
-        const baseStress = baseHero.stressFactor;
-
+        const baseStress = hero.stressFactor;
         const newStress = this.calculateNewStress(stressors, baseStress, hero);
-
         const modifier = newStress / baseStress - 1;
 
         if (this.active) {

@@ -11,9 +11,7 @@
       </div>
     </div>
     <div class="hero-card-simplified__description-right">
-      <div class="hero-card-simplified__description-right__role-badge">
-        <app-hero-role-badge [role]="hero.role" />
-      </div>
+      <app-tag [label]="hero.role" />
       <div class="hero-card-simplified__description-right__impact">
         <span>{{ impact.label }}</span>
         <span>{{ impact.value | numberFormat : 2 }}</span>

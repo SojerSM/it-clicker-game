@@ -3,7 +3,7 @@ import { TicketService } from '../../services/ticket.service';
 import { NumberFormat } from '../../../../../core/pipes/number-format.pipe';
 import { Ticket } from '../../types/ticket.model';
 import { TicketType } from '../../types/ticket-type.enum';
-import { ProgressBarComponent } from '../../../../../shared/components/progress-bar/progress-bar/progress-bar.component';
+import { ProgressBarComponent } from '../../../../../shared/components/progress-bar/progress-bar.component';
 import { GameStateService } from '../../../../../core/services/game-state.service';
 import { HeroService } from '../../../../heroes/services/hero.service';
 

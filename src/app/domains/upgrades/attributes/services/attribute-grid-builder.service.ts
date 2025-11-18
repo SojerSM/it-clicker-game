@@ -29,8 +29,6 @@ export class AttributeGridBuilderService {
       rows.push(currentRow);
     }
 
-    console.log(rows);
-
     return rows;
   }
 }
