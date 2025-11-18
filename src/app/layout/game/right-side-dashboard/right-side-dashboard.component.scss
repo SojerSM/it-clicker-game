@@ -1,0 +1,13 @@
+:host {
+  flex: 1;
+}
+
+.right-side-dashboard {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .right-side-dashboard__attributes {
+    padding: 0.5rem;
+  }
+}
