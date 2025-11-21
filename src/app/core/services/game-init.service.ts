@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { firstValueFrom } from 'rxjs';
+import { StressEffectService } from '../../domains/effect/services/stress-effect.service';
 import { HeroBuilderService } from '../../domains/heroes/services/hero-builder.service';
 import { HeroRole } from '../../domains/heroes/types/enums/hero-role.enum';
-import { GameStateService } from './game-state.service';
-import { GameSaveService } from './game-save.service';
-import { TicketQueueService } from '../../domains/progress/tickets/services/ticket-queue.service';
 import { ProjectService } from '../../domains/progress/projects/services/project.service';
-import { TranslateService } from '@ngx-translate/core';
+import { TicketQueueService } from '../../domains/progress/tickets/services/ticket-queue.service';
 import { GameLoopService } from './game-loop.service';
-import { firstValueFrom } from 'rxjs';
+import { GameSaveService } from './game-save.service';
+import { GameStateService } from './game-state.service';
 
 @Injectable({ providedIn: 'root' })
 export class GameInitService {

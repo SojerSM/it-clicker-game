@@ -1,17 +1,16 @@
 import { Injectable } from '@angular/core';
-import { ReactiveEffectSourceBase } from './base/reactive-effect-source.base';
-import { EffectSource } from '../types/enum/effect-source.enum';
-import { INITIAL_GAME_STATE } from '../../../core/config/state/game-state';
 import { GameLoopService } from '../../../core/services/game-loop.service';
 import { GameStateService } from '../../../core/services/game-state.service';
-import { EffectService } from './effect.service';
-import { EffectTarget } from '../types/enum/effect-target.enum';
 import { Hero } from '../../heroes/types/hero.model';
+import { EffectSource } from '../types/enum/effect-source.enum';
+import { EffectTarget } from '../types/enum/effect-target.enum';
+import { ReactiveEffectSourceBase } from './base/reactive-effect-source.base';
+import { EffectService } from './effect.service';
 
 type Stressors = Record<string, { value: number; weight: number }>;
 
 @Injectable({ providedIn: 'root' })
-export class StressEffect extends ReactiveEffectSourceBase {
+export class StressEffectService extends ReactiveEffectSourceBase {
   private readonly EFFECT_ID = 'global_stress_effect';
   private readonly MAX_STRESS = 1;
   private readonly RELAX_RATE = 0.01;
