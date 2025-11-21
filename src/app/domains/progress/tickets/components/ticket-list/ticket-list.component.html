@@ -2,7 +2,7 @@
   <ul>
     <div class="ticket-list__header-counter">
       <span>PPS: {{ pps | numberFormat : 2 }}</span>
-      <span>In queue: {{ tickets.length }}</span>
+      <span>{{ 'progress.label.in_queue' | translate }}: {{ tickets.length }}</span>
     </div>
     @for (ticket of tickets; track ticket.id; let i = $index) { @if (i <= VISIBLE_TICKETS_AMOUNT -
     1) {

@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { Project } from '../../types/project.model';
 import { ProgressBarComponent } from '../../../../../shared/components/progress-bar/progress-bar.component';
 import { GameStateService } from '../../../../../core/services/game-state.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-project-progress',
-  imports: [ProgressBarComponent],
+  imports: [ProgressBarComponent, TranslatePipe],
   templateUrl: './project-progress.component.html',
   styleUrl: './project-progress.component.scss',
 })

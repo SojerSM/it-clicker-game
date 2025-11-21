@@ -4,7 +4,7 @@
       <app-hero-card-regular [hero]="heroes[selectedHeroId()]" />
       <ul class="hero-actions__overview-info-tabs">
         @for(tab of tabs; track tab.id) {
-        <li (click)="switchTab(tab)">{{ tab.title }}</li>
+        <li (click)="switchTab(tab)">{{ tab.title | translate }}</li>
         }
       </ul>
       <div>
@@ -20,7 +20,7 @@
       </li>
       }
       <li class="hero-actions__overview-hero-list__hire-button">
-        <button (click)="hire()">Hire</button>
+        <button (click)="hire()">{{ 'recruitment.label.hire' | translate }}</button>
       </li>
     </ul>
   </div>

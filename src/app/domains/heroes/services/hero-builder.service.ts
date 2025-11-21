@@ -20,7 +20,6 @@ export class HeroBuilderService {
   ) {}
 
   build(role: HeroRole): Hero {
-    console.log(role);
     const builder = this.builders[role];
 
     if (!builder) {

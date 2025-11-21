@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Tab } from '../../../../shared/types/tab';
+import { LangSelectorComponent } from './lang-selector/lang-selector.component';
 
 @Component({
   selector: 'app-vertical-navbar',
-  imports: [],
+  imports: [LangSelectorComponent],
   templateUrl: './vertical-navbar.component.html',
   styleUrl: './vertical-navbar.component.scss',
 })

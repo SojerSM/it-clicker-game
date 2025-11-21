@@ -3,10 +3,12 @@ import { HeroAttribute } from '../../types/hero-attribute';
 import { AttributeComponent } from '../attributes/attribute.component';
 import { Dimensions } from '../../../../../core/types/dimensions.model';
 import { AttributeGridBuilderService } from '../../services/attribute-grid-builder.service';
+import { TranslatePipe } from '@ngx-translate/core';
+import { UpperCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-attributes-grid',
-  imports: [AttributeComponent],
+  imports: [AttributeComponent, TranslatePipe, UpperCasePipe],
   templateUrl: './attributes-grid.component.html',
   styleUrl: './attributes-grid.component.scss',
 })

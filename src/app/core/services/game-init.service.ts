@@ -5,6 +5,9 @@ import { GameStateService } from './game-state.service';
 import { GameSaveService } from './game-save.service';
 import { TicketQueueService } from '../../domains/progress/tickets/services/ticket-queue.service';
 import { ProjectService } from '../../domains/progress/projects/services/project.service';
+import { TranslateService } from '@ngx-translate/core';
+import { GameLoopService } from './game-loop.service';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class GameInitService {
@@ -13,19 +16,26 @@ export class GameInitService {
     private gameStateService: GameStateService,
     private gameSaveService: GameSaveService,
     private ticketQueueService: TicketQueueService,
-    private projectService: ProjectService
+    private projectService: ProjectService,
+    private translateService: TranslateService,
+    private gameLoopService: GameLoopService
   ) {}
 
-  init(): void {
-    const ceo = this.heroBuilder.build(HeroRole.CEO);
+  async init(): Promise<void> {
+    return firstValueFrom(this.translateService.use('en')).then(() => {
+      const ceo = this.heroBuilder.build(HeroRole.CEO);
 
-    this.gameStateService.updateHeroes((state) => {
-      state.owned.push(ceo);
+      this.gameStateService.updateHeroes((state) => {
+        state.owned.push(ceo);
+      });
+
+      this.projectService.setFirstProject();
+      this.manageState();
+      this.manageTicketQueue();
+
+      console.log('Init done');
+      this.gameLoopService.start();
     });
-
-    this.projectService.setFirstProject();
-    this.manageState();
-    this.manageTicketQueue();
   }
 
   ngOnDestroy(): void {
