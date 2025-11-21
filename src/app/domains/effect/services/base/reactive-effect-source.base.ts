@@ -15,7 +15,9 @@ export abstract class ReactiveEffectSourceBase {
   ) {
     effect(() => {
       this.gameLoopService.tick();
-      this.observeAndReact();
+      untracked(() => {
+        this.observeAndReact();
+      });
     });
   }
 

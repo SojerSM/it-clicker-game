@@ -16,7 +16,6 @@ export class StressEffectService extends ReactiveEffectSourceBase {
   private readonly RELAX_RATE = 0.01;
   private readonly GROWTH_SCALE = 0.0002;
   private readonly MAX_GROWTH = 0.05;
-  private active = false;
 
   constructor(
     override gameLoopService: GameLoopService,
@@ -35,15 +34,19 @@ export class StressEffectService extends ReactiveEffectSourceBase {
 
     this.gameStateService.updateHeroes((state) => {
       state.owned = state.owned.map((hero) => {
-        const baseStress = hero.stressFactor;
-        const newStress = this.calculateNewStress(stressors, baseStress, hero);
-        const modifier = newStress / baseStress - 1;
+        const currentStress = hero.stressFactor;
+        const baseStress = hero.baseStress;
+        const newStress = this.calculateNewStress(stressors, baseStress, currentStress);
 
-        if (this.active) {
-          this.setEffect(`${this.EFFECT_ID}_${hero.id}`, EffectTarget.HEROES, modifier);
+        if (newStress > baseStress) {
+          this.setEffect(`${this.EFFECT_ID}_${hero.id}`, EffectTarget.HEROES, 0);
         } else {
           this.removeEffect(`${this.EFFECT_ID}_${hero.id}`);
         }
+
+        console.log(
+          `[Tick] Hero: ${hero.name} | Stress: ${newStress.toFixed(3)} | Base: ${baseStress}`
+        );
 
         return {
           ...hero,
@@ -53,8 +56,11 @@ export class StressEffectService extends ReactiveEffectSourceBase {
     });
   }
 
-  private calculateNewStress(stressors: Stressors, baseStress: number, hero: Hero): number {
-    const currentStress = hero.stressFactor ?? baseStress;
+  private calculateNewStress(
+    stressors: Stressors,
+    baseStress: number,
+    currentStress: number
+  ): number {
     const weightedSum = Object.values(stressors).reduce((sum, s) => sum + s.value * s.weight, 0);
 
     let growthRate = this.GROWTH_SCALE * Math.pow(weightedSum, 2);
@@ -66,10 +72,9 @@ export class StressEffectService extends ReactiveEffectSourceBase {
 
     if (weightedSum > 0) {
       newStress = Math.min(currentStress + growthRate * (1 - currentStress), this.MAX_STRESS);
-      this.active = true;
     } else {
-      newStress = Math.max(currentStress - this.RELAX_RATE * relaxFactor, baseStress);
-      if (newStress <= baseStress) this.active = false;
+      newStress = currentStress - this.RELAX_RATE * relaxFactor;
+      newStress = Math.max(newStress, baseStress);
     }
 
     return newStress;

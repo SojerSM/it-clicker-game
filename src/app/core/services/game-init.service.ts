@@ -9,6 +9,7 @@ import { TicketQueueService } from '../../domains/progress/tickets/services/tick
 import { GameLoopService } from './game-loop.service';
 import { GameSaveService } from './game-save.service';
 import { GameStateService } from './game-state.service';
+import { EffectService } from '../../domains/effect/services/effect.service';
 
 @Injectable({ providedIn: 'root' })
 export class GameInitService {
@@ -19,7 +20,9 @@ export class GameInitService {
     private ticketQueueService: TicketQueueService,
     private projectService: ProjectService,
     private translateService: TranslateService,
-    private gameLoopService: GameLoopService
+    private gameLoopService: GameLoopService,
+    private stressEffectService: StressEffectService,
+    private effectService: EffectService
   ) {}
 
   async init(): Promise<void> {

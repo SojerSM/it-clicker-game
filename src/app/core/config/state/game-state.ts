@@ -4,8 +4,8 @@ import { GameState } from './game-state.model';
 
 export const INITIAL_GAME_STATE: GameState = {
   impact: {
-    organicMpi: 1,
-    totalMpi: 1,
+    organicMpi: 100,
+    totalMpi: 100,
     totalPps: 0,
   },
   effects: {

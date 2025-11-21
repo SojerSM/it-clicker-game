@@ -44,6 +44,7 @@ export class HeroBuilderService {
       expToLevelUp: 100,
       baseRequiredExp: 100,
       stressFactor: 0.5,
+      baseStress: 0.5,
       attributes: this.attributeMapper.getMappedClone(id, CEO_ATTRIBUTES),
     };
   }
@@ -62,6 +63,7 @@ export class HeroBuilderService {
       expToLevelUp: 50,
       baseRequiredExp: 50,
       stressFactor: 0.5,
+      baseStress: 0.5,
       attributes: this.attributeMapper.getMappedClone(id, DEV_ATTRIBUTES),
       organicPps: 0.2,
       totalPps: 0.2,
