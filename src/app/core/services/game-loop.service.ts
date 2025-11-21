@@ -8,11 +8,9 @@ export class GameLoopService {
   private readonly interval = BALANCE.GAME_LOOP_INTERVAL;
   readonly tick = signal(0);
 
-  constructor(private impactService: ImpactService, private heroService: HeroService) {
-    this.start();
-  }
+  constructor(private impactService: ImpactService, private heroService: HeroService) {}
 
-  private start(): void {
+  start(): void {
     setInterval(() => {
       this.tick.update((value) => value + 1);
 
