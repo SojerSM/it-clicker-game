@@ -1,7 +1,59 @@
 {
+  "effects": {
+    "stress_status": {
+      "absorbed": "Pochłonięty",
+      "focused": "Skupiony",
+      "relaxed": "Zrelaksowany",
+      "stressed": "Zestresowany",
+      "under_pressure": "Pod presją"
+    }
+  },
   "hero": {
     "label": {
-      "attributes": "ATRYBUTY"
+      "attributes": "Atrybuty",
+      "equipment": "Ekwipunek",
+      "overview": "Podgląd",
+      "stats": "Statystyki"
+    },
+    "roles": {
+      "dev": "Programista"
+    },
+    "stats": {
+      "stress_factor": "Poziom stresu"
     }
+  },
+  "impact": {
+    "mpi": "Wskaźnik Produktywności",
+    "pps": "Produktywność na Sekundę"
+  },
+  "progress": {
+    "label": {
+      "in_queue": "W kolejce"
+    },
+    "projects": {
+      "_comment": "Zaktualizuj zakres w project-generator.service.ts jeżeli zostały dodane nowe nazwy projektów",
+      "0": "Aplikacja do analizowania memów",
+      "1": "Platforma dla freelancerów z AI asystentem",
+      "2": "Kalendarz dla ludzi z ADHD w trybie dark",
+      "3": "Aplikacja do wstawania rano i bycia odpowiedzialnym",
+      "4": "Zapora sieciowa blokująca oszustów z MLM",
+      "5": "Dron do rażenia prądem mało wydajnych pracowników",
+      "6": "Rasistowski model AI dla użytkowników reddita",
+      "7": "Aplikacja przewidująca, w którym sklepie będą dziś wolne kasy",
+      "8": "Asystent AI do negocjowania cen w komisie samochodowym",
+      "9": "System wspomagania decyzji przy wybieraniu pizzy",
+      "10": "Automat do losowania wymówek przy odwoływaniu planów",
+      "11": "Half-Life 3",
+      "12": "E-diler - platforma do zamawiania narkotyków bez wychodzenia z domu",
+      "13": "Bezpieczne kasyno online dla ludzi uzależnionych od hazardu"
+    }
+  },
+  "recruitment": {
+    "label": {
+      "hire": "Rekrutuj"
+    }
+  },
+  "resources": {
+    "money": "Saldo"
   }
 }

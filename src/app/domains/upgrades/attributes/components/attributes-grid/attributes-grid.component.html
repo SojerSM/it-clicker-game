@@ -1,5 +1,5 @@
 @if (hasTitle) {
-<h4>ATTRIBUTES</h4>
+<h4>{{ 'hero.label.attributes' | translate | uppercase }}</h4>
 } @if (gridSize) {
 <ul class="hero-attributes-grid__defined" [class.border]="hasBorder">
   @for (row of availableAttributes; track $index) {

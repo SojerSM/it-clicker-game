@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { ProgressBarComponent } from '../../../../../shared/components/progress-bar/progress-bar.component';
-import { Hero } from '../../../types/hero.model';
 import { TagComponent } from '../../../../../shared/components/tag/tag.component';
 import { StressStatusTagComponent } from '../../../../effect/components/stress-status-tag/stress-status-tag.component';
+import { Hero } from '../../../types/hero.model';
 
 @Component({
   selector: 'app-hero-card-regular',

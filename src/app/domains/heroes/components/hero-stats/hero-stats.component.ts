@@ -3,10 +3,12 @@ import { GameStateService } from '../../../../core/services/game-state.service';
 import { Hero } from '../../types/hero.model';
 import { NumberFormat } from '../../../../core/pipes/number-format.pipe';
 import { HeroType } from '../../types/enums/hero-type.enum';
+import { TranslatePipe } from '@ngx-translate/core';
+import { UpperCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-hero-stats',
-  imports: [NumberFormat],
+  imports: [NumberFormat, TranslatePipe, UpperCasePipe],
   templateUrl: './hero-stats.component.html',
   styleUrl: './hero-stats.component.scss',
 })
@@ -22,8 +24,8 @@ export class HeroStatsComponent {
   }
 
   get impactLabel(): string {
-    const playerLabel = 'Manual Productivity Index';
-    const minionLabel = 'Productivity Per Second';
+    const playerLabel = 'impact.mpi';
+    const minionLabel = 'impact.pps';
 
     return this.hero.type === HeroType.PLAYER ? playerLabel : minionLabel;
   }

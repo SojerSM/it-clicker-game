@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 
 /**
  * General tag element to display statuses etc.
@@ -11,7 +12,7 @@ import { Component, Input } from '@angular/core';
  */
 @Component({
   selector: 'app-tag',
-  imports: [],
+  imports: [TranslatePipe],
   templateUrl: './tag.component.html',
   styleUrl: './tag.component.scss',
 })

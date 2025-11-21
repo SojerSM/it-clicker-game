@@ -1,7 +1,59 @@
 {
+  "effects": {
+    "stress_status": {
+      "absorbed": "Absorbed",
+      "focused": "Focused",
+      "relaxed": "Relaxed",
+      "stressed": "Stressed",
+      "under_pressure": "Under pressure"
+    }
+  },
   "hero": {
     "label": {
-      "attributes": "ATTRIBUTES"
+      "attributes": "Attributes",
+      "equipment": "Equipment",
+      "overview": "Overview",
+      "stats": "Stats"
+    },
+    "roles": {
+      "dev": "Programmer"
+    },
+    "stats": {
+      "stress_factor": "Stress factor"
     }
+  },
+  "impact": {
+    "mpi": "Manual Productivity Index",
+    "pps": "Productivity per Second"
+  },
+  "progress": {
+    "label": {
+      "in_queue": "In queue"
+    },
+    "projects": {
+      "_comment": "Update scope in project-generator-service.ts if new projects titles were added",
+      "0": "Application for analyzing memes",
+      "1": "Platform for freelancers with an AI assistant",
+      "2": "Dark-mode calendar for people with ADHD",
+      "3": "App for waking up early and being responsible",
+      "4": "Firewall blocking MLM scammers",
+      "5": "Drone for electroshocking low-efficiency employees",
+      "6": "Racist AI model for Reddit users",
+      "7": "App predicting which store will have free checkouts today",
+      "8": "AI assistant for negotiating prices at a car dealership",
+      "9": "Decision-support system for choosing pizza",
+      "10": "Excuse-generator for canceling plans",
+      "11": "Half-Life 3",
+      "12": "E-dealer – a platform for ordering drugs without leaving home",
+      "13": "Safe online casino for people addicted to gambling"
+    }
+  },
+  "recruitment": {
+    "label": {
+      "hire": "Hire"
+    }
+  },
+  "resources": {
+    "money": "Money"
   }
 }

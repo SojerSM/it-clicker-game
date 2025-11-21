@@ -10,19 +10,20 @@ import { HireService } from '../../../../../domains/recruitment/services/hire.se
 import { HeroAttributesComponent } from '../../../../../domains/heroes/components/hero-attributes/hero-attributes.component';
 import { Tab } from '../../../../../shared/types/tab';
 import { HeroOverviewComponent } from '../../../../../domains/heroes/components/hero-overview/hero-overview.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-hero-actions',
-  imports: [HeroCardRegularComponent, CommonModule, HeroCardSimplifiedComponent],
+  imports: [HeroCardRegularComponent, CommonModule, HeroCardSimplifiedComponent, TranslatePipe],
   templateUrl: './hero-actions.component.html',
   styleUrl: './hero-actions.component.scss',
 })
 export class HeroActionsComponent {
   tabs: Tab[] = [
-    { id: 1, title: 'Overview', component: HeroOverviewComponent },
-    { id: 2, title: 'Equipment', component: HeroEquipmentComponent },
-    { id: 3, title: 'Stats', component: HeroStatsComponent },
-    { id: 4, title: 'Attributes', component: HeroAttributesComponent },
+    { id: 1, title: 'hero.label.overview', component: HeroOverviewComponent },
+    { id: 2, title: 'hero.label.equipment', component: HeroEquipmentComponent },
+    { id: 3, title: 'hero.label.stats', component: HeroStatsComponent },
+    { id: 4, title: 'hero.label.attributes', component: HeroAttributesComponent },
   ];
   activeTab = signal<Tab>(this.tabs[0]);
   selectedHeroId = signal(0);

@@ -1,4 +1,4 @@
 export enum HeroRole {
   CEO = 'CEO',
-  PROGRAMMER = 'Programmer',
+  PROGRAMMER = 'hero.roles.dev',
 }
