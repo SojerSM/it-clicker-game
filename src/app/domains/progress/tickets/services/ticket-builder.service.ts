@@ -5,6 +5,7 @@ import { Project } from '../../projects/types/project.model';
 import { Ticket } from '../types/ticket.model';
 import { BALANCE } from '../../../../core/config/state/balance';
 import { GameStateService } from '../../../../core/services/game-state.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({ providedIn: 'root' })
 export class TicketBuilderService {
@@ -12,7 +13,8 @@ export class TicketBuilderService {
 
   constructor(
     private ticketNameGeneratorService: TicketNameGeneratorService,
-    private gameStateService: GameStateService
+    private gameStateService: GameStateService,
+    private translateService: TranslateService
   ) {}
 
   getRandomTicket(project: Project): Ticket {
@@ -36,7 +38,9 @@ export class TicketBuilderService {
   }
 
   private generateAlias(name: string): string {
-    const words = name.split(' ').filter((word) => word.length >= 3);
+    const translated: string = this.translateService.instant(name);
+
+    const words = translated.split(' ').filter((word) => word.length >= 3);
     const alias = words
       .slice(0, 3)
       .map((word) => word[0].toUpperCase())
