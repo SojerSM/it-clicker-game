@@ -15,6 +15,7 @@ export interface PlayerHero {
   expToLevelUp: number;
   baseRequiredExp: number;
   stressFactor: number;
+  baseStress: number;
   attributes: HeroAttribute[];
 }
 
@@ -30,6 +31,7 @@ export interface MinionHero extends MinionStats {
   expToLevelUp: number;
   baseRequiredExp: number;
   stressFactor: number;
+  baseStress: number;
   attributes: HeroAttribute[];
 }
 

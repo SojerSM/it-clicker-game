@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { EffectTarget } from '../types/enum/effect-target.enum';
 import { GameStateService } from '../../../core/services/game-state.service';
-import { INITIAL_GAME_STATE } from '../../../core/config/state/game-state';
+import { EffectTarget } from '../types/enum/effect-target.enum';
 
 @Injectable({ providedIn: 'root' })
 export class EffectApplierService {
@@ -10,17 +9,12 @@ export class EffectApplierService {
   applyModifierToState(target: EffectTarget, modifier: number): void {
     switch (target) {
       case EffectTarget.HEROES:
-        this.gameStateService.updateHeroes((state) => {
-          state.owned.forEach((hero) => {
-            const base = hero.stressFactor;
-            hero.stressFactor = this.clamp(base * (1 + modifier), 0.5, 1);
-          });
-        });
+        // do nothing - stress is evalueted by stress-effect.service.ts
         break;
       case EffectTarget.IMPACT_MPI:
         this.gameStateService.updateImpact((impact) => {
           const base = impact.organicMpi;
-          impact.totalMpi = this.clamp(base * (1 + modifier), 0, Infinity);
+          impact.totalMpi = this.clamp(base * (1 - modifier), 0, Infinity);
         });
         break;
       default:
@@ -33,10 +27,7 @@ export class EffectApplierService {
       case EffectTarget.HEROES:
         this.gameStateService.updateHeroes((state) => {
           state.owned.forEach((hero) => {
-            const baseHero = INITIAL_GAME_STATE.heroes.owned.find((h) => h.id === hero.id);
-            if (!baseHero) return;
-
-            hero.stressFactor = baseHero.stressFactor;
+            hero.stressFactor = hero.baseStress;
           });
         });
         break;

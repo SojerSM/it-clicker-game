@@ -2,11 +2,10 @@ import { Component, Input } from '@angular/core';
 import { TagComponent } from '../../../../shared/components/tag/tag.component';
 import { Hero } from '../../../heroes/types/hero.model';
 import { StressStatus } from '../../types/enum/stress-status.enum';
-import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-stress-status-tag',
-  imports: [TagComponent, TranslatePipe],
+  imports: [TagComponent],
   templateUrl: './stress-status-tag.component.html',
   styleUrl: './stress-status-tag.component.scss',
 })

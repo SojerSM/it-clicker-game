@@ -1,4 +1,4 @@
-import { effect, Injectable } from '@angular/core';
+import { effect, Injectable, untracked } from '@angular/core';
 import { BALANCE } from '../../../core/config/state/balance';
 import { GameLoopService } from '../../../core/services/game-loop.service';
 import { GameStateService } from '../../../core/services/game-state.service';
@@ -16,13 +16,10 @@ export class EffectService {
   ) {
     effect(() => {
       this.gameLoopService.tick();
-      this.update();
-    });
-  }
 
-  addEffect(effect: Effect): void {
-    this.gameStateService.updateEffects((state) => {
-      state.active.push(effect);
+      untracked(() => {
+        this.update();
+      });
     });
   }
 
@@ -48,6 +45,7 @@ export class EffectService {
 
   private update(): void {
     const effects = this.gameStateService.effectState().active;
+    console.log(effects);
     this.recalculateTargets(effects);
   }
 
