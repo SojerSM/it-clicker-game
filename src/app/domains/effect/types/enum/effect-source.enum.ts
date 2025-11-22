@@ -1,4 +1,4 @@
 export enum EffectSource {
   STRESSORS,
-  PLAYER_STRESS,
+  HERO_STRESS,
 }

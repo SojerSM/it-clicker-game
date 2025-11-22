@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { EffectTarget } from '../types/enum/effect-target.enum';
 import { GameStateService } from '../../../core/services/game-state.service';
-import { INITIAL_GAME_STATE } from '../../../core/config/state/game-state';
+import { EffectTarget } from '../types/enum/effect-target.enum';
 
 @Injectable({ providedIn: 'root' })
 export class EffectApplierService {
@@ -15,7 +14,7 @@ export class EffectApplierService {
       case EffectTarget.IMPACT_MPI:
         this.gameStateService.updateImpact((impact) => {
           const base = impact.organicMpi;
-          impact.totalMpi = this.clamp(base * (1 + modifier), 0, Infinity);
+          impact.totalMpi = this.clamp(base * (1 - modifier), 0, Infinity);
         });
         break;
       default:

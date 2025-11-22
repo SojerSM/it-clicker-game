@@ -7,6 +7,7 @@ import { AppComponent } from './app/app.component';
 import { GameInitService } from './app/core/services/game-init.service';
 import { EffectService } from './app/domains/effect/services/effect.service';
 import { StressEffectService } from './app/domains/effect/services/stress-effect.service';
+import { ImpactEffectService } from './app/domains/effect/services/impact-effect.service';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -17,6 +18,7 @@ bootstrapApplication(AppComponent, {
     provideAppInitializer(() => {
       inject(EffectService);
       inject(StressEffectService);
+      inject(ImpactEffectService);
       return;
     }),
     provideHttpClient(),
