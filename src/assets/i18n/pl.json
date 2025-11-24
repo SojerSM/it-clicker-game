@@ -19,7 +19,8 @@
       "dev": "Programista"
     },
     "stats": {
-      "stress_factor": "Poziom stresu"
+      "stress_factor": "Poziom stresu",
+      "stress_resistance": "Odporność na stres"
     }
   },
   "impact": {

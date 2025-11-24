@@ -14,10 +14,10 @@ export class HeroCardRegularComponent {
   @Input({ required: true }) hero!: Hero;
 
   get remainingExp(): number {
-    return this.hero.expToLevelUp - this.hero.exp;
+    return this.hero.growth.expToLevelUp - this.hero.growth.exp;
   }
 
   get opacity(): number {
-    return this.hero.stressFactor - 0.4;
+    return this.hero.stats.stressFactor - 0.4;
   }
 }

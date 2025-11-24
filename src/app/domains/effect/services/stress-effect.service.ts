@@ -34,9 +34,11 @@ export class StressEffectService extends ReactiveEffectSourceBase {
 
     this.gameStateService.updateHeroes((state) => {
       state.owned = state.owned.map((hero) => {
-        const currentStress = hero.stressFactor;
-        const baseStress = hero.baseStress;
-        const newStress = this.calculateNewStress(stressors, baseStress, currentStress);
+        const currentStress = hero.stats.stressFactor;
+        const baseStress = hero.stats.baseStress;
+        const resistance = hero.stats.stressResistance;
+
+        const newStress = this.calculateNewStress(stressors, baseStress, currentStress, resistance);
 
         if (newStress > baseStress) {
           this.setEffect(`${this.EFFECT_ID}_${hero.id}`, EffectTarget.HEROES, 0);
@@ -50,7 +52,10 @@ export class StressEffectService extends ReactiveEffectSourceBase {
 
         return {
           ...hero,
-          stressFactor: newStress,
+          stats: {
+            ...hero.stats,
+            stressFactor: newStress,
+          },
         };
       });
     });
@@ -59,7 +64,8 @@ export class StressEffectService extends ReactiveEffectSourceBase {
   private calculateNewStress(
     stressors: Stressors,
     baseStress: number,
-    currentStress: number
+    currentStress: number,
+    resistance: number
   ): number {
     const weightedSum = Object.values(stressors).reduce((sum, s) => sum + s.value * s.weight, 0);
 
@@ -71,7 +77,12 @@ export class StressEffectService extends ReactiveEffectSourceBase {
     let newStress = currentStress;
 
     if (weightedSum > 0) {
-      newStress = Math.min(currentStress + growthRate * (1 - currentStress), this.MAX_STRESS);
+      const effectiveGrowthRate = growthRate * (1 - resistance);
+
+      newStress = Math.min(
+        currentStress + effectiveGrowthRate * (1 - currentStress),
+        this.MAX_STRESS
+      );
     } else {
       newStress = currentStress - this.RELAX_RATE * relaxFactor;
       newStress = Math.max(newStress, baseStress);

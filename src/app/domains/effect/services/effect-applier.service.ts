@@ -27,7 +27,7 @@ export class EffectApplierService {
       case EffectTarget.HEROES:
         this.gameStateService.updateHeroes((state) => {
           state.owned.forEach((hero) => {
-            hero.stressFactor = hero.baseStress;
+            hero.stats.stressFactor = hero.stats.baseStress;
           });
         });
         break;

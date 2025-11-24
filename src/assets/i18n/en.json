@@ -19,7 +19,8 @@
       "dev": "Programmer"
     },
     "stats": {
-      "stress_factor": "Stress factor"
+      "stress_factor": "Stress factor",
+      "stress_resistance": "Stress resistance"
     }
   },
   "impact": {

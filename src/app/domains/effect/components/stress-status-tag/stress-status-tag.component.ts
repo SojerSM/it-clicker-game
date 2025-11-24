@@ -30,7 +30,7 @@ export class StressStatusTagComponent {
   };
 
   get stressStatus(): StressStatus {
-    const value = this.hero.stressFactor;
+    const value = this.hero.stats.stressFactor;
 
     for (let i = 0; i < this.breakpoints.length; i++) {
       if (value <= this.breakpoints[i]) {

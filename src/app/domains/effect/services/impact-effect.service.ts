@@ -31,7 +31,7 @@ export class ImpactEffectService extends ReactiveEffectSourceBase {
   protected override observeAndReact(): void {
     this.gameStateService.updateHeroes((state) => {
       state.owned.forEach((hero) => {
-        const stress = hero.stressFactor ?? hero.baseStress;
+        const stress = hero.stats.stressFactor ?? hero.stats.baseStress;
         const impactModifier = this.calculateMpiModifierFromStress(stress);
 
         if (hero.type === HeroType.PLAYER) {
