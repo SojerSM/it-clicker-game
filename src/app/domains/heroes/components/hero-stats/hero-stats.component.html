@@ -7,7 +7,11 @@
     </li>
     <li class="hero-stats__list-item">
       <span>{{ 'hero.stats.stress_factor' | translate }}</span>
-      <span> {{ hero.stressFactor | numberFormat : 2 }}</span>
+      <span> {{ hero.stats.stressFactor | numberFormat : 2 }}</span>
+    </li>
+    <li class="hero-stats__list-item">
+      <span>{{ 'hero.stats.stress_resistance' | translate }}</span>
+      <span> {{ hero.stats.stressResistance | percent }}</span>
     </li>
   </ul>
 </div>

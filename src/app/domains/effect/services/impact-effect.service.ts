@@ -6,6 +6,7 @@ import { EffectSource } from '../types/enum/effect-source.enum';
 import { EffectTarget } from '../types/enum/effect-target.enum';
 import { EffectService } from './effect.service';
 import { HeroType } from '../../heroes/types/enums/hero-type.enum';
+import { ImpactService } from '../../impact/impact.service';
 
 @Injectable({ providedIn: 'root' })
 export class ImpactEffectService extends ReactiveEffectSourceBase {
@@ -17,7 +18,8 @@ export class ImpactEffectService extends ReactiveEffectSourceBase {
   constructor(
     override gameLoopService: GameLoopService,
     override gameStateService: GameStateService,
-    override effectService: EffectService
+    override effectService: EffectService,
+    private impactService: ImpactService
   ) {
     super(gameLoopService, gameStateService, effectService);
   }
@@ -29,7 +31,7 @@ export class ImpactEffectService extends ReactiveEffectSourceBase {
   protected override observeAndReact(): void {
     this.gameStateService.updateHeroes((state) => {
       state.owned.forEach((hero) => {
-        const stress = hero.stressFactor ?? hero.baseStress;
+        const stress = hero.stats.stressFactor ?? hero.stats.baseStress;
         const impactModifier = this.calculateMpiModifierFromStress(stress);
 
         if (hero.type === HeroType.PLAYER) {
@@ -41,13 +43,16 @@ export class ImpactEffectService extends ReactiveEffectSourceBase {
         } else if (hero.type === HeroType.MINION) {
           hero.totalPps = hero.organicPps * (1 - impactModifier);
         }
+
+        this.impactService.recalculate();
       });
     });
   }
 
   private calculateMpiModifierFromStress(stressFactor: number): number {
     if (stressFactor <= this.STRESS_START) return 0;
-    const t = (stressFactor - this.STRESS_START) / (this.STRESS_END - this.STRESS_START);
-    return t * this.MAX_IMPACT_REDUCTION;
+
+    const normalized = (stressFactor - this.STRESS_START) / (this.STRESS_END - this.STRESS_START);
+    return normalized * this.MAX_IMPACT_REDUCTION;
   }
 }

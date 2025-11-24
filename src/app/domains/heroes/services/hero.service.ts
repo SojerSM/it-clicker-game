@@ -1,8 +1,8 @@
-import { effect, Injectable, signal } from '@angular/core';
-import { GameStateService } from '../../../core/services/game-state.service';
+import { Injectable } from '@angular/core';
 import { BALANCE } from '../../../core/config/state/balance';
-import { Hero } from '../types/hero.model';
+import { GameStateService } from '../../../core/services/game-state.service';
 import { HeroType } from '../types/enums/hero-type.enum';
+import { Hero } from '../types/hero.model';
 
 @Injectable({ providedIn: 'root' })
 export class HeroService {
@@ -14,14 +14,14 @@ export class HeroService {
         const hero = state.owned.find((h) => h.id === heroId);
         if (!hero) return;
 
-        hero.exp += hero.expRatio * this.gameStateService.impactState().organicMpi;
+        hero.growth.exp += hero.growth.expRatio * this.gameStateService.impactState().organicMpi;
         this.levelUpIfAchieved(hero);
       });
     } else {
       this.gameStateService.updateHeroes((state) => {
         state.owned.forEach((hero) => {
           if (hero.type === HeroType.MINION) {
-            hero.exp += hero.expRatio * hero.organicPps;
+            hero.growth.exp += hero.growth.expRatio * hero.organicPps;
             this.levelUpIfAchieved(hero);
           }
         });
@@ -32,17 +32,17 @@ export class HeroService {
   private levelUpIfAchieved(hero: Hero): void {
     if (!hero) return;
 
-    if (hero.exp >= hero.expToLevelUp) {
-      const expSurplus = hero.exp - hero.expToLevelUp;
+    if (hero.growth.exp >= hero.growth.expToLevelUp) {
+      const expSurplus = hero.growth.exp - hero.growth.expToLevelUp;
 
-      hero.lvl += 1;
-      hero.exp = expSurplus;
-      hero.expToLevelUp = this.calcNextRequiredExp(hero.lvl, hero);
+      hero.growth.lvl += 1;
+      hero.growth.exp = expSurplus;
+      hero.growth.expToLevelUp = this.calcNextRequiredExp(hero.growth.lvl, hero);
     }
   }
 
   private calcNextRequiredExp(lvl: number, hero: Hero): number {
-    const baseExp = hero.baseRequiredExp;
+    const baseExp = hero.growth.baseRequiredExp;
 
     const newRequiredExp =
       baseExp *

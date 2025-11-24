@@ -1,6 +1,6 @@
 <section class="hero-card">
   <div class="hero-card__avatar">
-    @if (hero.stressFactor > 0.6) {
+    @if (hero.stats.stressFactor > 0.6) {
     <div class="hero-card__avatar-bg" [style.opacity]="opacity"></div>
     }
     <img [src]="hero.avatar" alt="hero" />
@@ -13,9 +13,9 @@
     </div>
     <div class="hero-card__summary-progress">
       <div class="hero-card__summary-progress__exp-bar">
-        <span>{{ hero.exp.toFixed() }} / {{ hero.expToLevelUp }}</span>
+        <span>{{ hero.growth.exp.toFixed() }} / {{ hero.growth.expToLevelUp }}</span>
         <app-progress-bar
-          [maxValue]="hero.expToLevelUp"
+          [maxValue]="hero.growth.expToLevelUp"
           [remaining]="remainingExp"
           [descending]="false"
           [fill]="'#79BAEC'"
@@ -24,7 +24,7 @@
         />
       </div>
       <div class="hero-card__summary-progress__lvl-badge">
-        <span>{{ hero.lvl }}</span>
+        <span>{{ hero.growth.lvl }}</span>
       </div>
     </div>
   </div>

@@ -29,7 +29,6 @@ export class ImpactService {
       });
 
       state.totalPps = totalPps;
-      state.totalMpi = state.organicMpi;
     });
   }
 }
