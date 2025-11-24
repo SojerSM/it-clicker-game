@@ -6,10 +6,11 @@ import { TicketType } from '../../types/ticket-type.enum';
 import { ProgressBarComponent } from '../../../../../shared/components/progress-bar/progress-bar.component';
 import { GameStateService } from '../../../../../core/services/game-state.service';
 import { HeroService } from '../../../../heroes/services/hero.service';
+import { ClickableImpactDirective } from '../../../../../shared/directives/clickable-impact.directive';
 
 @Component({
   selector: 'app-ticket',
-  imports: [NumberFormat, ProgressBarComponent],
+  imports: [NumberFormat, ProgressBarComponent, ClickableImpactDirective],
   templateUrl: './ticket.component.html',
   styleUrl: './ticket.component.scss',
 })
@@ -40,6 +41,10 @@ export class TicketComponent {
       case TicketType.REFACTORING:
         return '#00BCD4';
     }
+  }
+
+  get currentMpi(): number {
+    return this.gameStateService.impactState().totalMpi;
   }
 
   onClick(): void {

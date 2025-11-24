@@ -1,0 +1,25 @@
+:host {
+  position: absolute;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+.floating-mpi {
+  position: fixed;
+  pointer-events: none;
+  animation: floatUp 1.2s ease-out forwards;
+  font-weight: 600;
+  color: black;
+
+  @keyframes floatUp {
+    0% {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-50%, -80px);
+    }
+  }
+}
