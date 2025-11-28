@@ -1,13 +1,11 @@
 <section class="hero-card-simplified">
-  <div class="hero-card-simplified__avatar">
-    <img [src]="hero.avatar" alt="hero" />
-  </div>
+  <app-hero-avatar [hero]="hero" />
   <div class="hero-card-simplified__description">
     <div class="hero-card-simplified__description-left">
       <span>{{ hero.name }}</span>
       <div class="hero-card-simplified__description-left__lvl">
         <span>Lvl:</span>
-        <span class="hero-card-simplified__description-left__lvl-value">{{ hero.lvl }}</span>
+        <span class="hero-card-simplified__description-left__lvl-value">{{ hero.growth.lvl }}</span>
       </div>
     </div>
     <div class="hero-card-simplified__description-right">

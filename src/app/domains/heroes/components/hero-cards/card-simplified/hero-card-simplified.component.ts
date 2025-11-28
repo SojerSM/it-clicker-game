@@ -4,6 +4,7 @@ import { TagComponent } from '../../../../../shared/components/tag/tag.component
 import { HeroType } from '../../../types/enums/hero-type.enum';
 import { GameStateService } from '../../../../../core/services/game-state.service';
 import { NumberFormat } from '../../../../../core/pipes/number-format.pipe';
+import { HeroAvatarComponent } from '../../hero-avatar/hero-avatar.component';
 
 interface HeroCardImpactData {
   label: string;
@@ -12,7 +13,7 @@ interface HeroCardImpactData {
 
 @Component({
   selector: 'app-hero-card-simplified',
-  imports: [TagComponent, NumberFormat],
+  imports: [TagComponent, NumberFormat, HeroAvatarComponent],
   templateUrl: './hero-card-simplified.component.html',
   styleUrl: './hero-card-simplified.component.scss',
 })
