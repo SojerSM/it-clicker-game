@@ -1,0 +1,6 @@
+<div class="hero-avatar" [style.width.px]="xy" [style.height.px]="xy">
+  @if (hero.stats.stressFactor > 0.6) {
+  <div class="hero-avatar__background" [style.opacity]="opacity"></div>
+  }
+  <img [src]="hero.avatar" alt="hero" />
+</div>
