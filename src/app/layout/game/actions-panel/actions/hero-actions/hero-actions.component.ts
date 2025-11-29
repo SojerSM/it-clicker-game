@@ -50,7 +50,7 @@ export class HeroActionsComponent {
   hire(): void {
     const heroesAmount = this.gameStateService.heroState().owned.length;
 
-    if (heroesAmount >= 3) return;
+    if (heroesAmount >= 2) return;
 
     this.hireService.hire();
   }

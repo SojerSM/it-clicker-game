@@ -7,12 +7,14 @@ export class ProjectGeneratorService {
   generateProject(): Project {
     const totalCp = BALANCE.PROJECT_INITIAL_CP;
     const description = this.getRandomProjectDescription();
+    const moneyRewardRatio = BALANCE.PROJECT_INITIAL_REWARD_MONEY_RATIO;
 
     return {
       id: Math.random(),
       description,
       totalCp,
       remainingCp: totalCp,
+      moneyRewardRatio,
     };
   }
 
