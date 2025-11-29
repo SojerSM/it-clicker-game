@@ -14,14 +14,14 @@ export class HeroService {
         const hero = state.owned.find((h) => h.id === heroId);
         if (!hero) return;
 
-        hero.growth.exp += hero.growth.expRatio * this.gameStateService.impactState().organicMpi;
+        hero.growth.exp += this.calculateExpReward(hero);
         this.levelUpIfAchieved(hero);
       });
     } else {
       this.gameStateService.updateHeroes((state) => {
         state.owned.forEach((hero) => {
           if (hero.type === HeroType.MINION) {
-            hero.growth.exp += hero.growth.expRatio * hero.organicPps;
+            hero.growth.exp += this.calculateExpReward(hero);
             this.levelUpIfAchieved(hero);
           }
         });
@@ -49,5 +49,12 @@ export class HeroService {
       (Math.pow(lvl - 1, BALANCE.HERO_REQUIRED_EXP_MULTIPLIER) * 0.5 + Math.exp(lvl / 20));
 
     return Math.round(newRequiredExp);
+  }
+
+  /**
+   * Calculate how many exp points should a hero gain by click (if PLAYER) or per tick (if MINION)
+   */
+  private calculateExpReward(hero: Hero): number {
+    return hero.growth.expRatio * hero.stats.learningRate;
   }
 }

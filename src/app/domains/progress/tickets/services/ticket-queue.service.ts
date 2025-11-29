@@ -32,8 +32,6 @@ export class TicketQueueService {
   }
 
   private provideFirstTicketIfNeeded(): void {
-    if (this.gameStateService.ticketState().finished > 0) return;
-
     const project = this.gameStateService.projectState().current;
 
     if (!project?.description) return;

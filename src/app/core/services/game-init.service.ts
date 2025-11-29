@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { firstValueFrom } from 'rxjs';
+import { EffectService } from '../../domains/effect/services/effect.service';
 import { StressEffectService } from '../../domains/effect/services/stress-effect.service';
 import { HeroBuilderService } from '../../domains/heroes/services/hero-builder.service';
 import { HeroRole } from '../../domains/heroes/types/enums/hero-role.enum';
@@ -9,7 +10,6 @@ import { TicketQueueService } from '../../domains/progress/tickets/services/tick
 import { GameLoopService } from './game-loop.service';
 import { GameSaveService } from './game-save.service';
 import { GameStateService } from './game-state.service';
-import { EffectService } from '../../domains/effect/services/effect.service';
 
 @Injectable({ providedIn: 'root' })
 export class GameInitService {
@@ -20,9 +20,7 @@ export class GameInitService {
     private ticketQueueService: TicketQueueService,
     private projectService: ProjectService,
     private translateService: TranslateService,
-    private gameLoopService: GameLoopService,
-    private stressEffectService: StressEffectService,
-    private effectService: EffectService
+    private gameLoopService: GameLoopService
   ) {}
 
   async init(): Promise<void> {

@@ -19,6 +19,7 @@
       "dev": "Programista"
     },
     "stats": {
+      "learning_rate": "Tempo uczenia się",
       "stress_factor": "Poziom stresu",
       "stress_resistance": "Odporność na stres"
     }

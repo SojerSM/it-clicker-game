@@ -4,7 +4,6 @@ import { HeroGrowth } from './hero-growth.model';
 import { HeroStats } from './hero-stats.model';
 
 export interface HeroDetails {
-  id: string;
   role: HeroRole;
   name: string;
   avatar: string;

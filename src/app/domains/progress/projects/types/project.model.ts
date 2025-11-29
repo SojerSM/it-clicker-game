@@ -3,4 +3,5 @@ export interface Project {
   description: string;
   totalCp: number;
   remainingCp: number;
+  moneyRewardRatio: number;
 }

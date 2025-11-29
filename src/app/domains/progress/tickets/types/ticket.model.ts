@@ -8,5 +8,4 @@ export interface Ticket {
   totalCp: number;
   remainingCp: number;
   isCompleted: boolean;
-  rewardMoney: number;
 }

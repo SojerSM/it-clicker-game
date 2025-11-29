@@ -19,6 +19,7 @@
       "dev": "Programmer"
     },
     "stats": {
+      "learning_rate": "Learning rate",
       "stress_factor": "Stress factor",
       "stress_resistance": "Stress resistance"
     }

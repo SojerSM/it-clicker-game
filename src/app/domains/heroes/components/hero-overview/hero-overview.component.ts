@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Dimensions } from '../../../../core/types/dimensions.model';
+import { Dimensions } from '../../../../shared/types/dimensions.model';
 import { AttributesGridComponent } from '../../../upgrades/attributes/components/attributes-grid/attributes-grid.component';
 import { Hero } from '../../types/hero.model';
 import { HeroStatsComponent } from '../hero-stats/hero-stats.component';

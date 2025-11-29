@@ -6,6 +6,7 @@ import { DEV_ATTRIBUTES } from '../../upgrades/attributes/presets/dev-attributes
 import { GameStateService } from '../../../core/services/game-state.service';
 import { CEO_ATTRIBUTES } from '../../upgrades/attributes/presets/ceo-attributes';
 import { AttributeMapperService } from '../../upgrades/attributes/services/attribute-mapper.service';
+import { BALANCE } from '../../../core/config/state/balance';
 
 @Injectable({ providedIn: 'root' })
 export class HeroBuilderService {
@@ -41,7 +42,7 @@ export class HeroBuilderService {
       growth: {
         lvl: 1,
         exp: 0,
-        expRatio: 1,
+        expRatio: BALANCE.HERO_INITIAL_EXP_RATIO,
         expToLevelUp: 100,
         baseRequiredExp: 100,
       },
@@ -49,6 +50,7 @@ export class HeroBuilderService {
         baseStress: 0.5,
         stressFactor: 0.5,
         stressResistance: 0.2,
+        learningRate: 1,
       },
       attributes: this.attributeMapper.getMappedClone(id, CEO_ATTRIBUTES),
     };
@@ -56,6 +58,7 @@ export class HeroBuilderService {
 
   private buildProgrammer(): Hero {
     const id = 'mocked-hero-'.concat(this.getNextHeroIdStringified());
+
     return {
       id: id,
       type: HeroType.MINION,
@@ -65,7 +68,7 @@ export class HeroBuilderService {
       growth: {
         lvl: 1,
         exp: 0,
-        expRatio: 1,
+        expRatio: BALANCE.HERO_INITIAL_EXP_RATIO,
         expToLevelUp: 50,
         baseRequiredExp: 50,
       },
@@ -73,6 +76,7 @@ export class HeroBuilderService {
         baseStress: 0.5,
         stressFactor: 0.5,
         stressResistance: 0.03,
+        learningRate: 0.5,
       },
       attributes: this.attributeMapper.getMappedClone(id, DEV_ATTRIBUTES),
       organicPps: 0.2,

@@ -21,7 +21,6 @@ export class TicketBuilderService {
     let totalCp = BALANCE.TICKET_INITIAL_CP;
     const id = this.finishedTickets() + 1;
     const randomType = this.getRandomTicketType();
-    const rewardMoney = Math.floor(totalCp / 2);
     const description = this.ticketNameGeneratorService.generateName(randomType);
     const alias = `${this.generateAlias(project.description)}-${id}`;
 
@@ -33,7 +32,6 @@ export class TicketBuilderService {
       totalCp,
       remainingCp: totalCp,
       isCompleted: false,
-      rewardMoney,
     };
   }
 

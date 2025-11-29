@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { HeroAttribute } from '../../types/hero-attribute';
 import { AttributeComponent } from '../attributes/attribute.component';
-import { Dimensions } from '../../../../../core/types/dimensions.model';
+import { Dimensions } from '../../../../../shared/types/dimensions.model';
 import { AttributeGridBuilderService } from '../../services/attribute-grid-builder.service';
 import { TranslatePipe } from '@ngx-translate/core';
 import { UpperCasePipe } from '@angular/common';

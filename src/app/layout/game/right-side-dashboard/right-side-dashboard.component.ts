@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ResourceSummaryComponent } from '../../../domains/resources/components/header-resources-counter/resource-summary.component';
 import { AttributeStackService } from '../../../domains/upgrades/attributes/services/attribute-stack.service';
 import { HeroAttribute } from '../../../domains/upgrades/attributes/types/hero-attribute';
-import { Dimensions } from '../../../core/types/dimensions.model';
+import { Dimensions } from '../../../shared/types/dimensions.model';
 import { AttributesGridComponent } from '../../../domains/upgrades/attributes/components/attributes-grid/attributes-grid.component';
 
 @Component({
