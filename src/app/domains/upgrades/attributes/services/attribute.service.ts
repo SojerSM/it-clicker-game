@@ -5,6 +5,7 @@ import { Hero } from '../../../heroes/types/hero.model';
 import { AttributeType } from '../types/enums/attribute-type.enum';
 import { HeroAttribute } from '../types/hero-attribute';
 import { ImpactService } from '../../../impact/impact.service';
+import { AttributeTarget } from '../types/enums/attribute-target.enum';
 
 @Injectable({ providedIn: 'root' })
 export class AttributeService {
@@ -44,32 +45,22 @@ export class AttributeService {
   }
 
   private applyAttributeImpact(targetHero: Hero, attribute: HeroAttribute) {
-    if (targetHero.type === HeroType.MINION) {
-      switch (attribute.type) {
-        case AttributeType.ADD: {
-          targetHero.organicPps += attribute.value;
-          targetHero.totalPps += attribute.value;
-          break;
-        }
-        case AttributeType.MULTIPLY: {
+    switch (attribute.target) {
+      case AttributeTarget.MPI: {
+        this.gameStateService.updateImpact((state) => {
+          state.organicMpi *= attribute.value;
+        });
+        break;
+      }
+      case AttributeTarget.PPS: {
+        if (targetHero.type === HeroType.MINION) {
           targetHero.organicPps *= attribute.value;
           targetHero.totalPps *= attribute.value;
-          break;
         }
+        break;
       }
-    } else if (targetHero.type === HeroType.PLAYER) {
-      switch (attribute.type) {
-        case AttributeType.ADD: {
-          this.gameStateService.updateImpact((state) => {
-            state.organicMpi += attribute.value;
-          });
-          break;
-        }
-        case AttributeType.MULTIPLY: {
-          this.gameStateService.updateImpact((state) => {
-            state.organicMpi *= attribute.value;
-          });
-        }
+      case AttributeTarget.LEARNING_RATE: {
+        targetHero.stats.learningRate *= attribute.value;
       }
     }
   }

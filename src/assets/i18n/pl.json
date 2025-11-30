@@ -20,6 +20,7 @@
     },
     "stats": {
       "learning_rate": "Tempo uczenia się",
+      "learning_rate_multiplier": "Mnożnik tempa uczenia",
       "stress_factor": "Poziom stresu",
       "stress_resistance": "Odporność na stres"
     }
