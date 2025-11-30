@@ -1,11 +1,11 @@
 import { computed, Injectable } from '@angular/core';
-import { TicketNameGeneratorService } from './ticket-name-generator.service';
-import { TicketType } from '../types/ticket-type.enum';
-import { Project } from '../../projects/types/project.model';
-import { Ticket } from '../types/ticket.model';
-import { BALANCE } from '../../../../core/config/state/balance';
-import { GameStateService } from '../../../../core/services/game-state.service';
 import { TranslateService } from '@ngx-translate/core';
+import { GameStateService } from '../../../../core/services/game-state.service';
+import { Project } from '../../projects/types/project.model';
+import { TicketType } from '../types/ticket-type.enum';
+import { Ticket } from '../types/ticket.model';
+import { TicketNameGeneratorService } from './ticket-name-generator.service';
+import { BALANCE } from '../../../../core/config/state/balance';
 
 @Injectable({ providedIn: 'root' })
 export class TicketBuilderService {
@@ -18,11 +18,16 @@ export class TicketBuilderService {
   ) {}
 
   getRandomTicket(project: Project): Ticket {
-    let totalCp = BALANCE.TICKET_INITIAL_CP;
     const id = this.finishedTickets() + 1;
     const randomType = this.getRandomTicketType();
     const description = this.ticketNameGeneratorService.generateName(randomType);
     const alias = `${this.generateAlias(project.description)}-${id}`;
+
+    let totalCp = this.calculateComplexity(randomType);
+
+    this.gameStateService.updateTicket((state) => {
+      Math.round((state.currentBaseCp *= BALANCE.TICKET_CP_MULTIPLIER));
+    });
 
     return {
       id,
@@ -33,6 +38,11 @@ export class TicketBuilderService {
       remainingCp: totalCp,
       isCompleted: false,
     };
+  }
+
+  private calculateComplexity(type: TicketType): number {
+    const state = this.gameStateService.ticketState();
+    return Math.round(state.currentBaseCp * state.typeMultipliers[type].cp);
   }
 
   private generateAlias(name: string): string {

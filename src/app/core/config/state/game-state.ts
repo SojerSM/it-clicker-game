@@ -24,5 +24,15 @@ export const INITIAL_GAME_STATE: GameState = {
   tickets: {
     active: [] as Ticket[],
     finished: 0,
+    currentBaseCp: 20,
+    typeMultipliers: {
+      feature: { cp: 1, reward: 1.25 },
+      maintenance: { cp: 1.5, reward: 1 },
+      bugfix: { cp: 0.8, reward: 0.5 },
+      hotfix: { cp: 1.2, reward: 0.75 },
+      testing: { cp: 2, reward: 0.5 },
+      documentation: { cp: 0.5, reward: 0.25 },
+      refactoring: { cp: 2.5, reward: 0.5 },
+    },
   },
 };

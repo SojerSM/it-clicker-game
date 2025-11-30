@@ -4,7 +4,7 @@
   <div class="ticket__details">
     <div class="ticket__details__info">
       <div class="ticket__type-tag" [style.background]="tagColor">
-        <span>{{ ticket.type }}</span>
+        <span>{{ ticket.type | uppercase }}</span>
       </div>
       <span>{{ ticket.alias }}</span>
     </div>

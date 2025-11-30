@@ -29,4 +29,13 @@ export interface ProjectState {
 export interface TicketState {
   active: Ticket[];
   finished: number;
+  currentBaseCp: number;
+  typeMultipliers: TicketTypeMultipliers;
 }
+
+export interface TicketTypeMultiplier {
+  cp: number;
+  reward: number;
+}
+
+export type TicketTypeMultipliers = Record<string, TicketTypeMultiplier>;
