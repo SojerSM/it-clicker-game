@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component, EventEmitter, Input, Output, signal } from '@angular/core';
 import { GameStateService } from '../../../../../core/services/game-state.service';
 import { HeroCardRegularComponent } from '../../../../../domains/heroes/components/hero-cards/card-regular/hero-card-regular.component';
 import { HeroCardSimplifiedComponent } from '../../../../../domains/heroes/components/hero-cards/card-simplified/hero-card-simplified.component';
@@ -11,6 +11,7 @@ import { HeroAttributesComponent } from '../../../../../domains/heroes/component
 import { Tab } from '../../../../../shared/types/tab';
 import { HeroOverviewComponent } from '../../../../../domains/heroes/components/hero-overview/hero-overview.component';
 import { TranslatePipe } from '@ngx-translate/core';
+import { ActionsPanelService } from '../../actions-panel.service';
 
 @Component({
   selector: 'app-hero-actions',
@@ -19,16 +20,23 @@ import { TranslatePipe } from '@ngx-translate/core';
   styleUrl: './hero-actions.component.scss',
 })
 export class HeroActionsComponent {
-  tabs: Tab[] = [
+  @Input() activeTab!: Tab;
+  @Input({ required: true }) tabs!: Tab[];
+  @Output() tabChange = new EventEmitter<Tab>();
+
+  heroTabs: Tab[] = [
     { id: 1, title: 'hero.label.overview', component: HeroOverviewComponent },
     { id: 2, title: 'hero.label.equipment', component: HeroEquipmentComponent },
     { id: 3, title: 'hero.label.stats', component: HeroStatsComponent },
     { id: 4, title: 'hero.label.attributes', component: HeroAttributesComponent },
   ];
-  activeTab = signal<Tab>(this.tabs[0]);
+  heroActiveTab = signal<Tab>(this.heroTabs[0]);
   selectedHeroId = signal(0);
 
-  constructor(private gameStateService: GameStateService, private hireService: HireService) {}
+  constructor(
+    private gameStateService: GameStateService,
+    private actionsPanelService: ActionsPanelService
+  ) {}
 
   get heroes(): Hero[] {
     return this.gameStateService.heroState().owned;
@@ -44,14 +52,11 @@ export class HeroActionsComponent {
   }
 
   switchTab(tab: Tab): void {
-    this.activeTab.set(tab);
+    this.heroActiveTab.set(tab);
   }
 
   hire(): void {
-    const heroesAmount = this.gameStateService.heroState().owned.length;
-
-    if (heroesAmount >= 2) return;
-
-    this.hireService.hire();
+    const tab = this.actionsPanelService.getTabs()[1];
+    this.actionsPanelService.setActiveTab(tab);
   }
 }

@@ -1,7 +1,14 @@
 <section class="actions-panel">
   <div class="actions-panel__content">
     <app-project-progress />
-    <ng-container *ngComponentOutlet="activeTab().component"></ng-container>
+    <ng-container
+      *ngComponentOutlet="
+        activeTab.component;
+        inputs: { activeTab: activeTab, tabs };
+        outputs: { tabChange: switchTab }
+      "
+    >
+    </ng-container>
   </div>
-  <app-vertical-navbar [tabs]="tabs" (activeTab)="switchTab($event)" />
+  <app-vertical-navbar [tabs]="tabs" />
 </section>
