@@ -3,13 +3,13 @@
     <div class="hero-actions__overview-info">
       <app-hero-card-regular [hero]="heroes[selectedHeroId()]" />
       <ul class="hero-actions__overview-info-tabs">
-        @for(tab of tabs; track tab.id) {
+        @for(tab of heroTabs; track tab.id) {
         <li (click)="switchTab(tab)">{{ tab.title | translate }}</li>
         }
       </ul>
       <div>
         <ng-container
-          *ngComponentOutlet="activeTab().component; inputs: { hero: selectedHero }"
+          *ngComponentOutlet="heroActiveTab().component; inputs: { hero: selectedHero }"
         ></ng-container>
       </div>
     </div>

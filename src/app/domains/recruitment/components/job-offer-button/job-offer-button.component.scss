@@ -1,0 +1,13 @@
+.job-offer-button {
+  cursor: pointer;
+
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+
+  outline: none;
+  font-size: 1.25rem;
+}
+
+.disabled {
+  cursor: not-allowed;
+}

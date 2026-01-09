@@ -1,9 +1,9 @@
-import { Component, signal } from '@angular/core';
-import { VerticalNavbarComponent } from './vertical-navbar/vertical-navbar.component';
-import { Tab } from '../../../shared/types/tab';
 import { CommonModule } from '@angular/common';
-import { HeroActionsComponent } from './actions/hero-actions/hero-actions.component';
+import { Component } from '@angular/core';
 import { ProjectProgressComponent } from '../../../domains/progress/projects/components/progress-header/project-progress.component';
+import { VerticalNavbarComponent } from './vertical-navbar/vertical-navbar.component';
+import { ActionsPanelService } from './actions-panel.service';
+import { Tab } from '../../../shared/types/tab';
 
 @Component({
   selector: 'app-actions-panel',
@@ -12,11 +12,13 @@ import { ProjectProgressComponent } from '../../../domains/progress/projects/com
   styleUrl: './actions-panel.component.scss',
 })
 export class ActionsPanelComponent {
-  tabs: Tab[] = [{ id: 1, title: 'Test 1', component: HeroActionsComponent }];
+  constructor(private actionsPanelService: ActionsPanelService) {}
 
-  activeTab = signal<Tab>(this.tabs[0]);
+  get tabs(): Tab[] {
+    return this.actionsPanelService.getTabs();
+  }
 
-  switchTab(tab: Tab): void {
-    this.activeTab.set(tab);
+  get activeTab(): Tab {
+    return this.actionsPanelService.getActiveTab();
   }
 }

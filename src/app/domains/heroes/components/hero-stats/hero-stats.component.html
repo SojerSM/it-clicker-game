@@ -3,19 +3,23 @@
   <ul class="hero-stats__list">
     <li class="hero-stats__list-item">
       <span>{{ impactLabel | translate }}</span>
-      <span> {{ impact | numberFormat : 2 }}</span>
+      <span>{{ impact | numberFormat : 2 }}</span>
     </li>
     <li class="hero-stats__list-item">
       <span>{{ 'hero.stats.stress_factor' | translate }}</span>
-      <span> {{ hero.stats.stressFactor | numberFormat : 2 }}</span>
+      <span>{{ hero.stats.stressFactor | numberFormat : 2 }}</span>
     </li>
     <li class="hero-stats__list-item">
       <span>{{ 'hero.stats.stress_resistance' | translate }}</span>
-      <span> {{ hero.stats.stressResistance | percent }}</span>
+      <span>{{ hero.stats.stressResistance | percent }}</span>
     </li>
     <li class="hero-stats__list-item">
       <span>{{ 'hero.stats.learning_rate' | translate }}</span>
-      <span> {{ hero.stats.learningRate }}</span>
+      <span>{{ hero.stats.learningRate }}</span>
+    </li>
+    <li class="hero-stats__list-item">
+      <span>{{ 'hero.stats.learning_rate_multiplier' | translate }}</span>
+      <span>{{ hero.growth.expRatio }}</span>
     </li>
   </ul>
 </div>

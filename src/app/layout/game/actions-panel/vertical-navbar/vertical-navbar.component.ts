@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Tab } from '../../../../shared/types/tab';
 import { LangSelectorComponent } from './lang-selector/lang-selector.component';
+import { ActionsPanelService } from '../actions-panel.service';
 
 @Component({
   selector: 'app-vertical-navbar',
@@ -10,9 +11,10 @@ import { LangSelectorComponent } from './lang-selector/lang-selector.component';
 })
 export class VerticalNavbarComponent {
   @Input({ required: true }) tabs!: Tab[];
-  @Output() activeTab = new EventEmitter<Tab>();
+
+  constructor(private actionsPanelService: ActionsPanelService) {}
 
   switchTab(tab: Tab): void {
-    this.activeTab.emit(tab);
+    this.actionsPanelService.setActiveTab(tab);
   }
 }

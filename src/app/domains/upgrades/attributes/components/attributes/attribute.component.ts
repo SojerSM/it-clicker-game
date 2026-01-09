@@ -1,8 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { HeroAttribute } from '../../types/hero-attribute';
 import { GameStateService } from '../../../../../core/services/game-state.service';
 import { AttributeService } from '../../services/attribute.service';
-import { Hero } from '../../../../heroes/types/hero.model';
+import { HeroAttribute } from '../../types/hero-attribute';
 
 @Component({
   selector: 'app-attribute',

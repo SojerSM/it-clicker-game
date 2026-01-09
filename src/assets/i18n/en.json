@@ -20,6 +20,7 @@
     },
     "stats": {
       "learning_rate": "Learning rate",
+      "learning_rate_multiplier": "Learning rate multiplier",
       "stress_factor": "Stress factor",
       "stress_resistance": "Stress resistance"
     }

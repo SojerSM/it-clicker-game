@@ -54,9 +54,15 @@ export class TicketService {
   }
 
   private grantReward(ticket: Ticket): void {
+    const ticketState = this.gameStateService.ticketState();
     const projectMoneyRewardRatio = this.gameStateService.projectState().current.moneyRewardRatio;
 
-    this.resourceService.increaseMoney(ticket.totalCp * projectMoneyRewardRatio);
+    const { cp: cpMultiplier, reward: rewardMultiplier } = ticketState.typeMultipliers[ticket.type];
+
+    const baseCp = ticket.totalCp / cpMultiplier;
+    const reward = baseCp * rewardMultiplier * projectMoneyRewardRatio;
+
+    this.resourceService.increaseMoney(reward);
     this.projectService.applyProgress(ticket.totalCp);
   }
 }

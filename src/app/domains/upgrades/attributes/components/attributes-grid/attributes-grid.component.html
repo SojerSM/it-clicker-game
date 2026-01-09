@@ -5,7 +5,7 @@
   @for (row of availableAttributes; track $index) {
   <li class="hero-attributes-grid__defined-row">
     <ul class="hero-attributes-grid__defined-row-inner">
-      @for (attribute of row; track attribute.id) {
+      @for (attribute of row; track compoundAttributeGridId(attribute)) {
       <li class="hero-attributes-grid__defined-item">
         <app-attribute [attribute]="attribute" />
       </li>
@@ -16,7 +16,7 @@
 </ul>
 } @else {
 <ul class="hero-attributes-grid" [class.border]="hasBorder">
-  @for (attribute of availableAttributes[0]; track attribute.id) {
+  @for (attribute of availableAttributes[0]; track compoundAttributeGridId(attribute)) {
   <li class="hero-attributes-grid__item"><app-attribute [attribute]="attribute" /></li>
   }
 </ul>

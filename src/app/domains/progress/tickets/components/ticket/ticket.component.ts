@@ -7,10 +7,11 @@ import { ProgressBarComponent } from '../../../../../shared/components/progress-
 import { GameStateService } from '../../../../../core/services/game-state.service';
 import { HeroService } from '../../../../heroes/services/hero.service';
 import { ClickableImpactDirective } from '../../../../../shared/directives/clickable-impact.directive';
+import { UpperCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-ticket',
-  imports: [NumberFormat, ProgressBarComponent, ClickableImpactDirective],
+  imports: [NumberFormat, ProgressBarComponent, ClickableImpactDirective, UpperCasePipe],
   templateUrl: './ticket.component.html',
   styleUrl: './ticket.component.scss',
 })
