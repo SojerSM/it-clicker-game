@@ -33,4 +33,12 @@ export class AttributesGridComponent {
       this.gridSize.y
     );
   }
+
+  compoundAttributeGridId(attribute: HeroAttribute): string {
+    if (attribute.heroId) {
+      return attribute.id.concat(attribute.heroId);
+    } else {
+      return attribute.id;
+    }
+  }
 }
