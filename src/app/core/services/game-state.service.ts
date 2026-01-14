@@ -6,6 +6,7 @@ import {
   HeroState,
   ImpactState,
   ProjectState,
+  RecruitmentState,
   ResourceState,
   TicketState,
 } from '../types/state.model';
@@ -18,6 +19,7 @@ export class GameStateService {
   readonly resourceState = signal<ResourceState>(INITIAL_GAME_STATE.resource);
   readonly projectState = signal<ProjectState>(INITIAL_GAME_STATE.project);
   readonly ticketState = signal<TicketState>(INITIAL_GAME_STATE.tickets);
+  readonly recruitmentState = signal<RecruitmentState>(INITIAL_GAME_STATE.recruitment);
 
   reset(): void {
     this.impactState.set(INITIAL_GAME_STATE.impact);
@@ -26,6 +28,7 @@ export class GameStateService {
     this.resourceState.set(INITIAL_GAME_STATE.resource);
     this.projectState.set(INITIAL_GAME_STATE.project);
     this.ticketState.set(INITIAL_GAME_STATE.tickets);
+    this.recruitmentState.set(INITIAL_GAME_STATE.recruitment);
   }
 
   setState(state: GameState): void {
@@ -35,6 +38,7 @@ export class GameStateService {
     this.resourceState.set(state.resource);
     this.projectState.set(state.project);
     this.ticketState.set(state.tickets);
+    this.recruitmentState.set(state.recruitment);
   }
 
   setImpact(impact: ImpactState): void {
@@ -61,6 +65,10 @@ export class GameStateService {
     this.ticketState.set(ticket);
   }
 
+  setRecruitment(recruitment: RecruitmentState): void {
+    this.recruitmentState.set(recruitment);
+  }
+
   updateImpact(mutator: (impact: ImpactState) => void) {
     this.updateSlice(this.impactState, mutator);
   }
@@ -83,6 +91,10 @@ export class GameStateService {
 
   updateTicket(mutator: (ticket: TicketState) => void) {
     this.updateSlice(this.ticketState, mutator);
+  }
+
+  updateRecruitment(mutator: (recruitment: RecruitmentState) => void) {
+    this.updateSlice(this.recruitmentState, mutator);
   }
 
   private updateSlice<T>(slice: WritableSignal<T>, mutator: (state: T) => void): void {

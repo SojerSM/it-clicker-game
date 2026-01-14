@@ -14,6 +14,7 @@ export class GameStateBuilder {
       resource: structuredClone(this.gameStateService.resourceState()),
       project: structuredClone(this.gameStateService.projectState()),
       tickets: structuredClone(this.gameStateService.ticketState()),
+      recruitment: structuredClone(this.gameStateService.recruitmentState()),
     };
   }
 }
