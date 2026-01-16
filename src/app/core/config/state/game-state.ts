@@ -35,4 +35,8 @@ export const INITIAL_GAME_STATE: GameState = {
       refactoring: { cp: 2.5, reward: 0.5 },
     },
   },
+  recruitment: {
+    effectiveness: 0,
+    completedProcesses: 0,
+  },
 };

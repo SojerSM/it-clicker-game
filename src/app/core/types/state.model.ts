@@ -38,4 +38,9 @@ export interface TicketTypeMultiplier {
   reward: number;
 }
 
+export interface RecruitmentState {
+  effectiveness: number;
+  completedProcesses: number;
+}
+
 export type TicketTypeMultipliers = Record<string, TicketTypeMultiplier>;
