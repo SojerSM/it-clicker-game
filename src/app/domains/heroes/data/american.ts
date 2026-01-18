@@ -1,4 +1,4 @@
-export const MALE_HERO_NAMES_EN: string[] = [
+export const AMERICAN_MALE_HERO_NAMES: string[] = [
   'James',
   'Michael',
   'John',
@@ -14,7 +14,7 @@ export const MALE_HERO_NAMES_EN: string[] = [
   'Peter',
 ];
 
-export const FEMALE_HERO_NAMES_EN: string[] = [
+export const AMERICAN_FEMALE_HERO_NAMES: string[] = [
   'Emily',
   'Sarah',
   'Jessica',
@@ -31,7 +31,7 @@ export const FEMALE_HERO_NAMES_EN: string[] = [
   'Maggie',
 ];
 
-export const SURNAMES_EN: string[] = [
+export const AMERICAN_SURNAMES: string[] = [
   'Smith',
   'Johnson',
   'Brown',
@@ -54,7 +54,7 @@ export const SURNAMES_EN: string[] = [
   'Turner',
 ];
 
-export const EDUCATION_PRESTIGIOUS_EN: string[] = [
+export const AMERICAN_EDUCATION_PRESTIGIOUS: string[] = [
   'Harvard University',
   'Massachusetts Institute of Technology',
   'Stanford University',
@@ -62,15 +62,14 @@ export const EDUCATION_PRESTIGIOUS_EN: string[] = [
   'University of Cambridge',
 ];
 
-export const EDUCATION_REGULAR_EN: string[] = [
+export const AMERICAN_EDUCATION_REGULAR: string[] = [
   'University of Michigan',
   'Pennsylvania State University',
   'University of Texas',
   'Ohio State University',
-  'University of London',
 ];
 
-export const EDUCATION_MEME_EN: string[] = [
+export const AMERICAN_EDUCATION_MEME: string[] = [
   'YouTube Academy of Success',
   'McDonalds Internship',
   'Vibe Coding Udemy Course',

@@ -9,7 +9,7 @@ import { HireService } from '../../services/hire.service';
   styleUrl: './job-offer-button.component.scss',
 })
 export class JobOfferButtonComponent {
-  readonly PRICE: number = 50;
+  readonly PRICE: number = 0;
 
   constructor(private gameStateService: GameStateService, private hireService: HireService) {}
 

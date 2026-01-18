@@ -1,43 +1,43 @@
 import {
-  EDUCATION_MEME_ASIA,
-  EDUCATION_PRESTIGIOUS_ASIA,
-  EDUCATION_REGULAR_ASIA,
-  FEMALE_HERO_NAMES_ASIA,
-  MALE_HERO_NAMES_ASIA,
-  SURNAMES_ASIA,
-} from './asian';
+  AMERICAN_EDUCATION_MEME,
+  AMERICAN_EDUCATION_PRESTIGIOUS,
+  AMERICAN_EDUCATION_REGULAR,
+  AMERICAN_FEMALE_HERO_NAMES,
+  AMERICAN_MALE_HERO_NAMES,
+  AMERICAN_SURNAMES,
+} from './american';
 import {
-  EDUCATION_MEME_EN,
-  EDUCATION_PRESTIGIOUS_EN,
-  EDUCATION_REGULAR_EN,
-  FEMALE_HERO_NAMES_EN,
-  MALE_HERO_NAMES_EN,
-  SURNAMES_EN,
-} from './english';
+  ASIAN_EDUCATION_MEME,
+  ASIAN_EDUCATION_PRESTIGIOUS,
+  ASIAN_EDUCATION_REGULAR,
+  ASIAN_FEMALE_HERO_NAMES,
+  ASIAN_MALE_HERO_NAMES,
+  ASIAN_SURNAMES,
+} from './asian';
 
 export const HERO_PARTS = {
-  asian: {
+  american: {
     name: {
-      male: MALE_HERO_NAMES_ASIA,
-      female: FEMALE_HERO_NAMES_ASIA,
+      male: AMERICAN_MALE_HERO_NAMES,
+      female: AMERICAN_FEMALE_HERO_NAMES,
     },
-    surname: SURNAMES_ASIA,
+    surname: AMERICAN_SURNAMES,
     education: {
-      prestigious: EDUCATION_PRESTIGIOUS_ASIA,
-      regular: EDUCATION_REGULAR_ASIA,
-      meme: EDUCATION_MEME_ASIA,
+      prestigious: AMERICAN_EDUCATION_PRESTIGIOUS,
+      regular: AMERICAN_EDUCATION_REGULAR,
+      meme: AMERICAN_EDUCATION_MEME,
     },
   },
-  english: {
+  asian: {
     name: {
-      male: MALE_HERO_NAMES_EN,
-      female: FEMALE_HERO_NAMES_EN,
+      male: ASIAN_MALE_HERO_NAMES,
+      female: ASIAN_FEMALE_HERO_NAMES,
     },
-    surname: SURNAMES_EN,
+    surname: ASIAN_SURNAMES,
     education: {
-      prestigious: EDUCATION_PRESTIGIOUS_EN,
-      regular: EDUCATION_REGULAR_EN,
-      meme: EDUCATION_MEME_EN,
+      prestigious: ASIAN_EDUCATION_PRESTIGIOUS,
+      regular: ASIAN_EDUCATION_REGULAR,
+      meme: ASIAN_EDUCATION_MEME,
     },
   },
 };

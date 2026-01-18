@@ -1,4 +1,4 @@
-export const MALE_HERO_NAMES_ASIA: string[] = [
+export const ASIAN_MALE_HERO_NAMES: string[] = [
   'Hiroshi',
   'Kenji',
   'Takumi',
@@ -16,7 +16,7 @@ export const MALE_HERO_NAMES_ASIA: string[] = [
   'Subaru',
 ];
 
-export const FEMALE_HERO_NAMES_ASIA: string[] = [
+export const ASIAN_FEMALE_HERO_NAMES: string[] = [
   'Yui',
   'Aiko',
   'Sakura',
@@ -34,7 +34,7 @@ export const FEMALE_HERO_NAMES_ASIA: string[] = [
   'Toyota',
 ];
 
-export const SURNAMES_ASIA: string[] = [
+export const ASIAN_SURNAMES: string[] = [
   'Tanaka',
   'Suzuki',
   'Sato',
@@ -57,7 +57,7 @@ export const SURNAMES_ASIA: string[] = [
   'Zhao',
 ];
 
-export const EDUCATION_PRESTIGIOUS_ASIA: string[] = [
+export const ASIAN_EDUCATION_PRESTIGIOUS: string[] = [
   'University of Tokyo',
   'Kyoto University',
   'Seoul National University',
@@ -65,7 +65,7 @@ export const EDUCATION_PRESTIGIOUS_ASIA: string[] = [
   'Tsinghua University',
 ];
 
-export const EDUCATION_REGULAR_ASIA: string[] = [
+export const ASIAN_EDUCATION_REGULAR: string[] = [
   'Osaka University',
   'Keio University',
   'Yonsei University',
@@ -73,7 +73,7 @@ export const EDUCATION_REGULAR_ASIA: string[] = [
   'National Taiwan University',
 ];
 
-export const EDUCATION_MEME_ASIA: string[] = [
+export const ASIAN_EDUCATION_MEME: string[] = [
   'Sushi Rolling School',
   'Bullshitsu Martial Academy',
   'Ramen & Relaxation University',
