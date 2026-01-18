@@ -1,18 +1,20 @@
 import { Injectable } from '@angular/core';
 import { GameStateService } from '../../../core/services/game-state.service';
-import { HeroBuilderService } from '../../heroes/services/hero-builder.service';
 import { HeroType } from '../../heroes/types/enums/hero-type.enum';
 import { HeroRole } from '../../heroes/types/enums/hero-role.enum';
+import { HeroGeneratorService } from '../../heroes/services/hero-generator.service';
 
 @Injectable({ providedIn: 'root' })
 export class HireService {
   constructor(
-    private heroBuilder: HeroBuilderService,
-    private gameStateService: GameStateService
+    private gameStateService: GameStateService,
+    private heroGeneratorService: HeroGeneratorService
   ) {}
 
   hire(): void {
-    const hero = this.heroBuilder.build(HeroRole.PROGRAMMER);
+    const hero = this.heroGeneratorService.generate(HeroRole.PROGRAMMER);
+
+    console.log(hero);
 
     this.gameStateService.updateHeroes((state) => {
       state.owned.push(hero);

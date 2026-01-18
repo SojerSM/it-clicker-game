@@ -2,7 +2,7 @@
   <app-hero-avatar [hero]="hero" [size]="size" />
   <div class="hero-card__summary">
     <div class="hero-card__summary-header">
-      <span>{{ hero.name }}</span>
+      <span>{{ hero.name }} {{ hero.surname }}</span>
       <app-tag [label]="hero.role" />
       <app-stress-status-tag [hero]="hero" />
     </div>

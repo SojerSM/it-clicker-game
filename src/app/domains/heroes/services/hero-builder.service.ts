@@ -1,24 +1,20 @@
 import { Injectable } from '@angular/core';
+import { BALANCE } from '../../../core/config/state/balance';
+import { Gender } from '../../../shared/types/enums/gender.enum';
+import { CEO_ATTRIBUTES } from '../../upgrades/attributes/presets/ceo-attributes';
+import { AttributeMapperService } from '../../upgrades/attributes/services/attribute-mapper.service';
 import { HeroRole } from '../types/enums/hero-role.enum';
 import { HeroType } from '../types/enums/hero-type.enum';
 import { Hero } from '../types/hero.model';
-import { DEV_ATTRIBUTES } from '../../upgrades/attributes/presets/dev-attributes';
-import { GameStateService } from '../../../core/services/game-state.service';
-import { CEO_ATTRIBUTES } from '../../upgrades/attributes/presets/ceo-attributes';
-import { AttributeMapperService } from '../../upgrades/attributes/services/attribute-mapper.service';
-import { BALANCE } from '../../../core/config/state/balance';
 
 @Injectable({ providedIn: 'root' })
 export class HeroBuilderService {
   private builders: Record<HeroRole, () => Hero> = {
     [HeroRole.CEO]: () => this.buildCEO(),
-    [HeroRole.PROGRAMMER]: () => this.buildProgrammer(),
+    [HeroRole.PROGRAMMER]: () => this.buildCEO(), // temporary workaround
   };
 
-  constructor(
-    private gameStateService: GameStateService,
-    private attributeMapper: AttributeMapperService
-  ) {}
+  constructor(private attributeMapper: AttributeMapperService) {}
 
   build(role: HeroRole): Hero {
     const builder = this.builders[role];
@@ -30,6 +26,7 @@ export class HeroBuilderService {
     return builder();
   }
 
+  // temporary
   private buildCEO(): Hero {
     const id = 'hero-ceo';
 
@@ -37,7 +34,10 @@ export class HeroBuilderService {
       id: id,
       type: HeroType.PLAYER,
       role: HeroRole.CEO,
-      name: 'John Doe',
+      name: 'John',
+      surname: 'Doe',
+      gender: Gender.MALE,
+      education: 'XD school',
       avatar: 'assets/heroes/hero_male_avatar_01.png',
       growth: {
         lvl: 1,
@@ -54,39 +54,5 @@ export class HeroBuilderService {
       },
       attributes: this.attributeMapper.getMappedClone(id, CEO_ATTRIBUTES),
     };
-  }
-
-  private buildProgrammer(): Hero {
-    const id = 'mocked-hero-'.concat(this.getNextHeroIdStringified());
-
-    return {
-      id: id,
-      type: HeroType.MINION,
-      role: HeroRole.PROGRAMMER,
-      name: 'Peter Lookatyou',
-      avatar: 'assets/heroes/hero_male_avatar_02.png',
-      growth: {
-        lvl: 1,
-        exp: 0,
-        expRatio: BALANCE.HERO_INITIAL_EXP_RATIO,
-        expToLevelUp: 50,
-        baseRequiredExp: 50,
-      },
-      stats: {
-        baseStress: 0.5,
-        stressFactor: 0.5,
-        stressResistance: 0.03,
-        learningRate: 0.5,
-      },
-      attributes: this.attributeMapper.getMappedClone(id, DEV_ATTRIBUTES),
-      organicPps: 0.2,
-      totalPps: 0.2,
-    };
-  }
-
-  private getNextHeroIdStringified(): string {
-    const heroesAmount = this.gameStateService.heroState().owned.length;
-
-    return heroesAmount.toString();
   }
 }
