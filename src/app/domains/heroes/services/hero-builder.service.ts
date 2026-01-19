@@ -38,7 +38,7 @@ export class HeroBuilderService {
       surname: 'Doe',
       gender: Gender.MALE,
       education: 'XD school',
-      avatar: 'assets/heroes/hero_male_avatar_01.png',
+      avatar: 'assets/heroes/american/male/avatar_01.png',
       growth: {
         lvl: 1,
         exp: 0,

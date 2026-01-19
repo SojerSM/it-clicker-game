@@ -9,6 +9,7 @@ import { HeroRole } from '../types/enums/hero-role.enum';
 import { HeroType } from '../types/enums/hero-type.enum';
 import { Hero } from '../types/hero.model';
 import { AttributeMapperService } from '../../upgrades/attributes/services/attribute-mapper.service';
+import { HERO_AVATARS } from '../data/hero-avatars';
 
 @Injectable({ providedIn: 'root' })
 export class HeroGeneratorService {
@@ -25,6 +26,7 @@ export class HeroGeneratorService {
     const name = this.randomFrom(heroParts.name[gender]);
     const surname = this.randomFrom(heroParts.surname);
     const education = this.randomizeEducation(origin);
+    const avatar = this.randomizeAvatar(origin, gender);
 
     const id = 'mocked-hero-'.concat(this.gameStateService.heroState().owned.length.toString());
 
@@ -36,7 +38,7 @@ export class HeroGeneratorService {
       surname,
       gender,
       education,
-      avatar: 'assets/heroes/hero_male_avatar_02.png',
+      avatar,
       growth: {
         lvl: 1,
         exp: 0,
@@ -101,6 +103,11 @@ export class HeroGeneratorService {
     const values = Object.values(Gender);
     const randomIndex = Math.floor(Math.random() * values.length);
     return values[randomIndex];
+  }
+
+  private randomizeAvatar(origin: string, gender: string): string {
+    const pool = HERO_AVATARS[origin][gender];
+    return pool[Math.floor(Math.random() * pool.length)];
   }
 
   private randomFrom<T>(array: T[]): T {
