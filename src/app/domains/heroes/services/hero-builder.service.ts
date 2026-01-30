@@ -6,6 +6,7 @@ import { AttributeMapperService } from '../../upgrades/attributes/services/attri
 import { HeroRole } from '../types/enums/hero-role.enum';
 import { HeroType } from '../types/enums/hero-type.enum';
 import { Hero } from '../types/hero.model';
+import { GameStateService } from '../../../core/services/game-state.service';
 
 @Injectable({ providedIn: 'root' })
 export class HeroBuilderService {
@@ -14,7 +15,10 @@ export class HeroBuilderService {
     [HeroRole.PROGRAMMER]: () => this.buildCEO(), // temporary workaround
   };
 
-  constructor(private attributeMapper: AttributeMapperService) {}
+  constructor(
+    private attributeMapper: AttributeMapperService,
+    private gameStateService: GameStateService
+  ) {}
 
   build(role: HeroRole): Hero {
     const builder = this.builders[role];
@@ -29,6 +33,11 @@ export class HeroBuilderService {
   // temporary
   private buildCEO(): Hero {
     const id = 'hero-ceo';
+    const avatarPath = 'assets/heroes/american/male/avatar_01.png';
+
+    this.gameStateService.updateHeroes((state) => {
+      state.occupiedAvatars.push(avatarPath);
+    });
 
     return {
       id: id,
@@ -38,7 +47,7 @@ export class HeroBuilderService {
       surname: 'Doe',
       gender: Gender.MALE,
       education: 'XD school',
-      avatar: 'assets/heroes/american/male/avatar_01.png',
+      avatar: avatarPath,
       growth: {
         lvl: 1,
         exp: 0,

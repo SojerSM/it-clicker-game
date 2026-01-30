@@ -21,14 +21,18 @@ export class HeroGeneratorService {
   generate(role: HeroRole): Hero {
     const origin = this.randomizeOrigin();
     const gender = this.randomizeGender();
+    const avatar = this.randomizeAvatar(origin, gender);
+
     const heroParts = HERO_PARTS[origin];
 
     const name = this.randomFrom(heroParts.name[gender]);
     const surname = this.randomFrom(heroParts.surname);
     const education = this.randomizeEducation(origin);
-    const avatar = this.randomizeAvatar(origin, gender);
 
     const id = 'mocked-hero-'.concat(this.gameStateService.heroState().owned.length.toString());
+
+    this.gameStateService.updateHeroes((state) => state.occupiedAvatars.push(avatar));
+    console.log(this.gameStateService.heroState().occupiedAvatars);
 
     return {
       id: id,
@@ -107,7 +111,13 @@ export class HeroGeneratorService {
 
   private randomizeAvatar(origin: string, gender: string): string {
     const pool = HERO_AVATARS[origin][gender];
-    return pool[Math.floor(Math.random() * pool.length)];
+    const occupiedAvatars = this.gameStateService.heroState().occupiedAvatars;
+    const availableAvatars = pool.filter((avatar) => !occupiedAvatars.includes(avatar));
+
+    // in case if there's no available avatars (temporary)
+    const source = availableAvatars.length > 0 ? availableAvatars : pool;
+
+    return source[Math.floor(Math.random() * source.length)];
   }
 
   private randomFrom<T>(array: T[]): T {
