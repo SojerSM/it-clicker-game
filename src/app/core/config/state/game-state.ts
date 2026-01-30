@@ -13,6 +13,7 @@ export const INITIAL_GAME_STATE: GameState = {
   },
   heroes: {
     owned: [],
+    occupiedAvatars: [],
   },
   resource: {
     money: 0,

@@ -9,6 +9,7 @@ import { HeroRole } from '../types/enums/hero-role.enum';
 import { HeroType } from '../types/enums/hero-type.enum';
 import { Hero } from '../types/hero.model';
 import { AttributeMapperService } from '../../upgrades/attributes/services/attribute-mapper.service';
+import { HERO_AVATARS } from '../data/hero-avatars';
 
 @Injectable({ providedIn: 'root' })
 export class HeroGeneratorService {
@@ -20,6 +21,8 @@ export class HeroGeneratorService {
   generate(role: HeroRole): Hero {
     const origin = this.randomizeOrigin();
     const gender = this.randomizeGender();
+    const avatar = this.randomizeAvatar(origin, gender);
+
     const heroParts = HERO_PARTS[origin];
 
     const name = this.randomFrom(heroParts.name[gender]);
@@ -27,6 +30,9 @@ export class HeroGeneratorService {
     const education = this.randomizeEducation(origin);
 
     const id = 'mocked-hero-'.concat(this.gameStateService.heroState().owned.length.toString());
+
+    this.gameStateService.updateHeroes((state) => state.occupiedAvatars.push(avatar));
+    console.log(this.gameStateService.heroState().occupiedAvatars);
 
     return {
       id: id,
@@ -36,7 +42,7 @@ export class HeroGeneratorService {
       surname,
       gender,
       education,
-      avatar: 'assets/heroes/hero_male_avatar_02.png',
+      avatar,
       growth: {
         lvl: 1,
         exp: 0,
@@ -101,6 +107,17 @@ export class HeroGeneratorService {
     const values = Object.values(Gender);
     const randomIndex = Math.floor(Math.random() * values.length);
     return values[randomIndex];
+  }
+
+  private randomizeAvatar(origin: string, gender: string): string {
+    const pool = HERO_AVATARS[origin][gender];
+    const occupiedAvatars = this.gameStateService.heroState().occupiedAvatars;
+    const availableAvatars = pool.filter((avatar) => !occupiedAvatars.includes(avatar));
+
+    // in case if there's no available avatars (temporary)
+    const source = availableAvatars.length > 0 ? availableAvatars : pool;
+
+    return source[Math.floor(Math.random() * source.length)];
   }
 
   private randomFrom<T>(array: T[]): T {
