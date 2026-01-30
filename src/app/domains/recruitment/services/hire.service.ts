@@ -14,8 +14,6 @@ export class HireService {
   hire(): void {
     const hero = this.heroGeneratorService.generate(HeroRole.PROGRAMMER);
 
-    console.log(hero);
-
     this.gameStateService.updateHeroes((state) => {
       state.owned.push(hero);
     });
