@@ -19,6 +19,20 @@ export const HERO_AVATARS: Record<string, Record<string, string[]>> = {
       '/assets/heroes/asian/male/avatar_02.png',
       '/assets/heroes/asian/male/avatar_03.png',
     ],
-    female: ['/assets/heroes/asian/female/avatar_01.png'],
+    female: [
+      '/assets/heroes/asian/female/avatar_01.png',
+      '/assets/heroes/asian/female/avatar_02.png',
+    ],
+  },
+  indian: {
+    male: [
+      '/assets/heroes/indian/male/avatar_01.png',
+      '/assets/heroes/indian/male/avatar_02.png',
+      '/assets/heroes/indian/male/avatar_03.png',
+    ],
+    female: [
+      '/assets/heroes/indian/female/avatar_01.png',
+      '/assets/heroes/indian/female/avatar_02.png',
+    ],
   },
 };
