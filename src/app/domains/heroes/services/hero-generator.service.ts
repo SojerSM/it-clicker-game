@@ -32,7 +32,6 @@ export class HeroGeneratorService {
     const id = 'mocked-hero-'.concat(this.gameStateService.heroState().owned.length.toString());
 
     this.gameStateService.updateHeroes((state) => state.occupiedAvatars.push(avatar));
-    console.log(this.gameStateService.heroState().occupiedAvatars);
 
     return {
       id: id,
