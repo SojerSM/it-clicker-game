@@ -1,4 +1,8 @@
 .resource-summary {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
   width: 100%;
   border: 2px solid gray;
   padding: 0.25rem 0.5rem;
