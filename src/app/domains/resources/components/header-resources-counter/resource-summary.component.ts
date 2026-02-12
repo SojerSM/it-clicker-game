@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NumberFormat } from '../../../../core/pipes/number-format.pipe';
 import { GameStateService } from '../../../../core/services/game-state.service';
 import { TranslatePipe } from '@ngx-translate/core';
+import { DevModeService } from '../../../../core/services/dev-mode.service';
 
 @Component({
   selector: 'app-resource-summary',
@@ -10,9 +11,14 @@ import { TranslatePipe } from '@ngx-translate/core';
   styleUrl: './resource-summary.component.scss',
 })
 export class ResourceSummaryComponent {
-  constructor(private gameStateService: GameStateService) {}
+  constructor(private gameStateService: GameStateService, private devModeService: DevModeService) {}
 
   get money() {
     return this.gameStateService.resourceState().money;
+  }
+
+  //dev mode function
+  addMoney() {
+    this.devModeService.addMoney(1000);
   }
 }

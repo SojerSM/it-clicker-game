@@ -8,6 +8,8 @@ import { GameInitService } from './app/core/services/game-init.service';
 import { EffectService } from './app/domains/effect/services/effect.service';
 import { StressEffectService } from './app/domains/effect/services/stress-effect.service';
 import { ImpactEffectService } from './app/domains/effect/services/impact-effect.service';
+import { routes } from './app/app.routes';
+import { provideRouter } from '@angular/router';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -30,5 +32,6 @@ bootstrapApplication(AppComponent, {
         suffix: '.json',
       }),
     }),
+    provideRouter(routes),
   ],
 }).catch((err) => console.error(err));

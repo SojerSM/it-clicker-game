@@ -33,7 +33,7 @@ export class HeroBuilderService {
   // temporary
   private buildCEO(): Hero {
     const id = 'hero-ceo';
-    const avatarPath = 'assets/heroes/american/male/avatar_01.png';
+    const avatarPath = 'assets/images/heroes/american/male/avatar_01.png';
 
     this.gameStateService.updateHeroes((state) => {
       state.occupiedAvatars.push(avatarPath);
