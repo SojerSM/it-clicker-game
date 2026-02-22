@@ -1,2 +1,13 @@
-<p>HERO-CREATOR</p>
-<button (click)="startGame()">Start game</button>
+<main class="hero-creator">
+  <p>HERO-CREATOR</p>
+  <section class="hero-creator__container">
+    <div class="hero-creator__container-form">
+      <button class="hero-creator__container-form__btn" (click)="startGame()">
+        <img src="/assets/images/shared/dice.png" class="hero-creator__container-form__btn-dice" />
+      </button>
+    </div>
+    <div class="hero-creator__container-preview">
+      <app-creator-preview />
+    </div>
+  </section>
+</main>

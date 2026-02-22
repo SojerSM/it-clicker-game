@@ -1,0 +1,40 @@
+.hero-creator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+
+  height: 100%;
+  overflow: hidden;
+
+  .hero-creator__container {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+
+    .hero-creator__container-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+
+      .hero-creator__container-form__btn {
+        all: unset;
+        cursor: pointer;
+
+        transition: all 0.15s ease;
+
+        .hero-creator__container-form__btn-dice {
+          width: 128px;
+          height: 128px;
+          image-rendering: pixelated;
+        }
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+}

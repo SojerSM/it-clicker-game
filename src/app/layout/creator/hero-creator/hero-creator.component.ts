@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { GameInitService } from '../../../core/services/game-init.service';
+import { CreatorPreviewComponent } from './creator-preview/creator-preview.component';
 
 @Component({
   selector: 'app-hero-creator',
-  imports: [],
+  imports: [CreatorPreviewComponent],
   templateUrl: './hero-creator.component.html',
   styleUrl: './hero-creator.component.scss',
 })
