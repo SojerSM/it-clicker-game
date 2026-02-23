@@ -1,1 +1,19 @@
-<div class="creator-preview">Preview work in progress</div>
+<div class="creator-preview">
+  @if (draft === null) {
+  <p>No data</p>
+  } @else {
+  <div class="creator-preview__avatar">
+    <img [src]="draft.avatar" alt="draft" />
+  </div>
+  <div class="creator-preview__details">
+    <div class="creator-preview__details__full-name">
+      <span>{{ draft.name }} {{ draft.surname }}</span>
+    </div>
+    <div class="creator-preview__details__education">
+      <p>Education</p>
+      <span>{{ draft.education }}</span>
+    </div>
+  </div>
+
+  }
+</div>

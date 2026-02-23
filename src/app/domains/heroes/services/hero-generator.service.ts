@@ -109,6 +109,9 @@ export class HeroGeneratorService {
   }
 
   private randomizeAvatar(origin: string, gender: string): string {
+    // temporary!!!
+    if (origin !== 'american' && origin !== 'asian' && origin !== 'indian') return '';
+
     const pool = HERO_AVATARS[origin][gender];
     const occupiedAvatars = this.gameStateService.heroState().occupiedAvatars;
     const availableAvatars = pool.filter((avatar) => !occupiedAvatars.includes(avatar));

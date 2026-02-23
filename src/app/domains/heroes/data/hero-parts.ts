@@ -22,6 +22,13 @@ import {
   INDIAN_MALE_HERO_NAMES,
   INDIAN_SURNAMES,
 } from './presets/indian';
+import {
+  MIDDLE_EAST_EDUCATION_PRESTIGIOUS,
+  MIDDLE_EAST_EDUCATION_REGULAR,
+  MIDDLE_EAST_FEMALE_HERO_NAMES,
+  MIDDLE_EAST_MALE_HERO_NAMES,
+  MIDDLE_EAST_SURNAMES,
+} from './presets/middle-east';
 
 export const HERO_PARTS = {
   american: {
@@ -58,6 +65,18 @@ export const HERO_PARTS = {
       prestigious: INDIAN_EDUCATION_PRESTIGIOUS,
       regular: INDIAN_EDUCATION_REGULAR,
       meme: INDIAN_EDUCATION_MEME,
+    },
+  },
+  middle_east: {
+    name: {
+      male: MIDDLE_EAST_MALE_HERO_NAMES,
+      female: MIDDLE_EAST_FEMALE_HERO_NAMES,
+    },
+    surname: MIDDLE_EAST_SURNAMES,
+    education: {
+      prestigious: MIDDLE_EAST_EDUCATION_PRESTIGIOUS,
+      regular: MIDDLE_EAST_EDUCATION_REGULAR,
+      meme: MIDDLE_EAST_EDUCATION_PRESTIGIOUS,
     },
   },
 };

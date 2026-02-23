@@ -5,7 +5,6 @@ export const HERO_AVATARS: Record<string, Record<string, string[]>> = {
       '/assets/images/heroes/american/male/avatar_02.png',
       '/assets/images/heroes/american/male/avatar_03.png',
       '/assets/images/heroes/american/male/avatar_04.png',
-      '/assets/images/heroes/american/male/avatar_05.png',
     ],
     female: [
       '/assets/images/heroes/american/female/avatar_01.png',
@@ -18,6 +17,8 @@ export const HERO_AVATARS: Record<string, Record<string, string[]>> = {
       '/assets/images/heroes/asian/male/avatar_01.png',
       '/assets/images/heroes/asian/male/avatar_02.png',
       '/assets/images/heroes/asian/male/avatar_03.png',
+      '/assets/images/heroes/asian/male/avatar_04.png',
+      '/assets/images/heroes/asian/male/avatar_05.png',
     ],
     female: [
       '/assets/images/heroes/asian/female/avatar_01.png',

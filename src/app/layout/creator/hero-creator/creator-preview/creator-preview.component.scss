@@ -3,4 +3,48 @@
   padding: 0.5rem;
   gap: 0.5rem;
   border: 2px solid lightgray;
+
+  width: 40rem;
+
+  .creator-preview__avatar {
+    position: relative;
+    border: 2px solid gray;
+    overflow: hidden;
+
+    img {
+      width: 256px;
+      height: 256px;
+      position: relative;
+      image-rendering: pixelated;
+    }
+  }
+
+  .creator-preview__details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .creator-preview__details__full-name {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .creator-preview__details__education {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      p {
+        font-size: 0.75rem;
+        opacity: 0.5;
+        font-weight: bold;
+      }
+
+      span {
+        white-space: normal;
+        word-break: normal;
+        overflow-wrap: break-word;
+      }
+    }
+  }
 }
