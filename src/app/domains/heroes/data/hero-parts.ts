@@ -15,6 +15,14 @@ import {
   ASIAN_SURNAMES,
 } from './presets/asian';
 import {
+  EUROPEAN_EDUCATION_MEME,
+  EUROPEAN_EDUCATION_PRESTIGIOUS,
+  EUROPEAN_EDUCATION_REGULAR,
+  EUROPEAN_FEMALE_HERO_NAMES,
+  EUROPEAN_MALE_HERO_NAMES,
+  EUROPEAN_SURNAMES,
+} from './presets/european';
+import {
   INDIAN_EDUCATION_MEME,
   INDIAN_EDUCATION_PRESTIGIOUS,
   INDIAN_EDUCATION_REGULAR,
@@ -55,6 +63,18 @@ export const HERO_PARTS = {
       meme: ASIAN_EDUCATION_MEME,
     },
   },
+  european: {
+    name: {
+      male: EUROPEAN_MALE_HERO_NAMES,
+      female: EUROPEAN_FEMALE_HERO_NAMES,
+    },
+    surname: EUROPEAN_SURNAMES,
+    education: {
+      prestigious: EUROPEAN_EDUCATION_PRESTIGIOUS,
+      regular: EUROPEAN_EDUCATION_REGULAR,
+      meme: EUROPEAN_EDUCATION_MEME,
+    },
+  },
   indian: {
     name: {
       male: INDIAN_MALE_HERO_NAMES,
@@ -67,7 +87,7 @@ export const HERO_PARTS = {
       meme: INDIAN_EDUCATION_MEME,
     },
   },
-  middle_east: {
+  middleEast: {
     name: {
       male: MIDDLE_EAST_MALE_HERO_NAMES,
       female: MIDDLE_EAST_FEMALE_HERO_NAMES,

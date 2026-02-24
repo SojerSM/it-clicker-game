@@ -1,10 +1,10 @@
 export enum HeroOrigin {
   ASIAN = 'asian',
   AMERICAN = 'american',
+  EUROPEAN = 'european',
   INDIAN = 'indian',
-  MIDDLE_EAST = 'middle_east',
+  MIDDLE_EAST = 'middleEast',
   // AFRICAN = 'african',
-  // EUROPEAN = 'european',
   // EASTERN_EUROPEAN = 'eastern_european',
   // LATIN = 'latin',
 }
