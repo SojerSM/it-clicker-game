@@ -1,15 +1,16 @@
 .creator-preview {
   display: flex;
-  padding: 0.5rem;
-  gap: 0.5rem;
-  border: 2px solid lightgray;
-
-  width: 40rem;
+  gap: 1rem;
 
   .creator-preview__avatar {
     position: relative;
-    border: 2px solid gray;
     overflow: hidden;
+    width: 256px;
+    height: 256px;
+
+    background: rgba(255, 255, 255, 0.05);
+    border: 4px solid #8b5a2b;
+    border-radius: 0.5rem;
 
     img {
       width: 256px;
@@ -23,6 +24,9 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+
+    width: 20rem;
+    color: #fff7e9;
 
     .creator-preview__details__full-name {
       font-size: 1.2rem;

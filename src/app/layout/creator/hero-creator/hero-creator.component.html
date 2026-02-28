@@ -1,13 +1,24 @@
 <main class="hero-creator">
-  <p>HERO-CREATOR</p>
   <section class="hero-creator__container">
-    <div class="hero-creator__container-form">
-      <button class="hero-creator__container-form__btn" (click)="getRandomHero()">
-        <img src="/assets/images/shared/dice.png" class="hero-creator__container-form__btn-dice" />
-      </button>
-    </div>
-    <div class="hero-creator__container-preview">
-      <app-creator-preview />
+    <header class="hero-creator__container-header">HERO CREATOR</header>
+    <div class="hero-creator__container-content">
+      <div class="hero-creator__container-content__form">
+        <div class="hero-creator__container-content__form-randomize">
+          <button
+            class="hero-creator__container-content__form-randomize-btn"
+            (click)="getRandomHero()"
+          >
+            <img
+              src="/assets/images/shared/dice.png"
+              class="hero-creator__container-content__form-randomize-btn-dice"
+            />
+          </button>
+          <span class="hero-creator__container-content__form-randomize-label">Randomize</span>
+        </div>
+      </div>
+      <div class="hero-creator__container-content__preview">
+        <app-creator-preview />
+      </div>
     </div>
   </section>
 </main>
