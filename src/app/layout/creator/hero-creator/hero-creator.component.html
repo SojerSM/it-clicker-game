@@ -15,6 +15,10 @@
           </button>
           <span class="hero-creator__container-content__form-randomize-label">Randomize</span>
         </div>
+        <div class="hero-creator__container-content__form-selectors">
+          <app-category-selector [title]="originLabel" />
+          <app-category-selector [title]="genderLabel" />
+        </div>
       </div>
       <div class="hero-creator__container-content__preview">
         <app-creator-preview />
