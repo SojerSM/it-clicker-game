@@ -16,8 +16,16 @@
           <span class="hero-creator__container-content__form-randomize-label">Randomize</span>
         </div>
         <div class="hero-creator__container-content__form-selectors">
-          <app-category-selector [title]="originLabel" [options]="originOptions" />
-          <app-category-selector [title]="genderLabel" [options]="genderOptions" />
+          <app-category-selector
+            [title]="originLabel"
+            [options]="originOptions"
+            (indexChange)="originIndex.set($event)"
+          />
+          <app-category-selector
+            [title]="genderLabel"
+            [options]="genderOptions"
+            (indexChange)="genderIndex.set($event)"
+          />
         </div>
       </div>
       <div class="hero-creator__container-content__preview">

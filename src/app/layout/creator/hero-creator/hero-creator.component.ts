@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { GameInitService } from '../../../core/services/game-init.service';
 import { HeroGeneratorService } from '../../../domains/heroes/services/hero-generator.service';
@@ -18,6 +18,9 @@ export class HeroCreatorComponent {
   private STORAGE_KEY = 'ceoDraft';
   private ORIGIN_SELECTOR = 'Origin';
   private GENDER_SELECTOR = 'Gender';
+
+  originIndex = signal(0);
+  genderIndex = signal(0);
 
   constructor(
     private router: Router,
