@@ -2,11 +2,11 @@ import { Component, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { GameInitService } from '../../../core/services/game-init.service';
 import { HeroGeneratorService } from '../../../domains/heroes/services/hero-generator.service';
+import { HeroOrigin } from '../../../domains/heroes/types/enums/hero-origin.enum';
 import { HeroRole } from '../../../domains/heroes/types/enums/hero-role.enum';
+import { Gender } from '../../../shared/types/enums/gender.enum';
 import { CategorySelectorComponent } from './category-selector/category-selector.component';
 import { CreatorPreviewComponent } from './creator-preview/creator-preview.component';
-import { HeroOrigin } from '../../../domains/heroes/types/enums/hero-origin.enum';
-import { Gender } from '../../../shared/types/enums/gender.enum';
 
 @Component({
   selector: 'app-hero-creator',

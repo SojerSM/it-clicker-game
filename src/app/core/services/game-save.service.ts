@@ -2,10 +2,10 @@ import { Injectable, NgZone } from '@angular/core';
 import { interval, Subscription } from 'rxjs';
 import { GameState } from '../config/state/game-state.model';
 import { GameStateBuilder } from './game-state-builder.service';
+import { localStorageKeys } from '../config/localStorage';
 
 @Injectable({ providedIn: 'root' })
 export class GameSaveService {
-  private readonly STORAGE_KEY: string = 'gameState';
   private readonly INTERVAL_MS: number = 5000;
   private autoSaveJob?: Subscription;
 
@@ -31,11 +31,11 @@ export class GameSaveService {
 
   save(state: GameState) {
     console.info('Item saved to local storage.');
-    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(state));
+    localStorage.setItem(localStorageKeys.gameState, JSON.stringify(state));
   }
 
   load(): GameState | null {
-    const data = localStorage.getItem(this.STORAGE_KEY);
+    const data = localStorage.getItem(localStorageKeys.gameState);
     return data ? JSON.parse(data) : null;
   }
 }

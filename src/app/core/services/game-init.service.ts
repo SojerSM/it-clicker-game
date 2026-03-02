@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
-import { firstValueFrom } from 'rxjs';
-import { EffectService } from '../../domains/effect/services/effect.service';
-import { StressEffectService } from '../../domains/effect/services/stress-effect.service';
 import { HeroBuilderService } from '../../domains/heroes/services/hero-builder.service';
 import { HeroRole } from '../../domains/heroes/types/enums/hero-role.enum';
+import { Hero } from '../../domains/heroes/types/hero.model';
 import { ProjectService } from '../../domains/progress/projects/services/project.service';
 import { TicketQueueService } from '../../domains/progress/tickets/services/ticket-queue.service';
 import { GameLoopService } from './game-loop.service';
 import { GameSaveService } from './game-save.service';
 import { GameStateService } from './game-state.service';
-import { GameState } from '../config/state/game-state.model';
+import { localStorageKeys } from '../config/localStorage';
+import { GameStateBuilder } from './game-state-builder.service';
 
 @Injectable({ providedIn: 'root' })
 export class GameInitService {
@@ -20,18 +18,35 @@ export class GameInitService {
     private gameSaveService: GameSaveService,
     private ticketQueueService: TicketQueueService,
     private projectService: ProjectService,
-    private gameLoopService: GameLoopService
+    private gameLoopService: GameLoopService,
+    private gameStateBuilder: GameStateBuilder
   ) {}
 
   /**
    * Initializing game when no state is stored in browser memory
    */
   init(): void {
-    const ceo = this.heroBuilder.build(HeroRole.CEO);
+    const draft = JSON.parse(
+      localStorage.getItem(localStorageKeys.ceoDraft) ?? 'null'
+    ) as Hero | null;
 
-    this.gameStateService.updateHeroes((state) => {
-      state.owned.push(ceo);
-    });
+    if (draft) {
+      const ceo = this.heroBuilder.build(HeroRole.CEO);
+
+      this.gameStateService.updateHeroes((state) => {
+        state.owned.push(draft);
+      });
+
+      localStorage.removeItem(localStorageKeys.ceoDraft);
+
+      const state = this.gameStateBuilder.buildState();
+      this.gameSaveService.save(state);
+
+      this.gameStateService.updateHeroes((state) => {
+        state.owned.push(ceo);
+        state.occupiedAvatars.push(ceo.avatar);
+      });
+    }
 
     this.projectService.setFirstProject();
     this.manageState();
@@ -39,6 +54,7 @@ export class GameInitService {
 
     console.log('Init done');
     this.gameLoopService.start();
+    this.gameSaveService.startAutoSave();
   }
 
   ngOnDestroy(): void {
@@ -51,8 +67,6 @@ export class GameInitService {
     if (loadedState) {
       this.gameStateService.setState(loadedState);
     }
-
-    this.gameSaveService.startAutoSave();
   }
 
   private manageTicketQueue(): void {

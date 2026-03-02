@@ -1,5 +1,6 @@
 @use '../../../../styles/mixins/frames.scss' as *;
 @use '../../../../styles/mixins/flexbox.scss' as *;
+@use '../../../../styles/mixins/buttons.scss' as *;
 
 .hero-creator::before {
   content: '';
@@ -112,6 +113,23 @@
 
         padding: 1.5rem;
       }
+    }
+  }
+
+  .hero-creator__start-button {
+    @include stripped-btn;
+
+    z-index: 1;
+    background-color: #f3d7a2;
+    padding: 0.25rem 1rem;
+    font-size: 1.25rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+
+    transition: all 0.15s ease;
+
+    &:hover {
+      background-color: #e6c17d;
     }
   }
 }
