@@ -1,0 +1,13 @@
+.category-selector {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+
+  .category-selector__title {
+    font-size: 0.75rem;
+    opacity: 0.5;
+    font-weight: bold;
+    color: #fff7e9;
+  }
+}

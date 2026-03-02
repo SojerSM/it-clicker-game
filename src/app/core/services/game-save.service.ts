@@ -30,7 +30,7 @@ export class GameSaveService {
   }
 
   save(state: GameState) {
-    console.info('Game state saved to local storage.');
+    console.info('Item saved to local storage.');
     localStorage.setItem(this.STORAGE_KEY, JSON.stringify(state));
   }
 

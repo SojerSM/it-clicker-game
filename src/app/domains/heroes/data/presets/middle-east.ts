@@ -1,0 +1,93 @@
+export const MIDDLE_EAST_MALE_HERO_NAMES: string[] = [
+  'Omar',
+  'Ali',
+  'Hassan',
+  'Hussein',
+  'Khalid',
+  'Tariq',
+  'Yusuf',
+  'Ibrahim',
+  'Karim',
+  'Samir',
+  'Faisal',
+  'Nabil',
+  'Zayd',
+  'Ahmed',
+];
+
+export const MIDDLE_EAST_FEMALE_HERO_NAMES: string[] = [
+  'Aisha',
+  'Fatima',
+  'Layla',
+  'Zahra',
+  'Mariam',
+  'Noor',
+  'Yasmin',
+  'Amira',
+  'Salma',
+  'Dina',
+  'Rania',
+  'Leila',
+  'Nadia',
+  'Soraya',
+];
+
+export const MIDDLE_EAST_SURNAMES: string[] = [
+  'Haddad',
+  'Khalil',
+  'Nasser',
+  'Mansour',
+  'Farouk',
+  'Hamdan',
+  'Abbas',
+  'Rahman',
+  'Karim',
+  'Fahd',
+  'Salem',
+  'Zidan',
+  'Taleb',
+  'Bakir',
+  'Najjar',
+  'Sharif',
+  'Qasim',
+  'Saidi',
+  'Hariri',
+  'Malik',
+];
+
+export const MIDDLE_EAST_EDUCATION_PRESTIGIOUS: string[] = [
+  'King Saud University',
+  'King Abdulaziz University',
+  'American University of Beirut',
+  'Qatar University',
+  'United Arab Emirates University',
+  'King Abdullah University of Science and Technology',
+  'Boğaziçi University',
+  'Middle East Technical University',
+  'Sharif University of Technology',
+  'University of Tehran',
+];
+
+export const MIDDLE_EAST_EDUCATION_REGULAR: string[] = [
+  'Ankara University',
+  'Istanbul University',
+  'Cairo University',
+  'Alexandria University',
+  'Damascus University',
+  'University of Jordan',
+  'Yarmouk University',
+  'Tabriz University',
+  'Shiraz University',
+  'Kuwait University',
+];
+
+export const MIDDLE_EAST_EDUCATION_MEME: string[] = [
+  'Falafel Business School',
+  'Camel Logistics University',
+  'Sandstorm Coding Bootcamp',
+  'Habibi Networking School',
+  'Passenger Plane Flying Course',
+  '24/7 Kebab Research Center',
+  'Street Shawarma MBA Program',
+  'None',
+];

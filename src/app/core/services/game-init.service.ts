@@ -10,6 +10,7 @@ import { TicketQueueService } from '../../domains/progress/tickets/services/tick
 import { GameLoopService } from './game-loop.service';
 import { GameSaveService } from './game-save.service';
 import { GameStateService } from './game-state.service';
+import { GameState } from '../config/state/game-state.model';
 
 @Injectable({ providedIn: 'root' })
 export class GameInitService {
@@ -19,25 +20,25 @@ export class GameInitService {
     private gameSaveService: GameSaveService,
     private ticketQueueService: TicketQueueService,
     private projectService: ProjectService,
-    private translateService: TranslateService,
     private gameLoopService: GameLoopService
   ) {}
 
-  async init(): Promise<void> {
-    return firstValueFrom(this.translateService.use('en')).then(() => {
-      const ceo = this.heroBuilder.build(HeroRole.CEO);
+  /**
+   * Initializing game when no state is stored in browser memory
+   */
+  init(): void {
+    const ceo = this.heroBuilder.build(HeroRole.CEO);
 
-      this.gameStateService.updateHeroes((state) => {
-        state.owned.push(ceo);
-      });
-
-      this.projectService.setFirstProject();
-      this.manageState();
-      this.manageTicketQueue();
-
-      console.log('Init done');
-      this.gameLoopService.start();
+    this.gameStateService.updateHeroes((state) => {
+      state.owned.push(ceo);
     });
+
+    this.projectService.setFirstProject();
+    this.manageState();
+    this.manageTicketQueue();
+
+    console.log('Init done');
+    this.gameLoopService.start();
   }
 
   ngOnDestroy(): void {
