@@ -1,6 +1,8 @@
+@use '../../../../../styles/mixins/flexbox.scss' as *;
+@use '../../../../../styles/mixins/buttons.scss' as *;
+
 .category-selector {
-  display: flex;
-  align-items: center;
+  @include flexbox(column, $align: center, $gap: 0.25rem);
 
   width: 100%;
 
@@ -9,5 +11,32 @@
     opacity: 0.5;
     font-weight: bold;
     color: #fff7e9;
+  }
+
+  .category-selector__values {
+    @include flexbox($align: center, $justify: space-between);
+
+    width: 100%;
+
+    span {
+      color: #fff7e9;
+    }
+
+    .category-selector__values-btn {
+      @include stripped-btn;
+
+      background-color: #f3d7a2;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+
+      font-weight: 800;
+      cursor: pointer;
+
+      transition: all 0.15s ease;
+
+      &:hover {
+        background-color: #e6c17d;
+      }
+    }
   }
 }

@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { GameInitService } from '../../../core/services/game-init.service';
 import { HeroGeneratorService } from '../../../domains/heroes/services/hero-generator.service';
+import { HeroOrigin } from '../../../domains/heroes/types/enums/hero-origin.enum';
 import { HeroRole } from '../../../domains/heroes/types/enums/hero-role.enum';
+import { Gender } from '../../../shared/types/enums/gender.enum';
 import { CategorySelectorComponent } from './category-selector/category-selector.component';
 import { CreatorPreviewComponent } from './creator-preview/creator-preview.component';
 
@@ -17,6 +19,9 @@ export class HeroCreatorComponent {
   private ORIGIN_SELECTOR = 'Origin';
   private GENDER_SELECTOR = 'Gender';
 
+  originIndex = signal(0);
+  genderIndex = signal(0);
+
   constructor(
     private router: Router,
     private gameInitService: GameInitService,
@@ -29,6 +34,14 @@ export class HeroCreatorComponent {
 
   get genderLabel(): string {
     return this.GENDER_SELECTOR;
+  }
+
+  get originOptions(): string[] {
+    return ['all', ...Object.values(HeroOrigin)];
+  }
+
+  get genderOptions(): string[] {
+    return ['both', ...Object.values(Gender)];
   }
 
   startGame(): void {
