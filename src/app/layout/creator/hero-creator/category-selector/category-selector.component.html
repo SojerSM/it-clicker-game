@@ -1,3 +1,8 @@
 <div class="category-selector">
   <span class="category-selector__title">{{ title }}</span>
+  <div class="category-selector__values">
+    <button class="category-selector__values-btn" (click)="switch('left')">&lt;</button>
+    <span>{{ activeOption | titlecase }}</span>
+    <button class="category-selector__values-btn" (click)="switch('right')">&gt;</button>
+  </div>
 </div>

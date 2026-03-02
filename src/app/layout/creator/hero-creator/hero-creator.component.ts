@@ -5,6 +5,8 @@ import { HeroGeneratorService } from '../../../domains/heroes/services/hero-gene
 import { HeroRole } from '../../../domains/heroes/types/enums/hero-role.enum';
 import { CategorySelectorComponent } from './category-selector/category-selector.component';
 import { CreatorPreviewComponent } from './creator-preview/creator-preview.component';
+import { HeroOrigin } from '../../../domains/heroes/types/enums/hero-origin.enum';
+import { Gender } from '../../../shared/types/enums/gender.enum';
 
 @Component({
   selector: 'app-hero-creator',
@@ -29,6 +31,14 @@ export class HeroCreatorComponent {
 
   get genderLabel(): string {
     return this.GENDER_SELECTOR;
+  }
+
+  get originOptions(): string[] {
+    return ['all', ...Object.values(HeroOrigin)];
+  }
+
+  get genderOptions(): string[] {
+    return ['both', ...Object.values(Gender)];
   }
 
   startGame(): void {

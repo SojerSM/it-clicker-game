@@ -99,7 +99,7 @@
         }
 
         .hero-creator__container-content__form-selectors {
-          @include flexbox(column, flex-start, center);
+          @include flexbox(column, stretch, flex-start, 1rem);
 
           width: 100%;
         }
