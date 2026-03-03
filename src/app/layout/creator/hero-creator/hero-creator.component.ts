@@ -19,8 +19,8 @@ export class HeroCreatorComponent {
   private ORIGIN_SELECTOR = 'Origin';
   private GENDER_SELECTOR = 'Gender';
 
-  originIndex = signal(0);
-  genderIndex = signal(0);
+  origin = signal<HeroOrigin | null>(null);
+  gender = signal<Gender | null>(null);
 
   constructor(
     private router: Router,
@@ -36,12 +36,12 @@ export class HeroCreatorComponent {
     return this.GENDER_SELECTOR;
   }
 
-  get originOptions(): string[] {
-    return ['all', ...Object.values(HeroOrigin)];
+  get originOptions(): (HeroOrigin | null)[] {
+    return [null, ...Object.values(HeroOrigin)];
   }
 
-  get genderOptions(): string[] {
-    return ['both', ...Object.values(Gender)];
+  get genderOptions(): (Gender | null)[] {
+    return [null, ...Object.values(Gender)];
   }
 
   startGame(): void {
@@ -50,7 +50,10 @@ export class HeroCreatorComponent {
   }
 
   getRandomHero(): void {
-    const hero = this.heroGeneratorService.generate(HeroRole.CEO);
+    const selectedOrigin = this.origin() ?? undefined;
+    const selectedGender = this.gender() ?? undefined;
+
+    const hero = this.heroGeneratorService.generate(HeroRole.CEO, selectedOrigin, selectedGender);
 
     localStorage.setItem(this.STORAGE_KEY, JSON.stringify(hero));
   }

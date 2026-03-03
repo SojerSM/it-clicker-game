@@ -19,12 +19,12 @@
           <app-category-selector
             [title]="originLabel"
             [options]="originOptions"
-            (indexChange)="originIndex.set($event)"
+            (valueChange)="origin.set($event)"
           />
           <app-category-selector
             [title]="genderLabel"
             [options]="genderOptions"
-            (indexChange)="genderIndex.set($event)"
+            (valueChange)="gender.set($event)"
           />
         </div>
       </div>

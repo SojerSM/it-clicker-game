@@ -18,9 +18,11 @@ export class HeroGeneratorService {
     private attributeMapper: AttributeMapperService
   ) {}
 
-  generate(role: HeroRole): Hero {
-    const origin = this.randomizeOrigin();
-    const gender = this.randomizeGender();
+  generate(
+    role: HeroRole,
+    origin: HeroOrigin = this.randomizeOrigin(),
+    gender: Gender = this.randomizeGender()
+  ): Hero {
     const avatar = this.randomizeAvatar(origin, gender);
 
     const heroParts = HERO_PARTS[origin];
