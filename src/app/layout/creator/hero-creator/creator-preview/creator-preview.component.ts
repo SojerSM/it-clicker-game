@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Hero } from '../../../../domains/heroes/types/hero.model';
+import { HeroDraft } from '../../../../domains/heroes/types/hero-draft';
 
 @Component({
   selector: 'app-creator-preview',
@@ -10,7 +10,7 @@ import { Hero } from '../../../../domains/heroes/types/hero.model';
 export class CreatorPreviewComponent {
   private STORAGE_KEY = 'ceoDraft';
 
-  get draft(): Hero | null {
+  get draft(): HeroDraft | null {
     const hero = localStorage.getItem(this.STORAGE_KEY);
 
     return hero ? JSON.parse(hero) : null;

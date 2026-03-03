@@ -9,6 +9,7 @@ import { GameSaveService } from './game-save.service';
 import { GameStateService } from './game-state.service';
 import { localStorageKeys } from '../config/localStorage';
 import { GameStateBuilder } from './game-state-builder.service';
+import { HeroDraft } from '../../domains/heroes/types/hero-draft';
 
 @Injectable({ providedIn: 'root' })
 export class GameInitService {
@@ -28,13 +29,13 @@ export class GameInitService {
   init(): void {
     const draft = JSON.parse(
       localStorage.getItem(localStorageKeys.ceoDraft) ?? 'null'
-    ) as Hero | null;
+    ) as HeroDraft | null;
 
     if (draft) {
-      const ceo = this.heroBuilder.build(HeroRole.CEO);
+      const ceo: Hero = this.heroBuilder.buildCEO(draft);
 
       this.gameStateService.updateHeroes((state) => {
-        state.owned.push(draft);
+        state.owned.push(ceo);
       });
 
       localStorage.removeItem(localStorageKeys.ceoDraft);

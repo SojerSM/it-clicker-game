@@ -53,7 +53,11 @@ export class HeroCreatorComponent {
     const selectedOrigin = this.origin() ?? undefined;
     const selectedGender = this.gender() ?? undefined;
 
-    const hero = this.heroGeneratorService.generate(HeroRole.CEO, selectedOrigin, selectedGender);
+    const hero = this.heroGeneratorService.generateDraft(
+      HeroRole.CEO,
+      selectedOrigin,
+      selectedGender
+    );
 
     localStorage.setItem(this.STORAGE_KEY, JSON.stringify(hero));
   }

@@ -1,70 +1,78 @@
 import { Injectable } from '@angular/core';
-import { HeroOrigin } from '../types/enums/hero-origin.enum';
-import { Gender } from '../../../shared/types/enums/gender.enum';
-import { HERO_PARTS } from '../data/hero-parts';
-import { GameStateService } from '../../../core/services/game-state.service';
 import { BALANCE } from '../../../core/config/state/balance';
+import { GameStateService } from '../../../core/services/game-state.service';
+import { Gender } from '../../../shared/types/enums/gender.enum';
 import { DEV_ATTRIBUTES } from '../../upgrades/attributes/presets/dev-attributes';
+import { AttributeMapperService } from '../../upgrades/attributes/services/attribute-mapper.service';
+import { HERO_AVATARS } from '../data/hero-avatars';
+import { HERO_PARTS } from '../data/hero-parts';
+import { HeroOrigin } from '../types/enums/hero-origin.enum';
 import { HeroRole } from '../types/enums/hero-role.enum';
 import { HeroType } from '../types/enums/hero-type.enum';
 import { Hero } from '../types/hero.model';
-import { AttributeMapperService } from '../../upgrades/attributes/services/attribute-mapper.service';
-import { HERO_AVATARS } from '../data/hero-avatars';
+import { HeroBuilderService } from './hero-builder.service';
+import { HeroDraft, MinionDraft } from '../types/hero-draft';
 
 @Injectable({ providedIn: 'root' })
 export class HeroGeneratorService {
   constructor(
     private gameStateService: GameStateService,
-    private attributeMapper: AttributeMapperService
+    private attributeMapper: AttributeMapperService,
+    private heroBuilderService: HeroBuilderService
   ) {}
 
-  generate(
+  generateDraft(
     role: HeroRole,
     origin: HeroOrigin = this.randomizeOrigin(),
     gender: Gender = this.randomizeGender()
-  ): Hero {
-    const avatar = this.randomizeAvatar(origin, gender);
-
+  ): HeroDraft {
     const heroParts = HERO_PARTS[origin];
 
+    const avatar = this.randomizeAvatar(origin, gender);
     const name = this.randomFrom(heroParts.name[gender]);
     const surname = this.randomFrom(heroParts.surname);
     const education = this.randomizeEducation(origin);
 
-    const id = 'mocked-hero-'.concat(this.gameStateService.heroState().owned.length.toString());
-
-    this.gameStateService.updateHeroes((state) => state.occupiedAvatars.push(avatar));
-
     return {
-      id: id,
-      type: HeroType.MINION,
-      role,
-      name,
-      surname,
-      gender,
-      education,
       avatar,
-      growth: {
-        lvl: 1,
-        exp: 0,
-        expRatio: BALANCE.HERO_INITIAL_EXP_RATIO,
-        expToLevelUp: 50,
-        baseRequiredExp: 50,
-      },
-      stats: {
-        baseStress: 0.5,
-        stressFactor: 0.5,
-        stressResistance: 0.03,
-        learningRate: 0.5,
-      },
-      attributes: this.attributeMapper.getMappedClone(id, DEV_ATTRIBUTES),
-      organicPps: 0.2,
-      totalPps: 0.2,
+      name,
+      gender,
+      origin,
+      surname,
+      education,
     };
   }
 
+  generateHero(
+    role: HeroRole,
+    origin: HeroOrigin = this.randomizeOrigin(),
+    gender: Gender = this.randomizeGender()
+  ): Hero {
+    const heroParts = HERO_PARTS[origin];
+
+    const avatar = this.randomizeAvatar(origin, gender);
+    const name = this.randomFrom(heroParts.name[gender]);
+    const surname = this.randomFrom(heroParts.surname);
+    const education = this.randomizeEducation(origin);
+
+    this.gameStateService.updateHeroes((state) => state.occupiedAvatars.push(avatar));
+
+    // CEO
+    if (role === HeroRole.CEO) {
+      const ceoDraft: HeroDraft = { avatar, name, surname, gender, origin, education };
+
+      return this.heroBuilderService.buildCEO(ceoDraft);
+    }
+
+    // OTHERS
+    const id = 'hero-'.concat(this.gameStateService.heroState().owned.length.toString());
+    const minionDraft: MinionDraft = { id, role, avatar, name, surname, gender, education, origin };
+
+    return this.heroBuilderService.buildMinion(minionDraft);
+  }
+
   /**
-   * Randomize certain education based on recruitment effectiveness 0 - 1, based on
+   * Randomize certain education based on recruitment effectiveness 0 - 1 with
    * weighted random selection. Manipulate `sigma` parameter to modify balance.
    *
    * @param origin randomized origin
