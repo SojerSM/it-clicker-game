@@ -1,37 +1,23 @@
 import { Injectable } from '@angular/core';
 import { BALANCE } from '../../../core/config/state/balance';
-import { Gender } from '../../../shared/types/enums/gender.enum';
+import { GameStateService } from '../../../core/services/game-state.service';
 import { CEO_ATTRIBUTES } from '../../upgrades/attributes/presets/ceo-attributes';
 import { AttributeMapperService } from '../../upgrades/attributes/services/attribute-mapper.service';
 import { HeroRole } from '../types/enums/hero-role.enum';
 import { HeroType } from '../types/enums/hero-type.enum';
 import { Hero } from '../types/hero.model';
-import { GameStateService } from '../../../core/services/game-state.service';
+import id from '@angular/common/locales/id';
+import { DEV_ATTRIBUTES } from '../../upgrades/attributes/presets/dev-attributes';
+import { HeroDraft, MinionDraft } from '../types/hero-draft';
 
 @Injectable({ providedIn: 'root' })
 export class HeroBuilderService {
-  private builders: Record<HeroRole, () => Hero> = {
-    [HeroRole.CEO]: () => this.buildCEO(),
-    [HeroRole.PROGRAMMER]: () => this.buildCEO(), // temporary workaround
-  };
-
   constructor(
     private attributeMapper: AttributeMapperService,
     private gameStateService: GameStateService
   ) {}
 
-  build(role: HeroRole): Hero {
-    const builder = this.builders[role];
-
-    if (!builder) {
-      throw new Error('No builder for ' + role + ' role provided.');
-    }
-
-    return builder();
-  }
-
-  // temporary
-  private buildCEO(): Hero {
+  buildCEO(draft: HeroDraft): Hero {
     const id = 'hero-ceo';
     const avatarPath = 'assets/images/heroes/american/male/avatar_01.png';
 
@@ -43,11 +29,11 @@ export class HeroBuilderService {
       id: id,
       type: HeroType.PLAYER,
       role: HeroRole.CEO,
-      name: 'John',
-      surname: 'Doe',
-      gender: Gender.MALE,
-      education: 'XD school',
-      avatar: avatarPath,
+      name: draft.name,
+      surname: draft.surname,
+      gender: draft.gender,
+      education: draft.education,
+      avatar: draft.avatar,
       growth: {
         lvl: 1,
         exp: 0,
@@ -62,6 +48,39 @@ export class HeroBuilderService {
         learningRate: 1,
       },
       attributes: this.attributeMapper.getMappedClone(id, CEO_ATTRIBUTES),
+    };
+  }
+
+  buildMinion(draft: MinionDraft): Hero {
+    this.gameStateService.updateHeroes((state) => {
+      state.occupiedAvatars.push(draft.avatar);
+    });
+
+    return {
+      id: draft.id,
+      type: HeroType.MINION,
+      role: draft.role,
+      name: draft.name,
+      surname: draft.surname,
+      gender: draft.gender,
+      education: draft.education,
+      avatar: draft.avatar,
+      growth: {
+        lvl: 1,
+        exp: 0,
+        expRatio: BALANCE.HERO_INITIAL_EXP_RATIO,
+        expToLevelUp: 50,
+        baseRequiredExp: 50,
+      },
+      stats: {
+        baseStress: 0.5,
+        stressFactor: 0.5,
+        stressResistance: 0.03,
+        learningRate: 0.5,
+      },
+      attributes: this.attributeMapper.getMappedClone(draft.id, DEV_ATTRIBUTES),
+      organicPps: 0.2,
+      totalPps: 0.2,
     };
   }
 }

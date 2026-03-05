@@ -9,64 +9,57 @@ import { GameSaveService } from './game-save.service';
 import { GameStateService } from './game-state.service';
 import { localStorageKeys } from '../config/localStorage';
 import { GameStateBuilder } from './game-state-builder.service';
+import { HeroDraft } from '../../domains/heroes/types/hero-draft';
+import { ProjectGeneratorService } from '../../domains/progress/projects/services/project-generator.service';
 
 @Injectable({ providedIn: 'root' })
 export class GameInitService {
+  private initialized = false;
+
   constructor(
     private heroBuilder: HeroBuilderService,
     private gameStateService: GameStateService,
     private gameSaveService: GameSaveService,
     private ticketQueueService: TicketQueueService,
-    private projectService: ProjectService,
     private gameLoopService: GameLoopService,
-    private gameStateBuilder: GameStateBuilder
+    private gameStateBuilder: GameStateBuilder,
+    private projectGenerator: ProjectGeneratorService
   ) {}
 
   /**
    * Initializing game when no state is stored in browser memory
    */
   init(): void {
+    if (this.initialized) return;
+    this.initialized = true;
+
     const draft = JSON.parse(
       localStorage.getItem(localStorageKeys.ceoDraft) ?? 'null'
-    ) as Hero | null;
+    ) as HeroDraft | null;
 
     if (draft) {
-      const ceo = this.heroBuilder.build(HeroRole.CEO);
-
-      this.gameStateService.updateHeroes((state) => {
-        state.owned.push(draft);
-      });
-
+      const ceo: Hero = this.heroBuilder.buildCEO(draft);
       localStorage.removeItem(localStorageKeys.ceoDraft);
 
       const state = this.gameStateBuilder.buildState();
-      this.gameSaveService.save(state);
 
-      this.gameStateService.updateHeroes((state) => {
-        state.owned.push(ceo);
-        state.occupiedAvatars.push(ceo.avatar);
-      });
+      state.heroes.owned.push(ceo);
+      state.heroes.occupiedAvatars.push(ceo.avatar);
+      state.project.current = this.projectGenerator.generateProject();
+
+      this.gameStateService.setState(state);
+      this.gameSaveService.save(state);
     }
 
-    this.projectService.setFirstProject();
-    this.manageState();
     this.manageTicketQueue();
-
-    console.log('Init done');
     this.gameLoopService.start();
     this.gameSaveService.startAutoSave();
+
+    console.log('Init done');
   }
 
   ngOnDestroy(): void {
     this.gameSaveService.stopAutoSave();
-  }
-
-  private manageState(): void {
-    const loadedState = this.gameSaveService.load();
-
-    if (loadedState) {
-      this.gameStateService.setState(loadedState);
-    }
   }
 
   private manageTicketQueue(): void {
