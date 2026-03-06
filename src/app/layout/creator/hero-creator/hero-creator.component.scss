@@ -28,7 +28,7 @@
     @include frame-default;
     @include flexbox(column, $align: flex-start);
 
-    z-index: 1;
+    z-index: 10;
     width: 60rem;
     background: rgba(70, 45, 30, 0.92);
     image-rendering: pixelated;
@@ -119,7 +119,7 @@
   .hero-creator__start-button {
     @include stripped-btn;
 
-    z-index: 1;
+    z-index: 10;
     background-color: #f3d7a2;
     padding: 0.25rem 1rem;
     font-size: 1.25rem;
