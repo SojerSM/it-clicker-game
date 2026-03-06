@@ -1,4 +1,13 @@
 {
+  "creator": {
+    "title": "TWORZENIE BOHATERA",
+    "form": {
+      "gender": "Płeć",
+      "origin": "Pochodzenie",
+      "random": "Losowo"
+    },
+    "startButton": "Stwórz i graj"
+  },
   "game": {
     "effects": {
       "stress_status": {
@@ -10,11 +19,24 @@
       }
     },
     "hero": {
+      "gender": {
+        "both": "Obie",
+        "female": "Kobieta",
+        "male": "Mężczyzna"
+      },
       "label": {
         "attributes": "Atrybuty",
         "equipment": "Ekwipunek",
         "overview": "Podgląd",
         "stats": "Statystyki"
+      },
+      "origin": {
+        "all": "Wszystkie",
+        "american": "USA",
+        "asian": "Azja",
+        "european": "Europa",
+        "indian": "Indie",
+        "middleEast": "Bliski Wschód"
       },
       "roles": {
         "dev": "Programista"

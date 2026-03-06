@@ -1,7 +1,7 @@
 <main class="hero-creator">
   <app-lang-widget />
   <section class="hero-creator__container">
-    <header class="hero-creator__container-header">HERO CREATOR</header>
+    <header class="hero-creator__container-header">{{ 'creator.title' | translate }}</header>
     <div class="hero-creator__container-content">
       <div class="hero-creator__container-content__form">
         <div class="hero-creator__container-content__form-randomize">
@@ -14,16 +14,18 @@
               class="hero-creator__container-content__form-randomize-btn-dice"
             />
           </button>
-          <span class="hero-creator__container-content__form-randomize-label">Randomize</span>
+          <span class="hero-creator__container-content__form-randomize-label">{{
+            'creator.form.random' | translate
+          }}</span>
         </div>
         <div class="hero-creator__container-content__form-selectors">
           <app-category-selector
-            [title]="originLabel"
+            [title]="originLabel | translate"
             [options]="originOptions"
             (valueChange)="origin.set($event)"
           />
           <app-category-selector
-            [title]="genderLabel"
+            [title]="genderLabel | translate"
             [options]="genderOptions"
             (valueChange)="gender.set($event)"
           />
@@ -34,5 +36,7 @@
       </div>
     </div>
   </section>
-  <button class="hero-creator__start-button" (click)="startGame()">Create & Begin</button>
+  <button class="hero-creator__start-button" (click)="startGame()">
+    {{ 'creator.startButton' | translate }}
+  </button>
 </main>

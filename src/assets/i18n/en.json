@@ -1,4 +1,13 @@
 {
+  "creator": {
+    "title": "HERO CREATOR",
+    "form": {
+      "gender": "Gender",
+      "origin": "Origin",
+      "random": "Randomize"
+    },
+    "startButton": "Create & Begin"
+  },
   "game": {
     "effects": {
       "stress_status": {
@@ -10,11 +19,24 @@
       }
     },
     "hero": {
+      "gender": {
+        "both": "Both",
+        "female": "Female",
+        "male": "Male"
+      },
       "label": {
         "attributes": "Attributes",
         "equipment": "Equipment",
         "overview": "Overview",
         "stats": "Stats"
+      },
+      "origin": {
+        "all": "All",
+        "american": "America",
+        "asian": "Asia",
+        "european": "Europe",
+        "indian": "India",
+        "middleEast": "Middle East"
       },
       "roles": {
         "dev": "Programmer"
