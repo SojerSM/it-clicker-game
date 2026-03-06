@@ -25,10 +25,10 @@ export class HeroActionsComponent {
   @Output() tabChange = new EventEmitter<Tab>();
 
   heroTabs: Tab[] = [
-    { id: 1, title: 'hero.label.overview', component: HeroOverviewComponent },
-    { id: 2, title: 'hero.label.equipment', component: HeroEquipmentComponent },
-    { id: 3, title: 'hero.label.stats', component: HeroStatsComponent },
-    { id: 4, title: 'hero.label.attributes', component: HeroAttributesComponent },
+    { id: 1, title: 'game.hero.label.overview', component: HeroOverviewComponent },
+    { id: 2, title: 'game.hero.label.equipment', component: HeroEquipmentComponent },
+    { id: 3, title: 'game.hero.label.stats', component: HeroStatsComponent },
+    { id: 4, title: 'game.hero.label.attributes', component: HeroAttributesComponent },
   ];
   heroActiveTab = signal<Tab>(this.heroTabs[0]);
   selectedHeroId = signal(0);

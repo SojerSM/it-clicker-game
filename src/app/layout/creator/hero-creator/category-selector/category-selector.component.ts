@@ -1,9 +1,10 @@
 import { TitleCasePipe } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-category-selector',
-  imports: [TitleCasePipe],
+  imports: [TranslatePipe],
   templateUrl: './category-selector.component.html',
   styleUrl: './category-selector.component.scss',
 })
@@ -20,12 +21,13 @@ export class CategorySelectorComponent<T> {
 
   get displayValue(): string {
     const value = this.activeOption;
+    const isGender = ['Gender', 'Płeć'].includes(this.title);
 
     if (value === null) {
-      return this.title === 'Gender' ? 'Both' : 'All';
+      return isGender ? 'game.hero.gender.both' : 'game.hero.origin.all';
     }
 
-    return String(value);
+    return `game.hero.${isGender ? 'gender' : 'origin'}.${value}`;
   }
 
   switch(direction: 'left' | 'right'): void {

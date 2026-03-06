@@ -1,32 +1,29 @@
 import { Component, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import { GameInitService } from '../../../core/services/game-init.service';
 import { HeroGeneratorService } from '../../../domains/heroes/services/hero-generator.service';
 import { HeroOrigin } from '../../../domains/heroes/types/enums/hero-origin.enum';
 import { HeroRole } from '../../../domains/heroes/types/enums/hero-role.enum';
+import { LangWidgetComponent } from '../../../shared/components/lang-widget/lang-widget.component';
 import { Gender } from '../../../shared/types/enums/gender.enum';
 import { CategorySelectorComponent } from './category-selector/category-selector.component';
 import { CreatorPreviewComponent } from './creator-preview/creator-preview.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-hero-creator',
-  imports: [CreatorPreviewComponent, CategorySelectorComponent],
+  imports: [CreatorPreviewComponent, CategorySelectorComponent, LangWidgetComponent, TranslatePipe],
   templateUrl: './hero-creator.component.html',
   styleUrl: './hero-creator.component.scss',
 })
 export class HeroCreatorComponent {
   private STORAGE_KEY = 'ceoDraft';
-  private ORIGIN_SELECTOR = 'Origin';
-  private GENDER_SELECTOR = 'Gender';
+  private ORIGIN_SELECTOR = 'creator.form.origin';
+  private GENDER_SELECTOR = 'creator.form.gender';
 
   origin = signal<HeroOrigin | null>(null);
   gender = signal<Gender | null>(null);
 
-  constructor(
-    private router: Router,
-    private gameInitService: GameInitService,
-    private heroGeneratorService: HeroGeneratorService
-  ) {}
+  constructor(private router: Router, private heroGeneratorService: HeroGeneratorService) {}
 
   get originLabel(): string {
     return this.ORIGIN_SELECTOR;
@@ -45,7 +42,6 @@ export class HeroCreatorComponent {
   }
 
   startGame(): void {
-    this.gameInitService.init();
     this.router.navigate(['/game']);
   }
 

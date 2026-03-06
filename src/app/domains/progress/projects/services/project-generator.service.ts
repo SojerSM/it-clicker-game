@@ -23,6 +23,6 @@ export class ProjectGeneratorService {
 
     const randomKey = Math.floor(Math.random() * (scope[1] - scope[0] + 1)) + scope[0];
 
-    return `progress.projects.${randomKey}`;
+    return `game.progress.projects.${randomKey}`;
   }
 }
