@@ -24,8 +24,8 @@ export class HeroStatsComponent {
   }
 
   get impactLabel(): string {
-    const playerLabel = 'impact.mpi';
-    const minionLabel = 'impact.pps';
+    const playerLabel = 'game.impact.mpi';
+    const minionLabel = 'game.impact.pps';
 
     return this.hero.type === HeroType.PLAYER ? playerLabel : minionLabel;
   }
