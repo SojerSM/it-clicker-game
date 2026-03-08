@@ -1,5 +1,6 @@
 import { Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/core';
 import { FloatingMpiService } from '../components/clickable/floating-mpi.service';
+import { StatisticService } from '../../domains/statistics/services/statistic.service';
 
 @Directive({
   selector: '[appClickableImpact]',
@@ -10,7 +11,8 @@ export class ClickableImpactDirective {
   constructor(
     private floatingMpiService: FloatingMpiService,
     private element: ElementRef,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private statisticService: StatisticService
   ) {
     this.setStyles();
   }
@@ -18,6 +20,7 @@ export class ClickableImpactDirective {
   @HostListener('click', ['$event'])
   onClick(event: MouseEvent) {
     this.floatingMpiService.spawn(event.clientX, event.clientY, this.value);
+    this.statisticService.increaseClicks();
   }
 
   @HostListener('mousedown')

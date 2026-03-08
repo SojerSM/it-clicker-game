@@ -44,4 +44,20 @@ export interface RecruitmentState {
   completedProcesses: number;
 }
 
+export interface StatisticState {
+  heroes: {
+    recruited: number;
+  };
+  impact: {
+    clicks: number;
+  };
+  money: {
+    earned: number;
+    spent: number;
+  };
+  tickets: {
+    finished: number;
+  };
+}
+
 export type TicketTypeMultipliers = Record<string, TicketTypeMultiplier>;
