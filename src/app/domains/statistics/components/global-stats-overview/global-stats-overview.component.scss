@@ -1,0 +1,21 @@
+@use '../../../../../styles/mixins/flexbox.scss' as *;
+
+.global-stats-overview {
+  @include flexbox(column, flex-start, $gap: 0.5rem);
+
+  .global-stats-overview__list {
+    @include flexbox(column, flex-start);
+
+    padding: 0 1rem;
+
+    .global-stats-overview__list-item {
+      @include flexbox($justify: space-between);
+
+      width: 20rem;
+
+      p:first-of-type {
+        font-style: italic;
+      }
+    }
+  }
+}

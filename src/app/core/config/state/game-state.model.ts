@@ -6,6 +6,7 @@ import {
   ResourceState,
   TicketState,
   RecruitmentState,
+  StatisticState,
 } from '../../types/state.model';
 
 export interface GameState {
@@ -16,4 +17,5 @@ export interface GameState {
   project: ProjectState;
   tickets: TicketState;
   recruitment: RecruitmentState;
+  statistics: StatisticState;
 }

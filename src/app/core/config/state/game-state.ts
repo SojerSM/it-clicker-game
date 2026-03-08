@@ -1,6 +1,23 @@
 import { Project } from '../../../domains/progress/projects/types/project.model';
 import { Ticket } from '../../../domains/progress/tickets/types/ticket.model';
+import { StatisticState } from '../../types/state.model';
 import { GameState } from './game-state.model';
+
+const STATISTIC_STATE: StatisticState = {
+  heroes: {
+    recruited: 0,
+  },
+  impact: {
+    clicks: 0,
+  },
+  money: {
+    earned: 0,
+    spent: 0,
+  },
+  tickets: {
+    finished: 0,
+  },
+};
 
 export const INITIAL_GAME_STATE: GameState = {
   impact: {
@@ -40,4 +57,5 @@ export const INITIAL_GAME_STATE: GameState = {
     effectiveness: 0,
     completedProcesses: 0,
   },
+  statistics: STATISTIC_STATE,
 };
