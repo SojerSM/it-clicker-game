@@ -21,4 +21,9 @@ export class ResourceSummaryComponent {
   addMoney() {
     this.devModeService.addMoney(1000);
   }
+
+  //dev mode function
+  resetState() {
+    this.devModeService.resetState();
+  }
 }
