@@ -14,8 +14,6 @@ import { ProjectGeneratorService } from '../../domains/progress/projects/service
 
 @Injectable({ providedIn: 'root' })
 export class GameInitService {
-  private initialized = false;
-
   constructor(
     private heroBuilder: HeroBuilderService,
     private gameStateService: GameStateService,
@@ -26,13 +24,24 @@ export class GameInitService {
     private projectGenerator: ProjectGeneratorService
   ) {}
 
+  ngOnDestroy(): void {
+    this.gameSaveService.stopAutoSave();
+  }
+
+  start(): void {
+    const savedState = this.gameSaveService.load();
+
+    if (savedState) {
+      this.gameStateService.setState(savedState);
+    } else {
+      this.init();
+    }
+  }
+
   /**
    * Initializing game when no state is stored in browser memory
    */
-  init(): void {
-    if (this.initialized) return;
-    this.initialized = true;
-
+  private init(): void {
     const draft = JSON.parse(
       localStorage.getItem(localStorageKeys.ceoDraft) ?? 'null'
     ) as HeroDraft | null;
@@ -56,10 +65,6 @@ export class GameInitService {
     this.gameSaveService.startAutoSave();
 
     console.log('Init done');
-  }
-
-  ngOnDestroy(): void {
-    this.gameSaveService.stopAutoSave();
   }
 
   private manageTicketQueue(): void {
