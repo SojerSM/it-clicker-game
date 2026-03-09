@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { GameStateService } from '../../../../core/services/game-state.service';
 import { HireService } from '../../services/hire.service';
+import { ResourcesService } from '../../../resources/resources.service';
 
 @Component({
   selector: 'app-job-offer-button',
@@ -11,7 +12,11 @@ import { HireService } from '../../services/hire.service';
 export class JobOfferButtonComponent {
   readonly PRICE: number = 50;
 
-  constructor(private gameStateService: GameStateService, private hireService: HireService) {}
+  constructor(
+    private gameStateService: GameStateService,
+    private hireService: HireService,
+    private resourcesService: ResourcesService
+  ) {}
 
   get isAvailable(): boolean {
     return this.hasEnoughMoney();
@@ -21,7 +26,7 @@ export class JobOfferButtonComponent {
     if (!this.hasEnoughMoney) return;
 
     this.hireService.hire();
-    this.gameStateService.updateResource((state) => (state.money -= this.PRICE));
+    this.resourcesService.decreaseMoney(this.PRICE);
   }
 
   private hasEnoughMoney(): boolean {

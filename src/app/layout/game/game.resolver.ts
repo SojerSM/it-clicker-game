@@ -5,5 +5,5 @@ import { inject } from '@angular/core';
 export const gameResolver: ResolveFn<void> = () => {
   const gameInitService = inject(GameInitService);
 
-  gameInitService.init();
+  gameInitService.start();
 };
