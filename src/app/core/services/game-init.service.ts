@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HeroBuilderService } from '../../domains/heroes/services/hero-builder.service';
-import { HeroRole } from '../../domains/heroes/types/enums/hero-role.enum';
+import { HeroDraft } from '../../domains/heroes/types/hero-draft';
 import { Hero } from '../../domains/heroes/types/hero.model';
-import { ProjectService } from '../../domains/progress/projects/services/project.service';
+import { ProjectGeneratorService } from '../../domains/progress/projects/services/project-generator.service';
 import { TicketQueueService } from '../../domains/progress/tickets/services/ticket-queue.service';
+import { localStorageKeys } from '../config/localStorage';
 import { GameLoopService } from './game-loop.service';
 import { GameSaveService } from './game-save.service';
-import { GameStateService } from './game-state.service';
-import { localStorageKeys } from '../config/localStorage';
 import { GameStateBuilder } from './game-state-builder.service';
-import { HeroDraft } from '../../domains/heroes/types/hero-draft';
-import { ProjectGeneratorService } from '../../domains/progress/projects/services/project-generator.service';
+import { GameStateService } from './game-state.service';
 
 @Injectable({ providedIn: 'root' })
 export class GameInitService {
@@ -36,6 +34,10 @@ export class GameInitService {
     } else {
       this.init();
     }
+
+    this.manageTicketQueue();
+    this.gameLoopService.start();
+    this.gameSaveService.startAutoSave();
   }
 
   /**
@@ -59,10 +61,6 @@ export class GameInitService {
       this.gameStateService.setState(state);
       this.gameSaveService.save(state);
     }
-
-    this.manageTicketQueue();
-    this.gameLoopService.start();
-    this.gameSaveService.startAutoSave();
 
     console.log('Init done');
   }
