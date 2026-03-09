@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { GameStateService } from '../../../../core/services/game-state.service';
 import { StatisticState } from '../../../../core/types/state.model';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-global-stats-overview',
-  imports: [],
+  imports: [DecimalPipe],
   templateUrl: './global-stats-overview.component.html',
   styleUrl: './global-stats-overview.component.scss',
 })
