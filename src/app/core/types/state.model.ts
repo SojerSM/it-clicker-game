@@ -55,6 +55,9 @@ export interface StatisticState {
     earned: number;
     spent: number;
   };
+  playtime: {
+    total: number; // ms
+  };
   tickets: {
     finished: number;
   };

@@ -14,6 +14,9 @@ const STATISTIC_STATE: StatisticState = {
     earned: 0,
     spent: 0,
   },
+  playtime: {
+    total: 0,
+  },
   tickets: {
     finished: 0,
   },
