@@ -1,0 +1,60 @@
+@use '../../../../styles/mixins/flexbox.scss' as *;
+@use '../../../../styles/mixins/frames.scss' as *;
+@use '../../../../styles/mixins/buttons.scss' as *;
+
+.register {
+  @include frame-default;
+  @include flexbox(column, $align: flex-start);
+
+  z-index: 10;
+  width: 60rem;
+  background: rgba(70, 45, 30, 0.92);
+  image-rendering: pixelated;
+
+  .register__header {
+    text-align: center;
+    width: 100%;
+    padding: 0.25rem;
+
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #f3d7a2;
+    text-shadow: 2px 2px 0 #000;
+
+    background: #3b2418;
+    border-bottom: 4px solid #2b1a12;
+  }
+
+  .register__container {
+    @include flexbox($align: center, $gap: 2rem);
+
+    padding: 1.5rem;
+    width: 100%;
+
+    > * {
+      flex: 1;
+    }
+
+    .register__container-options {
+      @include flexbox(row, center, left, $gap: 1rem);
+
+      margin-left: 1rem;
+      width: 100%;
+
+      span {
+        color: #f3d7a2;
+      }
+
+      button {
+        @include stripped-btn;
+
+        cursor: pointer;
+
+        img {
+          width: 12rem;
+        }
+      }
+    }
+  }
+}
