@@ -1,6 +1,4 @@
-@use '../../../../styles/mixins/flexbox.scss' as *;
-@use '../../../../styles/mixins/frames.scss' as *;
-@use '../../../../styles/mixins/buttons.scss' as *;
+@use '../../../../styles/mixins.scss' as *;
 
 .register {
   @include frame-default;
