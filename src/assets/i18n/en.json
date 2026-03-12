@@ -82,5 +82,15 @@
     "resources": {
       "money": "Money"
     }
+  },
+  "landing": {
+    "register": {
+      "create": "Create account",
+      "email": "E-mail",
+      "or": "or",
+      "password": "Password",
+      "register": "Register",
+      "repeat": "Confirm password"
+    }
   }
 }

@@ -82,5 +82,15 @@
     "resources": {
       "money": "Saldo"
     }
+  },
+  "landing": {
+    "register": {
+      "create": "Utwórz konto",
+      "email": "E-mail",
+      "or": "lub",
+      "password": "Hasło",
+      "register": "Zarejestruj",
+      "repeat": "Potwierdź hasło"
+    }
   }
 }
