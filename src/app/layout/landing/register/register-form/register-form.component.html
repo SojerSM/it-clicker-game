@@ -1,0 +1,43 @@
+<form class="register-form">
+  <div class="register-form__field">
+    <label for="email">{{ 'landing.register.email' | translate }}</label>
+
+    <input
+      type="email"
+      id="email"
+      name="email"
+      required
+      email
+      pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$"
+      ngModel
+    />
+
+    <!-- @if (email.invalid && email.touched) {
+    <small class="error"> Podaj poprawny adres email (np. user@domain.com) </small>
+    } -->
+  </div>
+
+  <div class="register-form__field">
+    <label for="password">{{ 'landing.register.password' | translate }}</label>
+
+    <input type="password" id="password" name="password" required minlength="8" ngModel />
+
+    <!-- @if (password.invalid && password.touched) {
+    <small class="error"> Hasło musi mieć minimum 8 znaków </small>
+    } -->
+  </div>
+
+  <div class="register-form__field">
+    <label for="confirmPassword">{{ 'landing.register.repeat' | translate }}</label>
+
+    <input type="password" id="confirmPassword" name="confirmPassword" required ngModel />
+
+    <!-- @if (confirmPassword.touched && password.value !== confirmPassword.value) {
+    <small class="error"> Hasła muszą być identyczne </small>
+    } -->
+  </div>
+
+  <button class="register-form__submit-btn" type="submit">
+    {{ 'landing.register.register' | translate }}
+  </button>
+</form>

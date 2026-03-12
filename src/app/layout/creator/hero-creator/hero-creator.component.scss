@@ -2,134 +2,111 @@
 @use '../../../../styles/mixins/flexbox.scss' as *;
 @use '../../../../styles/mixins/buttons.scss' as *;
 
-.hero-creator::before {
-  content: '';
-  position: absolute;
-  inset: 0;
+.hero-creator__container {
+  @include frame-default;
+  @include flexbox(column, $align: flex-start);
 
-  background: linear-gradient(rgba(20, 10, 5, 0.6), rgba(20, 10, 5, 0.6)),
-    url('/assets/images/backgrounds/creator-background.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  z-index: 10;
+  width: 60rem;
+  background: rgba(70, 45, 30, 0.92);
+  image-rendering: pixelated;
 
-  z-index: 0;
-}
+  .hero-creator__container-header {
+    text-align: center;
+    width: 100%;
+    padding: 0.25rem;
 
-.hero-creator {
-  @include flexbox(column, center, center, 2rem);
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #f3d7a2;
+    text-shadow: 2px 2px 0 #000;
 
-  position: relative;
-  min-height: 100vh;
-  width: 100%;
-  overflow: hidden;
-
-  .hero-creator__container {
-    @include frame-default;
-    @include flexbox(column, $align: flex-start);
-
-    z-index: 10;
-    width: 60rem;
-    background: rgba(70, 45, 30, 0.92);
-    image-rendering: pixelated;
-
-    .hero-creator__container-header {
-      text-align: center;
-      width: 100%;
-      padding: 0.25rem;
-
-      font-size: 1.5rem;
-      font-weight: 800;
-      letter-spacing: 2px;
-      color: #f3d7a2;
-      text-shadow: 2px 2px 0 #000;
-
-      background: #3b2418;
-      border-bottom: 4px solid #2b1a12;
-    }
-
-    .hero-creator__container-content {
-      @include flexbox($align: flex-start, $gap: 2rem);
-
-      padding: 1.5rem;
-
-      .hero-creator__container-content__form {
-        @include flexbox(column, $align: center, $gap: 2rem);
-
-        width: 12rem;
-
-        .hero-creator__container-content__form-randomize {
-          @include flexbox(column, center, center);
-
-          position: relative;
-          width: 100%;
-
-          background: rgba(255, 255, 255, 0.05);
-          border: 4px solid #8b5a2b;
-          border-radius: 0.5rem 0.5rem 0 0;
-
-          .hero-creator__container-content__form-randomize-btn {
-            @include flexbox(column);
-
-            all: unset;
-            cursor: pointer;
-
-            transition: all 0.15s ease;
-
-            .hero-creator__container-content__form-randomize-btn-dice {
-              width: 128px;
-              height: 128px;
-              image-rendering: pixelated;
-            }
-
-            &:hover {
-              transform: scale(1.05);
-            }
-          }
-
-          .hero-creator__container-content__form-randomize-label {
-            background: #f3d7a2;
-            width: 100%;
-            padding: 0.75rem;
-            transform: scale(1.1);
-            border-radius: 0.25rem;
-
-            text-align: center;
-            font-weight: 400;
-          }
-        }
-
-        .hero-creator__container-content__form-selectors {
-          @include flexbox(column, stretch, flex-start, 1rem);
-
-          width: 100%;
-        }
-      }
-
-      .hero-creator__container-content__preview {
-        background: rgba(255, 255, 255, 0.05);
-        border: 4px solid #8b5a2b;
-        border-radius: 0.5rem 0.5rem;
-
-        padding: 1.5rem;
-      }
-    }
+    background: #3b2418;
+    border-bottom: 4px solid #2b1a12;
   }
 
-  .hero-creator__start-button {
-    @include stripped-btn;
+  .hero-creator__container-content {
+    @include flexbox($align: flex-start, $gap: 2rem);
 
-    z-index: 10;
-    background-color: #f3d7a2;
-    padding: 0.25rem 1rem;
-    font-size: 1.25rem;
-    border-radius: 0.25rem;
-    cursor: pointer;
+    padding: 1.5rem;
 
-    transition: all 0.15s ease;
+    .hero-creator__container-content__form {
+      @include flexbox(column, $align: center, $gap: 2rem);
 
-    &:hover {
-      background-color: #e6c17d;
+      width: 12rem;
+
+      .hero-creator__container-content__form-randomize {
+        @include flexbox(column, center, center);
+
+        position: relative;
+        width: 100%;
+
+        background: rgba(255, 255, 255, 0.05);
+        border: 4px solid #8b5a2b;
+        border-radius: 0.5rem 0.5rem 0 0;
+
+        .hero-creator__container-content__form-randomize-btn {
+          @include flexbox(column);
+
+          all: unset;
+          cursor: pointer;
+
+          transition: all 0.15s ease;
+
+          .hero-creator__container-content__form-randomize-btn-dice {
+            width: 128px;
+            height: 128px;
+            image-rendering: pixelated;
+          }
+
+          &:hover {
+            transform: scale(1.05);
+          }
+        }
+
+        .hero-creator__container-content__form-randomize-label {
+          background: #f3d7a2;
+          width: 100%;
+          padding: 0.75rem;
+          transform: scale(1.1);
+          border-radius: 0.25rem;
+
+          text-align: center;
+          font-weight: 400;
+        }
+      }
+
+      .hero-creator__container-content__form-selectors {
+        @include flexbox(column, stretch, flex-start, 1rem);
+
+        width: 100%;
+      }
     }
+
+    .hero-creator__container-content__preview {
+      background: rgba(255, 255, 255, 0.05);
+      border: 4px solid #8b5a2b;
+      border-radius: 0.5rem 0.5rem;
+
+      padding: 1.5rem;
+    }
+  }
+}
+
+.hero-creator__start-button {
+  @include stripped-btn;
+
+  z-index: 10;
+  background-color: #f3d7a2;
+  padding: 0.25rem 1rem;
+  font-size: 1.25rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+
+  transition: all 0.15s ease;
+
+  &:hover {
+    background-color: #e6c17d;
   }
 }

@@ -1,0 +1,24 @@
+@use '../../../../styles/mixins/flexbox.scss' as *;
+
+.page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(rgba(20, 10, 5, 0.6), rgba(20, 10, 5, 0.6)),
+    url('/assets/images/backgrounds/creator-background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  z-index: 0;
+}
+
+.page {
+  @include flexbox(column, center, center, 2rem);
+
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}

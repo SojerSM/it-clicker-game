@@ -8,10 +8,17 @@ import { Gender } from '../../../shared/types/enums/gender.enum';
 import { CategorySelectorComponent } from './category-selector/category-selector.component';
 import { CreatorPreviewComponent } from './creator-preview/creator-preview.component';
 import { TranslatePipe } from '@ngx-translate/core';
+import { PageComponent } from '../../../shared/components/page/page.component';
 
 @Component({
   selector: 'app-hero-creator',
-  imports: [CreatorPreviewComponent, CategorySelectorComponent, LangWidgetComponent, TranslatePipe],
+  imports: [
+    CreatorPreviewComponent,
+    CategorySelectorComponent,
+    LangWidgetComponent,
+    TranslatePipe,
+    PageComponent,
+  ],
   templateUrl: './hero-creator.component.html',
   styleUrl: './hero-creator.component.scss',
 })
