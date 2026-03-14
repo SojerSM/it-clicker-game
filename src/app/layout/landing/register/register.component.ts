@@ -3,6 +3,7 @@ import { LangWidgetComponent } from '../../../shared/components/lang-widget/lang
 import { PageComponent } from '../../../shared/components/page/page.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { TranslatePipe } from '@ngx-translate/core';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -11,5 +12,14 @@ import { TranslatePipe } from '@ngx-translate/core';
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent {
+  constructor(private authService: AuthService) {}
+
+  handleRegister(data: { email: string; password: string }): void {
+    this.authService.register(data.email, data.password).subscribe({
+      next: (res) => console.log(res),
+      error: (err) => console.error(err),
+    });
+  }
+
   registerByGoogle(): void {}
 }

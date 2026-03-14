@@ -3,7 +3,7 @@
   <section class="register">
     <header class="register__header">{{ 'landing.register.create' | translate }}</header>
     <div class="register__container">
-      <app-register-form></app-register-form>
+      <app-register-form (submitForm)="handleRegister($event)"></app-register-form>
       <div class="register__container-options">
         <span>{{ 'landing.register.or' | translate }}</span>
       </div>
