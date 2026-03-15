@@ -1,7 +1,6 @@
-<form class="register-form">
+<form class="register-form" #registerForm="ngForm" (ngSubmit)="submit(registerForm)">
   <div class="register-form__field">
     <label for="email">{{ 'landing.register.email' | translate }}</label>
-
     <input
       type="email"
       id="email"
@@ -10,34 +9,41 @@
       email
       pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$"
       ngModel
+      #email="ngModel"
     />
 
-    <!-- @if (email.invalid && email.touched) {
-    <small class="error"> Podaj poprawny adres email (np. user@domain.com) </small>
-    } -->
+    @if (email.invalid && registerForm.submitted) {
+    <div class="register-form__field-error">{{ EMAIL_ERROR }}</div>
+    }
   </div>
-
   <div class="register-form__field">
     <label for="password">{{ 'landing.register.password' | translate }}</label>
-
-    <input type="password" id="password" name="password" required minlength="8" ngModel />
-
-    <!-- @if (password.invalid && password.touched) {
-    <small class="error"> Hasło musi mieć minimum 8 znaków </small>
-    } -->
+    <input
+      type="password"
+      id="password"
+      name="password"
+      required
+      minlength="8"
+      ngModel
+      #password="ngModel"
+      placeholder="min. 8 characters"
+    />
   </div>
-
   <div class="register-form__field">
     <label for="confirmPassword">{{ 'landing.register.repeat' | translate }}</label>
-
-    <input type="password" id="confirmPassword" name="confirmPassword" required ngModel />
-
-    <!-- @if (confirmPassword.touched && password.value !== confirmPassword.value) {
-    <small class="error"> Hasła muszą być identyczne </small>
-    } -->
+    <input
+      type="password"
+      id="confirmPassword"
+      name="confirmPassword"
+      required
+      ngModel
+      #confirmedPassword="ngModel"
+    />
+    @if (passwordError) {
+    <div class="register-form__field-error">{{ passwordError }}</div>
+    }
   </div>
-
-  <button class="register-form__submit-btn" type="submit">
+  <button class="register-form__submit-btn" type="submit" [disabled]="registerForm.invalid">
     {{ 'landing.register.register' | translate }}
   </button>
 </form>

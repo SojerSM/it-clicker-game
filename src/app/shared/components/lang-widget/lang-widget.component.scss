@@ -1,5 +1,4 @@
-@use '../../../../styles/mixins/buttons.scss' as *;
-@use '../../../../styles/mixins//flexbox.scss' as *;
+@use '../../../../styles/mixins.scss' as *;
 
 .lang-widget {
   @include flexbox(row, $gap: 1rem);

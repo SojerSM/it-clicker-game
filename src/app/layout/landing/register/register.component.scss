@@ -1,6 +1,5 @@
-@use '../../../../styles/mixins/flexbox.scss' as *;
-@use '../../../../styles/mixins/frames.scss' as *;
-@use '../../../../styles/mixins/buttons.scss' as *;
+@use '../../../../styles/mixins.scss' as *;
+@use 'template' as *;
 
 .register {
   @include frame-default;
@@ -8,7 +7,7 @@
 
   z-index: 10;
   width: 60rem;
-  background: rgba(70, 45, 30, 0.92);
+  background: $background-color__dark-brighter;
   image-rendering: pixelated;
 
   .register__header {
@@ -19,10 +18,10 @@
     font-size: 1.5rem;
     font-weight: 800;
     letter-spacing: 2px;
-    color: #f3d7a2;
+    color: $font-color__light-primary;
     text-shadow: 2px 2px 0 #000;
 
-    background: #3b2418;
+    background: $background-color__dark-primary;
     border-bottom: 4px solid #2b1a12;
   }
 

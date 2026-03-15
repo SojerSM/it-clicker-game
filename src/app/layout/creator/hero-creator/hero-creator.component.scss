@@ -1,6 +1,5 @@
-@use '../../../../styles/mixins/frames.scss' as *;
-@use '../../../../styles/mixins/flexbox.scss' as *;
-@use '../../../../styles/mixins/buttons.scss' as *;
+@use '../../../../styles/mixins.scss' as *;
+@use 'template' as *;
 
 .hero-creator__container {
   @include frame-default;
@@ -8,7 +7,7 @@
 
   z-index: 10;
   width: 60rem;
-  background: rgba(70, 45, 30, 0.92);
+  background: $background-color__dark-brighter;
   image-rendering: pixelated;
 
   .hero-creator__container-header {
@@ -19,11 +18,11 @@
     font-size: 1.5rem;
     font-weight: 800;
     letter-spacing: 2px;
-    color: #f3d7a2;
+    color: $font-color__light-primary;
     text-shadow: 2px 2px 0 #000;
 
-    background: #3b2418;
-    border-bottom: 4px solid #2b1a12;
+    background: $background-color__dark-primary;
+    border-bottom: 4px solid $border-color__dark-primary;
   }
 
   .hero-creator__container-content {
@@ -42,8 +41,7 @@
         position: relative;
         width: 100%;
 
-        background: rgba(255, 255, 255, 0.05);
-        border: 4px solid #8b5a2b;
+        border: 4px solid $border-color__dark-brighter;
         border-radius: 0.5rem 0.5rem 0 0;
 
         .hero-creator__container-content__form-randomize-btn {
@@ -66,7 +64,7 @@
         }
 
         .hero-creator__container-content__form-randomize-label {
-          background: #f3d7a2;
+          background: $font-color__light-primary;
           width: 100%;
           padding: 0.75rem;
           transform: scale(1.1);
@@ -86,7 +84,7 @@
 
     .hero-creator__container-content__preview {
       background: rgba(255, 255, 255, 0.05);
-      border: 4px solid #8b5a2b;
+      border: 4px solid $border-color__dark-brighter;
       border-radius: 0.5rem 0.5rem;
 
       padding: 1.5rem;
@@ -98,7 +96,7 @@
   @include stripped-btn;
 
   z-index: 10;
-  background-color: #f3d7a2;
+  background-color: $font-color__light-primary;
   padding: 0.25rem 1rem;
   font-size: 1.25rem;
   border-radius: 0.25rem;

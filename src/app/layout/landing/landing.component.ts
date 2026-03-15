@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing',
-  imports: [RouterOutlet],
+  imports: [],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.scss',
 })
