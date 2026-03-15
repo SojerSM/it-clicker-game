@@ -1,4 +1,4 @@
-<form class="register-form" (ngSubmit)="submit(email.value, password.value)">
+<form class="register-form" #registerForm="ngForm" (ngSubmit)="submit(registerForm)">
   <div class="register-form__field">
     <label for="email">{{ 'landing.register.email' | translate }}</label>
     <input
@@ -11,6 +11,10 @@
       ngModel
       #email="ngModel"
     />
+
+    @if (email.invalid && registerForm.submitted) {
+    <div class="register-form__field-error">{{ EMAIL_ERROR }}</div>
+    }
   </div>
   <div class="register-form__field">
     <label for="password">{{ 'landing.register.password' | translate }}</label>
@@ -34,8 +38,11 @@
       ngModel
       #confirmedPassword="ngModel"
     />
+    @if (passwordError) {
+    <div class="register-form__field-error">{{ passwordError }}</div>
+    }
   </div>
-  <button class="register-form__submit-btn" type="submit">
+  <button class="register-form__submit-btn" type="submit" [disabled]="registerForm.invalid">
     {{ 'landing.register.register' | translate }}
   </button>
 </form>

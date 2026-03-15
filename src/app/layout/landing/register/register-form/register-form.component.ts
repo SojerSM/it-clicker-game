@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm, NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-register-form',
@@ -11,7 +11,25 @@ import { FormsModule } from '@angular/forms';
 export class RegisterFormComponent {
   @Output() submitForm = new EventEmitter<{ email: string; password: string }>();
 
-  submit(email: string, password: string): void {
-    this.submitForm.emit({ email, password });
+  readonly EMAIL_ERROR: string = 'Invalid e-mail address.';
+
+  passwordError: string = '';
+
+  submit(form: NgForm): void {
+    this.passwordError = '';
+
+    const email = form.value.email;
+    const password = form.value.password;
+    const confirmedPassword = form.value.confirmPassword;
+
+    if (password !== confirmedPassword) {
+      this.passwordError = 'Passwords are not the same.';
+
+      form.controls['confirmPassword'].reset();
+
+      return;
+    }
+
+    this.submitForm.emit({ email, password: password });
   }
 }

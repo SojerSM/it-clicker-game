@@ -13,6 +13,6 @@ export class AuthService {
       password,
     };
 
-    return this.api.post<string>('/account/register', body);
+    return this.api.post<string>('account/register', body);
   }
 }
