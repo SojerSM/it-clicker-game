@@ -1,12 +1,26 @@
+@use 'template' as *;
+@use '../../../../../styles/mixins.scss' as *;
+
 .vertical-navbar {
+  @include flexbox(column, $justify: space-between);
+
   height: 100%;
   width: 4rem;
-  background-color: rgb(80, 80, 80);
+  background-color: $bg-tertiary;
   padding: 0.5rem;
+  position: relative;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -15px;
+    width: 15px;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.15), transparent);
+    pointer-events: none;
+    z-index: 20;
+  }
 
   .vertical-navbar__list {
     display: flex;
@@ -16,7 +30,7 @@
     list-style: none;
 
     .vertical-navbar__list-item {
-      background-color: rgb(121, 121, 121);
+      background-color: $bg-elevated;
       width: 3rem;
       height: 3rem;
 

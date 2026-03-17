@@ -1,10 +1,11 @@
+@use 'template' as *;
+@use '../../../../styles/mixins.scss' as *;
+
 .tag {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flexbox(center, center);
 
   width: fit-content;
-  border: 2px solid rgb(22, 22, 22);
+  border: 2px solid $border-strong;
   border-radius: 0.5rem;
   padding: 0.15rem 0.3rem;
 

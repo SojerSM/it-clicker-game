@@ -7,7 +7,7 @@
 
   z-index: 10;
   width: 60rem;
-  background: $background-color__dark-brighter;
+  background: $bg-primary;
   image-rendering: pixelated;
 
   .register__header {
@@ -18,11 +18,11 @@
     font-size: 1.5rem;
     font-weight: 800;
     letter-spacing: 2px;
-    color: $font-color__light-primary;
+    color: $text-primary;
     text-shadow: 2px 2px 0 #000;
 
-    background: $background-color__dark-primary;
-    border-bottom: 4px solid #2b1a12;
+    background: $bg-tertiary;
+    border-bottom: 4px solid $border-default;
   }
 
   .register__container {
@@ -42,17 +42,7 @@
       width: 100%;
 
       span {
-        color: #f3d7a2;
-      }
-
-      button {
-        @include stripped-btn;
-
-        cursor: pointer;
-
-        img {
-          width: 12rem;
-        }
+        color: $text-primary;
       }
     }
   }

@@ -1,20 +1,21 @@
+@use 'template' as *;
+@use '../../../../../../styles/mixins.scss' as *;
+
 h4 {
   margin-bottom: 0.5rem;
 }
 
 .hero-attributes-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem;
-  justify-content: flex-start;
+  @include flexbox($gap: 0.25rem);
 
+  flex-wrap: wrap;
   list-style: none;
 }
 
 .hero-attributes-grid__defined {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+  @include flexbox(column, $align: flex-start, $gap: 0.25rem);
+
+  background-color: $bg-tertiary;
   list-style: none;
 
   .hero-attributes-grid__defined-row {
@@ -22,9 +23,8 @@ h4 {
   }
 
   .hero-attributes-grid__defined-row-inner {
-    display: flex;
-    flex-direction: row;
-    gap: 0.25rem;
+    @include flexbox($gap: 0.25rem);
+
     list-style: none;
   }
 
@@ -34,6 +34,6 @@ h4 {
 }
 
 .border {
-  border: 2px solid lightgray;
+  border: 2px solid $border-default;
   padding: 0.25rem;
 }

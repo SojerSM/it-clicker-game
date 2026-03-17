@@ -1,7 +1,11 @@
 <section class="project-progress">
   <div class="project-progress__header">
     <div class="project-progress__bar">
-      <app-progress-bar [maxValue]="project.totalCp" [remaining]="project.remainingCp" />
+      <app-progress-bar
+        [fill]="'#6dd5df'"
+        [maxValue]="project.totalCp"
+        [remaining]="project.remainingCp"
+      />
     </div>
     <div class="project-progress__header-summary">
       <span>CP: {{ project.remainingCp }}</span>

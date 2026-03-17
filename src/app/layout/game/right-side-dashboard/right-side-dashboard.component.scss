@@ -1,11 +1,27 @@
+@use 'template' as *;
+
 :host {
   flex: 1;
 }
 
 .right-side-dashboard {
+  background-color: $bg-secondary;
   height: 100%;
   display: flex;
   flex-direction: column;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -15px;
+    width: 15px;
+    height: 100%;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.15), transparent);
+    pointer-events: none;
+    z-index: 20;
+  }
 
   .right-side-dashboard__attributes {
     padding: 0.5rem;

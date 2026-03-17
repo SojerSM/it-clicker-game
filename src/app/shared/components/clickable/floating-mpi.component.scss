@@ -1,3 +1,5 @@
+@use 'template' as *;
+
 :host {
   position: absolute;
   pointer-events: none;
@@ -10,7 +12,7 @@
   pointer-events: none;
   animation: floatUp 1.2s ease-out forwards;
   font-weight: 600;
-  color: black;
+  color: $accent-glow;
 
   @keyframes floatUp {
     0% {

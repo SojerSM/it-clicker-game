@@ -1,29 +1,25 @@
-.hero-card-simplified {
-  border: 2px solid lightgray;
-  padding: 0.25rem;
-  gap: 0.5rem;
+@use 'template' as *;
+@use '../../../../../../styles/mixins.scss' as *;
 
-  display: flex;
+.hero-card-simplified {
+  @include flexbox($gap: 0.5rem);
+
+  background-color: $bg-tertiary;
+  border: 2px solid $border-default;
+  padding: 0.25rem;
 
   .hero-card-simplified__description {
+    @include flexbox($justify: space-between, $gap: 0.25rem);
+
     width: 100%;
-    display: flex;
-    gap: 0.25rem;
-    justify-content: space-between;
 
     .hero-card-simplified__description-left {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 0.25rem;
+      @include flexbox(column, flex-start, space-between, 0.25rem);
 
       .hero-card-simplified__description-left__lvl {
-        font-size: 0.8rem;
+        @include flexbox($align: center, $gap: 0.25rem);
 
-        display: flex;
-        gap: 0.25rem;
-        align-items: center;
+        font-size: 0.8rem;
 
         .hero-card-simplified__description-left__lvl-value {
           font-weight: bolder;
@@ -32,13 +28,9 @@
     }
 
     .hero-card-simplified__description-right {
-      height: 100%;
+      @include flexbox(column, flex-end, space-between, 0.25rem);
 
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 0.25rem;
+      height: 100%;
 
       .hero-card-simplified__description-right__role-badge {
         transform: scale(0.9);
@@ -46,12 +38,11 @@
       }
 
       .hero-card-simplified__description-right__impact {
+        @include flexbox($gap: 0.25rem);
+
         font-size: 0.8rem;
         font-style: italic;
         margin-right: 0.25rem;
-
-        display: flex;
-        gap: 0.25rem;
       }
     }
   }

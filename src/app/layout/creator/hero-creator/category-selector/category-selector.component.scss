@@ -1,4 +1,5 @@
 @use '../../../../../styles/mixins.scss' as *;
+@use 'template' as *;
 
 .category-selector {
   @include flexbox(column, $align: center, $gap: 0.25rem);
@@ -9,7 +10,7 @@
     font-size: 0.75rem;
     opacity: 0.5;
     font-weight: bold;
-    color: #fff7e9;
+    color: $text-primary;
   }
 
   .category-selector__values {
@@ -24,7 +25,7 @@
     .category-selector__values-btn {
       @include stripped-btn;
 
-      background-color: #f3d7a2;
+      background-color: $accent-primary;
       padding: 0.25rem 0.5rem;
       border-radius: 0.25rem;
 
@@ -34,7 +35,7 @@
       transition: all 0.15s ease;
 
       &:hover {
-        background-color: #e6c17d;
+        background-color: $accent-hover;
       }
     }
   }
