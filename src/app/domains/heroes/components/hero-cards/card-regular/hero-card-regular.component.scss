@@ -7,6 +7,7 @@
   background-color: $bg-tertiary;
   border: 2px solid $border-default;
   padding: 0.5rem;
+  position: relative;
 
   .hero-card__summary {
     @include flexbox(column, space-between);

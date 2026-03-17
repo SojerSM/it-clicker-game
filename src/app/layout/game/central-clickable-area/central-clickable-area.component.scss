@@ -6,9 +6,30 @@
 
   flex-grow: 1;
   overflow: hidden;
+  position: relative;
 
   height: 100%;
   width: 30rem;
   background-color: $bg-primary;
   padding: 1rem;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+
+    background-image: url('/assets/images/backgrounds/pixelate-gradient.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  > * {
+    position: relative;
+    z-index: 10;
+  }
 }
