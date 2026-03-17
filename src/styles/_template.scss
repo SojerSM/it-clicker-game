@@ -1,15 +1,46 @@
-$background-color__dark-brightest: rgba(110, 75, 53, 0.92);
-$background-color__dark-brighter: rgba(70, 45, 30, 0.92);
-$background-color__dark-primary: #3b2418;
-$background-color__dark-darker: rgba(40, 25, 15, 0.85);
-$background-color__input-dark: rgba(25, 15, 10, 0.9);
+/* backgrounds */
+$bg-primary: #171f26;
+$bg-secondary: #2e373d;
+$bg-tertiary: #222b31;
+$bg-elevated: #344047;
+$bg-light: #4a565e;
 
-$border-color__light-brighter: #d4b27a;
-$border-color__light-primary: #a98755;
-$border-color__dark-brighter: #8b5a2b;
-$border-color__dark-primary: #2b1a12;
+/* text */
+$text-primary: #c2c2bd;
+$text-secondary: #9aa3a6;
+$text-muted: #6f7a7e;
+$text-accent: #7fd0d8;
+$text-dark-strong: #12181b;
+$text-dark-primary: #172024;
+$text-dark-secondary: #39464d;
+$text-dark-muted: #5a6b73;
+$text-dark-accent: #1aa3b0;
 
-$font-color__dark-primary: #2a1a10;
-$font-color__light-brighter: #f1e8d8;
-$font-color__light-primary: #f3d7a2;
-$font-color__light-form-placeholder: rgba(243, 215, 162, 0.5);
+/* accent */
+$accent-primary: #206f78;
+$accent-hover: #2c8f9a;
+$accent-bright: #3db7c4;
+$accent-soft: #174c53;
+$accent-glow: #6dd5df;
+
+/* buttons */
+$button-primary: #25473b;
+$button-hover: #2d5c4c;
+$button-active: #1c3a30;
+$button-light-primary: #3db7c4;
+$button-light-hover: #5ac8d4;
+$button-light-active: #2ca0ad;
+$button-light-disabled: #1f353a;
+
+/* borders */
+$border-dark: #11171b;
+$border-dimmed: #172027;
+$border-subtle: #2a343a;
+$border-default: #3a464d;
+$border-strong: #4d5c63;
+$border-accent: #2c8f9a;
+
+/* inputs */
+$input-bg-primary: #131a20;
+$input-border: #2a343a;
+$input-focus: #2c8f9a;

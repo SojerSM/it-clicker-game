@@ -1,6 +1,9 @@
+@use 'template' as *;
+@use '../../../../../../styles/mixins.scss' as *;
+
 .ticket {
-  width: 24rem;
-  background-color: #ffffff;
+  width: 100%;
+  background-color: $bg-elevated;
   border-radius: 0.5rem;
   padding: 0.75rem;
   cursor: pointer;
@@ -34,7 +37,7 @@
         padding: 0.15rem 0.5rem;
 
         span {
-          color: white;
+          color: $text-primary;
           font-weight: 800;
         }
       }

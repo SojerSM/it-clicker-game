@@ -1,7 +1,9 @@
+@use 'template' as *;
+
 .vertical-navbar {
   height: 100%;
   width: 4rem;
-  background-color: rgb(80, 80, 80);
+  background-color: $bg-tertiary;
   padding: 0.5rem;
 
   display: flex;
@@ -16,7 +18,7 @@
     list-style: none;
 
     .vertical-navbar__list-item {
-      background-color: rgb(121, 121, 121);
+      background-color: $bg-elevated;
       width: 3rem;
       height: 3rem;
 

@@ -1,19 +1,20 @@
+@use 'template' as *;
+@use '../../../../../../styles/mixins.scss' as *;
+
 .hero-card {
-  display: flex;
+  @include flexbox($gap: 0.5rem);
+
+  background-color: $bg-tertiary;
+  border: 2px solid $border-default;
   padding: 0.5rem;
-  gap: 0.5rem;
-  border: 2px solid lightgray;
 
   .hero-card__summary {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    @include flexbox(column, space-between);
+
     width: 100%;
 
     .hero-card__summary-header {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
+      @include flexbox(column, $gap: 0.25rem);
 
       span {
         font-size: 1.25rem;
@@ -22,15 +23,14 @@
     }
 
     .hero-card__summary-progress {
-      display: flex;
-      align-items: flex-end;
-      gap: 0.5rem;
+      @include flexbox($align: flex-end, $gap: 0.5rem);
+
+      transform: translateY(-5%);
       width: 100%;
 
       .hero-card__summary-progress__exp-bar {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
+        @include flexbox(column, stretch, flex-end);
+
         height: 3rem;
         width: 100%;
 
@@ -40,15 +40,15 @@
       }
 
       .hero-card__summary-progress__lvl-badge {
+        @include flexbox(center, center);
+
         width: 2rem;
         height: 2rem;
         border-radius: 0.25rem;
-        background-color: rgb(69, 88, 69);
+        background-color: $accent-soft;
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
+        color: $text-primary;
+        font-weight: bold;
       }
     }
   }

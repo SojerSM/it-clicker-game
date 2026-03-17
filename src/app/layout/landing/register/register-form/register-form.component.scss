@@ -7,11 +7,10 @@
   padding: 2rem;
 
   border-radius: 16px;
-  background: $background-color__dark-darker;
-  border: 2px solid $border-color__light-brighter;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5), 0 0 10px rgba(212, 178, 122, 0.3) inset;
+  background: $bg-secondary;
+  border: 2px solid $border-strong;
 
-  color: $font-color__light-primary;
+  color: $text-primary;
 
   .register-form__field {
     @include flexbox(column, $gap: 0.5rem);
@@ -19,29 +18,24 @@
     position: relative;
     width: 100%;
 
-    label {
-      opacity: 0.9;
-    }
-
     input {
       width: 75%;
       padding: 0.25rem 0.5rem;
       border-radius: 0.5rem;
-      border: 2px solid $border-color__light-primary;
-      background: $background-color__input-dark;
+      border: 2px solid $border-accent;
+      background: $bg-primary;
 
-      color: $font-color__light-primary;
+      color: $text-secondary;
       font-size: 0.95rem;
 
       transition: all 0.2s ease;
 
       &::placeholder {
-        color: $font-color__light-form-placeholder;
+        color: $text-muted;
       }
 
       &::focus {
         outline: none;
-        border-color: $border-color__light-brighter;
 
         box-shadow: 0 0 6px rgba(240, 207, 149, 0.7);
       }
@@ -59,22 +53,27 @@
   }
 
   .register-form__submit-btn {
-    margin-top: 1rem;
+    @include stripped-btn;
 
+    margin-top: 1rem;
     padding: 0.75rem 1rem;
 
-    border-radius: 0.75rem;
-    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 2px 2px 0 $accent-primary;
 
-    background: linear-gradient(145deg, #d4b27a, #b8965e);
+    background: $button-light-primary;
 
-    color: $font-color__dark-primary;
+    color: $text-dark-primary;
     font-weight: bold;
     font-size: 1rem;
 
     cursor: pointer;
 
     transition: all 0.2s ease;
+
+    &:hover {
+      background: $button-light-hover;
+    }
 
     &:disabled {
       cursor: not-allowed;

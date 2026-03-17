@@ -1,11 +1,14 @@
-.clickable-area {
-  height: 100%;
-  width: 30rem;
-  background-color: rgb(240, 240, 240);
-  padding: 1rem;
+@use 'template' as *;
+@use '../../../../styles/mixins.scss' as *;
 
-  display: flex;
-  flex-direction: column;
+.clickable-area {
+  @include flexbox(column, $justify: flex-start);
+
   flex-grow: 1;
   overflow: hidden;
+
+  height: 100%;
+  width: 30rem;
+  background-color: $bg-primary;
+  padding: 1rem;
 }

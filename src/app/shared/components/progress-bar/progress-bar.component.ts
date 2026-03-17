@@ -23,7 +23,7 @@ export class ProgressBarComponent {
   @Input({ required: false }) remaining?: number;
   @Input({ required: false }) descending: boolean = true;
   @Input({ required: false }) displayPercentage: boolean = true;
-  @Input({ required: false }) fill: string = '#4caf50';
+  @Input({ required: false }) fill: string = '#206f78';
 
   get percentage(): number {
     if (this.remaining && this.descending === false) {
