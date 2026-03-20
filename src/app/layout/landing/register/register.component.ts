@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { LangWidgetComponent } from '../../../shared/components/lang-widget/lang-widget.component';
 import { PageComponent } from '../../../shared/components/page/page.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { TranslatePipe } from '@ngx-translate/core';
 import { AuthService } from '../../../core/services/auth.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -12,12 +14,26 @@ import { AuthService } from '../../../core/services/auth.service';
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent {
-  constructor(private authService: AuthService) {}
+  emailErrorMsg = signal<string | null>(null);
+  serverErrorMsg = signal<string | null>(null);
+
+  constructor(private authService: AuthService, private router: Router) {}
 
   handleRegister(data: { email: string; password: string }): void {
+    this.emailErrorMsg.set(null);
+    this.serverErrorMsg.set(null);
+
     this.authService.register(data.email, data.password).subscribe({
-      next: (res) => console.log(res),
-      error: (err) => console.error(err),
+      next: (res) => {
+        this.router.navigate(['/hero-creator']);
+      },
+      error: (err: HttpErrorResponse) => {
+        if (err.status === 409) {
+          this.emailErrorMsg.set('Email already in use');
+        } else {
+          this.serverErrorMsg.set('Something went wrong');
+        }
+      },
     });
   }
 
