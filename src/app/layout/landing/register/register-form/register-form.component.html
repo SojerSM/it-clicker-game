@@ -12,8 +12,8 @@
       #email="ngModel"
     />
 
-    @if (email.invalid && registerForm.submitted) {
-    <div class="register-form__field-error">{{ EMAIL_ERROR }}</div>
+    @if (emailErrorMsg !== null) {
+    <div class="register-form__field-error">{{ emailErrorMsg }}</div>
     }
   </div>
   <div class="register-form__field">

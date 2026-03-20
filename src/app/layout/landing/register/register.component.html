@@ -3,13 +3,18 @@
   <section class="register">
     <header class="register__header">{{ 'landing.register.create' | translate }}</header>
     <div class="register__container">
-      <app-register-form (submitForm)="handleRegister($event)"></app-register-form>
+      <app-register-form
+        (submitForm)="handleRegister($event)"
+        [emailErrorMsg]="emailErrorMsg()"
+      ></app-register-form>
       <div class="register__container-options">
         <span>{{ 'landing.register.or' | translate }}</span>
       </div>
     </div>
-    <!-- <div class="modal-content">
-      <router-outlet></router-outlet>
-    </div> -->
+    @if (serverErrorMsg()) {
+    <div class="register__server-error">
+      <span>{{ serverErrorMsg() }}</span>
+    </div>
+    }
   </section>
 </app-page>

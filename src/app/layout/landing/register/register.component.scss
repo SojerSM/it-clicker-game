@@ -5,6 +5,7 @@
   @include frame-default;
   @include flexbox(column, $align: flex-start);
 
+  position: relative;
   z-index: 10;
   width: 60rem;
   background: $bg-primary;
@@ -45,5 +46,17 @@
         color: $text-primary;
       }
     }
+  }
+
+  .register__server-error {
+    position: absolute;
+    top: 105%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.5rem 1rem;
+
+    background-color: $alert-bg;
+    border: 2px solid $alert-border;
+    color: $alert-text;
   }
 }

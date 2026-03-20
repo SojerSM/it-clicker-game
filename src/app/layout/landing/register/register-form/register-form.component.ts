@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
 import { FormsModule, NgForm, NgModel } from '@angular/forms';
 
@@ -9,9 +9,8 @@ import { FormsModule, NgForm, NgModel } from '@angular/forms';
   styleUrl: './register-form.component.scss',
 })
 export class RegisterFormComponent {
+  @Input({ required: false }) emailErrorMsg: string | null = null;
   @Output() submitForm = new EventEmitter<{ email: string; password: string }>();
-
-  readonly EMAIL_ERROR: string = 'Invalid e-mail address.';
 
   passwordError: string = '';
 
