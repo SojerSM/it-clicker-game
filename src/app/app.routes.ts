@@ -5,6 +5,7 @@ import { HeroCreatorComponent } from './layout/creator/hero-creator/hero-creator
 import { heroCreatorResolver } from './layout/creator/hero-creator/hero-creator.resolver';
 import { gameResolver } from './layout/game/game.resolver';
 import { RegisterComponent } from './layout/landing/register/register.component';
+import { AuthComponent } from './layout/landing/auth/auth/auth.component';
 
 export const routes: Routes = [
   {
@@ -14,6 +15,10 @@ export const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent,
+  },
+  {
+    path: 'auth',
+    component: AuthComponent,
   },
   {
     path: 'hero-creator',

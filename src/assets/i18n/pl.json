@@ -83,7 +83,14 @@
       "money": "Saldo"
     }
   },
+
   "landing": {
+    "login": {
+      "email": "E-mail",
+      "password": "Hasło",
+      "signIn": "Zaloguj się",
+      "title": "Logowanie"
+    },
     "register": {
       "create": "Utwórz konto",
       "email": "E-mail",
