@@ -84,9 +84,15 @@
     }
   },
   "landing": {
+    "login": {
+      "email": "Email",
+      "password": "Password",
+      "signIn": "Sign in",
+      "title": "Sign in"
+    },
     "register": {
       "create": "Create account",
-      "email": "E-mail",
+      "email": "Email",
       "or": "or",
       "password": "Password",
       "register": "Register",

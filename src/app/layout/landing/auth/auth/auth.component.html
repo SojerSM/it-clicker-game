@@ -1,0 +1,32 @@
+<app-page>
+  <app-lang-widget />
+  <section class="auth">
+    <header class="auth__header">{{ 'landing.login.title' | translate }}</header>
+    <div class="auth__container">
+      <form class="auth__container__form" #authForm="ngForm" (submit)="submit(authForm)">
+        <div class="auth__container__form-field">
+          <label for="email">{{ 'landing.login.email' | translate }}</label>
+          <input type="email" id="email" name="email" required ngModel #email="ngModel" />
+        </div>
+        <div class="auth__container__form-field">
+          <label for="password">{{ 'landing.login.password' | translate }}</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            ngModel
+            #password="ngModel"
+          />
+        </div>
+        <button
+          class="auth__container__form-submit-btn"
+          type="submit"
+          [disabled]="authForm.invalid"
+        >
+          {{ 'landing.login.signIn' | translate }}
+        </button>
+      </form>
+    </div>
+  </section>
+</app-page>

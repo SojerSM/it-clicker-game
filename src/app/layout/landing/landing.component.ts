@@ -10,11 +10,11 @@ import { Router } from '@angular/router';
 export class LandingComponent {
   constructor(private router: Router) {}
 
-  goToHeroCreator(): void {
-    this.router.navigate(['/hero-creator']);
-  }
-
   goToRegister(): void {
     this.router.navigate(['/register']);
+  }
+
+  goToAuth(): void {
+    this.router.navigate(['/auth']);
   }
 }
