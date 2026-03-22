@@ -3,10 +3,11 @@ import { PageComponent } from '../../../../shared/components/page/page.component
 import { LangWidgetComponent } from '../../../../shared/components/lang-widget/lang-widget.component';
 import { NgForm, FormsModule } from '@angular/forms';
 import { TranslatePipe } from '@ngx-translate/core';
+import { ModalHeaderComponent } from '../../../../shared/components/modal-header/modal-header.component';
 
 @Component({
   selector: 'app-auth',
-  imports: [PageComponent, LangWidgetComponent, FormsModule, TranslatePipe],
+  imports: [PageComponent, LangWidgetComponent, FormsModule, TranslatePipe, ModalHeaderComponent],
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.scss',
 })

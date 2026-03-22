@@ -6,10 +6,17 @@ import { TranslatePipe } from '@ngx-translate/core';
 import { AuthService } from '../../../core/services/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { ModalHeaderComponent } from '../../../shared/components/modal-header/modal-header.component';
 
 @Component({
   selector: 'app-register',
-  imports: [LangWidgetComponent, PageComponent, RegisterFormComponent, TranslatePipe],
+  imports: [
+    LangWidgetComponent,
+    PageComponent,
+    RegisterFormComponent,
+    TranslatePipe,
+    ModalHeaderComponent,
+  ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })

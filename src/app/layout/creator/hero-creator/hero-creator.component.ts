@@ -9,6 +9,7 @@ import { CategorySelectorComponent } from './category-selector/category-selector
 import { CreatorPreviewComponent } from './creator-preview/creator-preview.component';
 import { TranslatePipe } from '@ngx-translate/core';
 import { PageComponent } from '../../../shared/components/page/page.component';
+import { ModalHeaderComponent } from '../../../shared/components/modal-header/modal-header.component';
 
 @Component({
   selector: 'app-hero-creator',
@@ -18,6 +19,7 @@ import { PageComponent } from '../../../shared/components/page/page.component';
     LangWidgetComponent,
     TranslatePipe,
     PageComponent,
+    ModalHeaderComponent,
   ],
   templateUrl: './hero-creator.component.html',
   styleUrl: './hero-creator.component.scss',

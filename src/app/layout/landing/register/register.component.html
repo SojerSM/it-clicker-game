@@ -1,7 +1,7 @@
 <app-page>
   <app-lang-widget />
   <section class="register">
-    <header class="register__header">{{ 'landing.register.create' | translate }}</header>
+    <app-modal-header>{{ 'landing.register.create' | translate }}</app-modal-header>
     <div class="register__container">
       <app-register-form
         (submitForm)="handleRegister($event)"

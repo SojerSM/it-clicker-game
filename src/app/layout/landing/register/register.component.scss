@@ -11,21 +11,6 @@
   background: $bg-primary;
   image-rendering: pixelated;
 
-  .register__header {
-    text-align: center;
-    width: 100%;
-    padding: 0.25rem;
-
-    font-size: 1.5rem;
-    font-weight: 800;
-    letter-spacing: 2px;
-    color: $text-primary;
-    text-shadow: 2px 2px 0 #000;
-
-    background: $bg-tertiary;
-    border-bottom: 4px solid $border-default;
-  }
-
   .register__container {
     @include flexbox($align: center, $gap: 2rem);
 
