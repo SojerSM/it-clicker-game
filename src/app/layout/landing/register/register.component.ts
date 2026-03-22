@@ -33,6 +33,7 @@ export class RegisterComponent {
     this.authService.register(data.email, data.password).subscribe({
       next: (res) => {
         this.router.navigate(['/hero-creator']);
+        console.info(res);
       },
       error: (err: HttpErrorResponse) => {
         if (err.status === 409) {

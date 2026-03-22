@@ -3,7 +3,7 @@
   <section class="auth">
     <app-modal-header>{{ 'landing.login.title' | translate }}</app-modal-header>
     <div class="auth__container">
-      <form class="auth__container__form" #authForm="ngForm" (submit)="submit(authForm)">
+      <form class="auth__container__form" #authForm="ngForm" (submit)="handleSignIn(authForm)">
         <div class="auth__container__form-field">
           <label for="email">{{ 'landing.login.email' | translate }}</label>
           <input type="email" id="email" name="email" required ngModel #email="ngModel" />
