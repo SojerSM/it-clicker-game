@@ -4,8 +4,9 @@ import { LandingComponent } from './layout/landing/landing.component';
 import { HeroCreatorComponent } from './layout/creator/hero-creator/hero-creator.component';
 import { heroCreatorResolver } from './layout/creator/hero-creator/hero-creator.resolver';
 import { gameResolver } from './layout/game/game.resolver';
-import { RegisterComponent } from './layout/landing/register/register.component';
-import { AuthComponent } from './layout/landing/auth/auth/auth.component';
+import { RegisterComponent } from './domains/security/components/register/register.component';
+import { AuthComponent } from './domains/security/components/auth/auth.component';
+import { authGuard } from './core/guards/auth-guard';
 
 export const routes: Routes = [
   {
@@ -26,10 +27,12 @@ export const routes: Routes = [
     resolve: {
       heroCreator: heroCreatorResolver,
     },
+    canActivate: [authGuard],
   },
   {
     path: 'game',
     component: GameComponent,
     resolve: { gameResolver: gameResolver },
+    canActivate: [authGuard],
   },
 ];

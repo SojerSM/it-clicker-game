@@ -1,12 +1,14 @@
 import { Component, signal } from '@angular/core';
-import { LangWidgetComponent } from '../../../shared/components/lang-widget/lang-widget.component';
-import { PageComponent } from '../../../shared/components/page/page.component';
+import { LangWidgetComponent } from '../../../../shared/components/lang-widget/lang-widget.component';
+import { PageComponent } from '../../../../shared/components/page/page.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { TranslatePipe } from '@ngx-translate/core';
-import { AuthService } from '../../../core/services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { ModalHeaderComponent } from '../../../shared/components/modal-header/modal-header.component';
+import { ModalHeaderComponent } from '../../../../shared/components/modal-header/modal-header.component';
+import { AuthResponseDTO } from '../../types/auth-response.dto';
+import { JwtStorageService } from '../../services/jwt-storage.service';
 
 @Component({
   selector: 'app-register',
@@ -24,16 +26,21 @@ export class RegisterComponent {
   emailErrorMsg = signal<string | null>(null);
   serverErrorMsg = signal<string | null>(null);
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private jwtStorageService: JwtStorageService
+  ) {}
 
   handleRegister(data: { email: string; password: string }): void {
     this.emailErrorMsg.set(null);
     this.serverErrorMsg.set(null);
 
     this.authService.register(data.email, data.password).subscribe({
-      next: (res) => {
+      next: (res: AuthResponseDTO) => {
+        this.jwtStorageService.saveAccessToken(res.accessToken);
+        this.jwtStorageService.saveRefreshToken(res.refreshToken);
         this.router.navigate(['/hero-creator']);
-        console.info(res);
       },
       error: (err: HttpErrorResponse) => {
         if (err.status === 409) {
