@@ -4,10 +4,11 @@ import { AttributeStackService } from '../../../domains/upgrades/attributes/serv
 import { HeroAttribute } from '../../../domains/upgrades/attributes/types/hero-attribute';
 import { Dimensions } from '../../../shared/types/dimensions.model';
 import { AttributesGridComponent } from '../../../domains/upgrades/attributes/components/attributes-grid/attributes-grid.component';
+import { CompanySummaryWidgetComponent } from '../../../domains/company/components/company-summary-widget/company-summary-widget.component';
 
 @Component({
   selector: 'app-right-side-dashboard',
-  imports: [ResourceSummaryComponent, AttributesGridComponent],
+  imports: [ResourceSummaryComponent, AttributesGridComponent, CompanySummaryWidgetComponent],
   templateUrl: './right-side-dashboard.component.html',
   styleUrl: './right-side-dashboard.component.scss',
 })

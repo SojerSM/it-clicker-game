@@ -11,9 +11,4 @@ export class DevModeService {
       state.money += value;
     });
   }
-
-  resetState(): void {
-    localStorage.removeItem('gameState');
-    window.location.href = '/';
-  }
 }

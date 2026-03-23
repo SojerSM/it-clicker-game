@@ -11,6 +11,7 @@ export class GameStateBuilder {
       impact: structuredClone(this.gameStateService.impactState()),
       effects: structuredClone(this.gameStateService.effectState()),
       heroes: structuredClone(this.gameStateService.heroState()),
+      company: structuredClone(this.gameStateService.companyState()),
       resource: structuredClone(this.gameStateService.resourceState()),
       project: structuredClone(this.gameStateService.projectState()),
       tickets: structuredClone(this.gameStateService.ticketState()),

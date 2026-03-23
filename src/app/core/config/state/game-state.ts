@@ -1,3 +1,4 @@
+import { Company } from '../../../domains/company/types/company.model';
 import { Project } from '../../../domains/progress/projects/types/project.model';
 import { Ticket } from '../../../domains/progress/tickets/types/ticket.model';
 import { StatisticState } from '../../types/state.model';
@@ -34,6 +35,9 @@ export const INITIAL_GAME_STATE: GameState = {
   heroes: {
     owned: [],
     occupiedAvatars: [],
+  },
+  company: {
+    company: {} as Company,
   },
   resource: {
     money: 0,

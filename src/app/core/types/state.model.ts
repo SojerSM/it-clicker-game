@@ -1,3 +1,4 @@
+import { Company } from '../../domains/company/types/company.model';
 import { Effect } from '../../domains/effect/types/effect.model';
 import { Hero } from '../../domains/heroes/types/hero.model';
 import { Project } from '../../domains/progress/projects/types/project.model';
@@ -16,6 +17,10 @@ export interface EffectState {
 export interface HeroState {
   owned: Hero[];
   occupiedAvatars: string[];
+}
+
+export interface CompanyState {
+  company: Company;
 }
 
 export interface ResourceState {

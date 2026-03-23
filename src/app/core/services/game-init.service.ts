@@ -9,6 +9,7 @@ import { GameLoopService } from './game-loop.service';
 import { GameSaveService } from './game-save.service';
 import { GameStateBuilder } from './game-state-builder.service';
 import { GameStateService } from './game-state.service';
+import { CompanyBuilderService } from '../../domains/company/services/company-builder.service';
 
 @Injectable({ providedIn: 'root' })
 export class GameInitService {
@@ -19,7 +20,8 @@ export class GameInitService {
     private ticketQueueService: TicketQueueService,
     private gameLoopService: GameLoopService,
     private gameStateBuilder: GameStateBuilder,
-    private projectGenerator: ProjectGeneratorService
+    private projectGenerator: ProjectGeneratorService,
+    private companyBuilder: CompanyBuilderService
   ) {}
 
   ngOnDestroy(): void {
@@ -57,6 +59,7 @@ export class GameInitService {
       state.heroes.owned.push(ceo);
       state.heroes.occupiedAvatars.push(ceo.avatar);
       state.project.current = this.projectGenerator.generateProject();
+      state.company.company = this.companyBuilder.build();
 
       this.gameStateService.setState(state);
       this.gameSaveService.save(state);

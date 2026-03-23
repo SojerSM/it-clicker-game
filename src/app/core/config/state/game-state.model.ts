@@ -7,12 +7,14 @@ import {
   TicketState,
   RecruitmentState,
   StatisticState,
+  CompanyState,
 } from '../../types/state.model';
 
 export interface GameState {
   impact: ImpactState;
   effects: EffectState;
   heroes: HeroState;
+  company: CompanyState;
   resource: ResourceState;
   project: ProjectState;
   tickets: TicketState;

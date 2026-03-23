@@ -2,6 +2,7 @@ import { Injectable, signal, WritableSignal } from '@angular/core';
 import { INITIAL_GAME_STATE } from '../config/state/game-state';
 import { GameState } from '../config/state/game-state.model';
 import {
+  CompanyState,
   EffectState,
   HeroState,
   ImpactState,
@@ -17,6 +18,7 @@ export class GameStateService {
   readonly impactState = signal<ImpactState>(INITIAL_GAME_STATE.impact);
   readonly effectState = signal<EffectState>(INITIAL_GAME_STATE.effects);
   readonly heroState = signal<HeroState>(INITIAL_GAME_STATE.heroes);
+  readonly companyState = signal<CompanyState>(INITIAL_GAME_STATE.company);
   readonly resourceState = signal<ResourceState>(INITIAL_GAME_STATE.resource);
   readonly projectState = signal<ProjectState>(INITIAL_GAME_STATE.project);
   readonly ticketState = signal<TicketState>(INITIAL_GAME_STATE.tickets);
@@ -27,6 +29,7 @@ export class GameStateService {
     this.impactState.set(INITIAL_GAME_STATE.impact);
     this.effectState.set(INITIAL_GAME_STATE.effects);
     this.heroState.set(INITIAL_GAME_STATE.heroes);
+    this.companyState.set(INITIAL_GAME_STATE.company);
     this.resourceState.set(INITIAL_GAME_STATE.resource);
     this.projectState.set(INITIAL_GAME_STATE.project);
     this.ticketState.set(INITIAL_GAME_STATE.tickets);
@@ -38,6 +41,7 @@ export class GameStateService {
     this.impactState.set(state.impact);
     this.effectState.set(state.effects);
     this.heroState.set(state.heroes);
+    this.companyState.set(state.company);
     this.resourceState.set(state.resource);
     this.projectState.set(state.project);
     this.ticketState.set(state.tickets);
@@ -55,6 +59,10 @@ export class GameStateService {
 
   setHeroes(hero: HeroState): void {
     this.heroState.set(hero);
+  }
+
+  setCompany(company: CompanyState): void {
+    this.companyState.set(company);
   }
 
   setResource(resource: ResourceState): void {
@@ -87,6 +95,10 @@ export class GameStateService {
 
   updateHeroes(mutator: (hero: HeroState) => void) {
     this.updateSlice(this.heroState, mutator);
+  }
+
+  updateCompany(mutator: (company: CompanyState) => void) {
+    this.updateSlice(this.companyState, mutator);
   }
 
   updateResource(mutator: (resource: ResourceState) => void) {
