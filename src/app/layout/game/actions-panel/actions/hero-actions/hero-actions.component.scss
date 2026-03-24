@@ -43,49 +43,5 @@
         }
       }
     }
-
-    .hero-actions__overview-hero-list {
-      @include flexbox(column, $gap: 0.5rem, $justify: flex-start);
-
-      flex: 1;
-
-      height: inherit;
-      padding: 0.5rem;
-      background-color: $bg-secondary;
-      list-style: none;
-
-      li {
-        @include flexbox(column, $gap: 0.5rem);
-
-        cursor: pointer;
-
-        h4 {
-          text-align: center;
-        }
-      }
-
-      .hero-actions__overview-hero-list__hire-button {
-        width: fit-content;
-        align-self: center;
-
-        button {
-          border: none;
-          border-radius: 0.5rem;
-          outline: none;
-          cursor: pointer;
-          padding: 0.25rem 1rem;
-
-          color: white;
-          font-size: 1.5rem;
-          background-color: green;
-
-          transition: 0.15s ease;
-
-          &:hover {
-            background-color: rgb(1, 107, 1);
-          }
-        }
-      }
-    }
   }
 }

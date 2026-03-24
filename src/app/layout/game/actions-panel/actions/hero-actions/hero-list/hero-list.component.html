@@ -1,0 +1,11 @@
+<ul class="hero-list">
+  @for (hero of heroes; track hero.id) {
+  <li (click)="selectHero(hero.id)">
+    <app-hero-card-simplified [hero]="hero" />
+  </li>
+  } @for (slot of slots; track slot) {
+  <li class="hero-list__slot">
+    <button (click)="hire()">+</button>
+  </li>
+  }
+</ul>

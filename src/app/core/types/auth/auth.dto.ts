@@ -1,4 +1,4 @@
-export interface RegisterDTO {
+export interface AuthDTO {
   email: string;
   password: string;
 }

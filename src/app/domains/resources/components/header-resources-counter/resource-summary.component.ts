@@ -18,12 +18,7 @@ export class ResourceSummaryComponent {
   }
 
   //dev mode function
-  addMoney() {
-    this.devModeService.addMoney(1000);
-  }
-
-  //dev mode function
-  resetState() {
-    this.devModeService.resetState();
+  addMoney(value: number) {
+    this.devModeService.addMoney(value);
   }
 }

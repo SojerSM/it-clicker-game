@@ -1,0 +1,19 @@
+@use 'template' as *;
+
+:host {
+  width: 100%;
+}
+
+.modal-header {
+  text-align: center;
+  padding: 0.25rem;
+
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: $text-primary;
+  text-shadow: 2px 2px 0 #000;
+
+  background: $bg-tertiary;
+  border-bottom: 4px solid $border-default;
+}

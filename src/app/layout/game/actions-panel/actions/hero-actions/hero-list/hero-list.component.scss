@@ -1,0 +1,59 @@
+@use '../../../../../../../styles/mixins.scss' as *;
+@use 'template' as *;
+
+:host {
+  flex: 1;
+  height: 100%;
+}
+
+.hero-list {
+  @include flexbox(column, $gap: 0.5rem, $justify: flex-start, $align: center);
+
+  height: 100%;
+  padding: 0.5rem;
+  padding-bottom: 5rem;
+  background-color: $bg-secondary;
+  list-style: none;
+
+  overflow-y: scroll;
+
+  li {
+    @include flexbox(column, $gap: 0.5rem);
+
+    width: 100%;
+    cursor: pointer;
+
+    h4 {
+      text-align: center;
+    }
+  }
+
+  .hero-list__slot {
+    @include flexbox($justify: center, $align: center);
+
+    width: 100%;
+    height: 4rem;
+    min-height: 4rem;
+
+    border: 2px solid $border-default;
+
+    button {
+      border: none;
+      border-radius: 0.5rem;
+      outline: none;
+      cursor: pointer;
+
+      width: 5rem;
+
+      background-color: $bg-tertiary;
+      color: $text-dark-muted;
+      font-size: 2rem;
+
+      transition: 0.15s ease;
+
+      &:hover {
+        background-color: $bg-primary;
+      }
+    }
+  }
+}

@@ -5,6 +5,7 @@ import { ProjectService } from '../../projects/services/project.service';
 import { GameStateService } from '../../../../core/services/game-state.service';
 import { TicketBuilderService } from './ticket-builder.service';
 import { StatisticService } from '../../../statistics/services/statistic.service';
+import { CompanyService } from '../../../company/services/company.service';
 
 @Injectable({ providedIn: 'root' })
 export class TicketService {
@@ -13,7 +14,8 @@ export class TicketService {
     private projectService: ProjectService,
     private gameStateService: GameStateService,
     private ticketBuilderService: TicketBuilderService,
-    private statisticService: StatisticService
+    private statisticService: StatisticService,
+    private companyService: CompanyService
   ) {
     effect(() => {
       this.gameStateService.ticketState().active.forEach((ticket) => {
@@ -47,6 +49,7 @@ export class TicketService {
       state.active = state.active.filter((t) => t.id !== ticket.id);
     });
     this.statisticService.increaseFinishedTickets();
+    this.companyService.increaseExp();
 
     if (this.gameStateService.ticketState().active.length === 0) {
       const project = this.gameStateService.projectState().current;
