@@ -1,21 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output, signal } from '@angular/core';
-import { GameStateService } from '../../../../../core/services/game-state.service';
-import { HeroCardRegularComponent } from '../../../../../domains/heroes/components/hero-cards/card-regular/hero-card-regular.component';
-import { HeroCardSimplifiedComponent } from '../../../../../domains/heroes/components/hero-cards/card-simplified/hero-card-simplified.component';
-import { HeroEquipmentComponent } from '../../../../../domains/heroes/components/hero-equipment/hero-equipment.component';
-import { HeroStatsComponent } from '../../../../../domains/heroes/components/hero-stats/hero-stats.component';
-import { Hero } from '../../../../../domains/heroes/types/hero.model';
-import { HireService } from '../../../../../domains/recruitment/services/hire.service';
-import { HeroAttributesComponent } from '../../../../../domains/heroes/components/hero-attributes/hero-attributes.component';
-import { Tab } from '../../../../../shared/types/tab';
-import { HeroOverviewComponent } from '../../../../../domains/heroes/components/hero-overview/hero-overview.component';
 import { TranslatePipe } from '@ngx-translate/core';
-import { ActionsPanelService } from '../../actions-panel.service';
+import { HeroAttributesComponent } from '../../../../../domains/heroes/components/hero-attributes/hero-attributes.component';
+import { HeroCardRegularComponent } from '../../../../../domains/heroes/components/hero-cards/card-regular/hero-card-regular.component';
+import { HeroEquipmentComponent } from '../../../../../domains/heroes/components/hero-equipment/hero-equipment.component';
+import { HeroOverviewComponent } from '../../../../../domains/heroes/components/hero-overview/hero-overview.component';
+import { HeroStatsComponent } from '../../../../../domains/heroes/components/hero-stats/hero-stats.component';
+import { Tab } from '../../../../../shared/types/tab';
+import { HeroListComponent } from './hero-list/hero-list.component';
+import { Hero } from '../../../../../domains/heroes/types/hero.model';
+import { GameStateService } from '../../../../../core/services/game-state.service';
 
 @Component({
   selector: 'app-hero-actions',
-  imports: [HeroCardRegularComponent, CommonModule, HeroCardSimplifiedComponent, TranslatePipe],
+  imports: [HeroCardRegularComponent, CommonModule, TranslatePipe, HeroListComponent],
   templateUrl: './hero-actions.component.html',
   styleUrl: './hero-actions.component.scss',
 })
@@ -31,12 +29,9 @@ export class HeroActionsComponent {
     { id: 4, title: 'game.hero.label.attributes', component: HeroAttributesComponent },
   ];
   heroActiveTab = signal<Tab>(this.heroTabs[0]);
-  selectedHeroId = signal(0);
+  selectedHeroId = signal<number>(0);
 
-  constructor(
-    private gameStateService: GameStateService,
-    private actionsPanelService: ActionsPanelService
-  ) {}
+  constructor(private gameStateService: GameStateService) {}
 
   get heroes(): Hero[] {
     return this.gameStateService.heroState().owned;
@@ -46,21 +41,11 @@ export class HeroActionsComponent {
     return this.heroes[this.selectedHeroId()];
   }
 
-  get slots(): number[] {
-    return Array(this.gameStateService.heroState().slots);
-  }
-
-  selectHero(id: string): void {
-    const heroId = this.heroes.findIndex((hero) => hero.id === id);
-    this.selectedHeroId.set(heroId);
-  }
-
   switchTab(tab: Tab): void {
     this.heroActiveTab.set(tab);
   }
 
-  hire(): void {
-    const tab = this.actionsPanelService.getTabs()[1];
-    this.actionsPanelService.setActiveTab(tab);
+  onHeroSelected(heroId: number) {
+    this.selectedHeroId.set(heroId);
   }
 }

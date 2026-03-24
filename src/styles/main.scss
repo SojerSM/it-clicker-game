@@ -13,3 +13,33 @@ body {
   box-sizing: border-box;
   height: 100vh;
 }
+
+/* Scrollbar - global */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: $bg-primary;
+  border-left: 1px solid $border-subtle;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $bg-elevated;
+  border-radius: 6px;
+  border: 2px solid $bg-primary;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $accent-primary;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: $accent-hover;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: $bg-elevated $bg-primary;
+}

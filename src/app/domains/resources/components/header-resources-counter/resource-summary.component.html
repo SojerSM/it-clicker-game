@@ -1,4 +1,5 @@
 <div class="resource-summary">
   <span>{{ 'game.resources.money' | translate }}: {{ money | numberFormat : 2 }}$</span>
-  <button (click)="addMoney()">+1000$</button>
+  <button (click)="addMoney(1000)">+1000$</button>
+  <button (click)="addMoney(10000)">+10000$</button>
 </div>

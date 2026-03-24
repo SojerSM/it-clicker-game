@@ -13,16 +13,6 @@
         ></ng-container>
       </div>
     </div>
-    <ul class="hero-actions__overview-hero-list">
-      @for (hero of heroes; track hero.id) {
-      <li (click)="selectHero(hero.id)">
-        <app-hero-card-simplified [hero]="hero" />
-      </li>
-      } @for (slot of slots; track slot) {
-      <li class="hero-actions__overview-hero-list__slot">
-        <button (click)="hire()">+</button>
-      </li>
-      }
-    </ul>
+    <app-hero-list (selectedHeroId)="onHeroSelected($event)" />
   </div>
 </div>
