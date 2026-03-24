@@ -4,13 +4,15 @@ import { HeroType } from '../../heroes/types/enums/hero-type.enum';
 import { HeroRole } from '../../heroes/types/enums/hero-role.enum';
 import { HeroGeneratorService } from '../../heroes/services/hero-generator.service';
 import { StatisticService } from '../../statistics/services/statistic.service';
+import { HeroSlotService } from '../../heroes/services/hero-slot.service';
 
 @Injectable({ providedIn: 'root' })
 export class HireService {
   constructor(
     private gameStateService: GameStateService,
     private heroGeneratorService: HeroGeneratorService,
-    private statisticService: StatisticService
+    private statisticService: StatisticService,
+    private heroSlotService: HeroSlotService
   ) {}
 
   hire(): void {
@@ -20,6 +22,7 @@ export class HireService {
       state.owned.push(hero);
     });
     this.statisticService.increaseRecruitedHeroes();
+    this.heroSlotService.decreaseSlots();
 
     if (hero.type === HeroType.MINION) {
       this.gameStateService.updateImpact((state) => {

@@ -18,10 +18,11 @@
       <li (click)="selectHero(hero.id)">
         <app-hero-card-simplified [hero]="hero" />
       </li>
-      }
-      <li class="hero-actions__overview-hero-list__hire-button">
-        <button (click)="hire()">{{ 'game.recruitment.label.hire' | translate }}</button>
+      } @for (slot of slots; track slot) {
+      <li class="hero-actions__overview-hero-list__slot">
+        <button (click)="hire()">+</button>
       </li>
+      }
     </ul>
   </div>
 </div>

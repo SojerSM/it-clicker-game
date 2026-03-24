@@ -35,6 +35,7 @@ export const INITIAL_GAME_STATE: GameState = {
   heroes: {
     owned: [],
     occupiedAvatars: [],
+    slots: 0,
   },
   company: {
     company: {} as Company,

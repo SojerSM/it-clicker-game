@@ -17,6 +17,7 @@ export interface EffectState {
 export interface HeroState {
   owned: Hero[];
   occupiedAvatars: string[];
+  slots: number;
 }
 
 export interface CompanyState {

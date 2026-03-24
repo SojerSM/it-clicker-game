@@ -46,6 +46,10 @@ export class HeroActionsComponent {
     return this.heroes[this.selectedHeroId()];
   }
 
+  get slots(): number[] {
+    return Array(this.gameStateService.heroState().slots);
+  }
+
   selectHero(id: string): void {
     const heroId = this.heroes.findIndex((hero) => hero.id === id);
     this.selectedHeroId.set(heroId);
