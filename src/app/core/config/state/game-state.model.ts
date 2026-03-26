@@ -8,6 +8,7 @@ import {
   RecruitmentState,
   StatisticState,
   CompanyState,
+  EmailState,
 } from '../../types/state.model';
 
 export interface GameState {
@@ -18,6 +19,7 @@ export interface GameState {
   resource: ResourceState;
   project: ProjectState;
   tickets: TicketState;
+  email: EmailState;
   recruitment: RecruitmentState;
   statistics: StatisticState;
 }

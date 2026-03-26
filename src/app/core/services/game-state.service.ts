@@ -4,6 +4,7 @@ import { GameState } from '../config/state/game-state.model';
 import {
   CompanyState,
   EffectState,
+  EmailState,
   HeroState,
   ImpactState,
   ProjectState,
@@ -22,6 +23,7 @@ export class GameStateService {
   readonly resourceState = signal<ResourceState>(INITIAL_GAME_STATE.resource);
   readonly projectState = signal<ProjectState>(INITIAL_GAME_STATE.project);
   readonly ticketState = signal<TicketState>(INITIAL_GAME_STATE.tickets);
+  readonly emailState = signal<EmailState>(INITIAL_GAME_STATE.email);
   readonly recruitmentState = signal<RecruitmentState>(INITIAL_GAME_STATE.recruitment);
   readonly statisticState = signal<StatisticState>(INITIAL_GAME_STATE.statistics);
 
@@ -33,6 +35,7 @@ export class GameStateService {
     this.resourceState.set(INITIAL_GAME_STATE.resource);
     this.projectState.set(INITIAL_GAME_STATE.project);
     this.ticketState.set(INITIAL_GAME_STATE.tickets);
+    this.emailState.set(INITIAL_GAME_STATE.email);
     this.recruitmentState.set(INITIAL_GAME_STATE.recruitment);
     this.statisticState.set(INITIAL_GAME_STATE.statistics);
   }
@@ -45,6 +48,7 @@ export class GameStateService {
     this.resourceState.set(state.resource);
     this.projectState.set(state.project);
     this.ticketState.set(state.tickets);
+    this.emailState.set(state.email);
     this.recruitmentState.set(state.recruitment);
     this.statisticState.set(state.statistics);
   }
@@ -75,6 +79,10 @@ export class GameStateService {
 
   setTicket(ticket: TicketState): void {
     this.ticketState.set(ticket);
+  }
+
+  setEmail(email: EmailState): void {
+    this.emailState.set(email);
   }
 
   setRecruitment(recruitment: RecruitmentState): void {
@@ -111,6 +119,10 @@ export class GameStateService {
 
   updateTicket(mutator: (ticket: TicketState) => void) {
     this.updateSlice(this.ticketState, mutator);
+  }
+
+  updateEmail(mutator: (email: EmailState) => void) {
+    this.updateSlice(this.emailState, mutator);
   }
 
   updateRecruitment(mutator: (recruitment: RecruitmentState) => void) {

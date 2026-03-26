@@ -40,6 +40,13 @@ export interface TicketState {
   typeMultipliers: TicketTypeMultipliers;
 }
 
+export interface EmailState {
+  unanswered: number;
+  maxSize: number;
+  probability: number;
+  emailCp: number;
+}
+
 export interface TicketTypeMultiplier {
   cp: number;
   reward: number;

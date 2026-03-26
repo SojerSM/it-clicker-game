@@ -1,0 +1,21 @@
+<div class="messages-app-panel">
+  <div class="messages-app-panel__email">
+    <img
+      src="/assets/images/clickable-apps/email.png"
+      alt="email"
+      appClickableImpact
+      [value]="'test'"
+      (click)="onEmailClick()"
+    />
+    <div class="messages-app-panel__email-notification-badge">{{ emailMaxSize - remaining }}</div>
+    <div class="messages-app-panel__email-progress-bar">
+      <app-progress-bar
+        [maxValue]="emailMaxSize"
+        [remaining]="remaining"
+        [descending]="false"
+        [displayPercentage]="false"
+      />
+    </div>
+  </div>
+  <div class="messages-app-panel__chat"></div>
+</div>

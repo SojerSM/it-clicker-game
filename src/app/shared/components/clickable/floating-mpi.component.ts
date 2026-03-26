@@ -10,7 +10,7 @@ import { NumberFormat } from '../../../core/pipes/number-format.pipe';
 export class FloatingMpiComponent {
   @Input({ required: true }) x!: number;
   @Input({ required: true }) y!: number;
-  @Input({ required: true }) value!: number;
+  @Input({ required: true }) value!: number | string;
 
   @HostBinding('style.left.px') get left() {
     return this.x;

@@ -13,7 +13,7 @@ export class FloatingMpiService {
 
   constructor(private appRef: ApplicationRef, private injector: EnvironmentInjector) {}
 
-  spawn(x: number, y: number, value: number) {
+  spawn(x: number, y: number, value: number | string) {
     const cmpRef: ComponentRef<FloatingMpiComponent> = createComponent(FloatingMpiComponent, {
       environmentInjector: this.injector,
     });
