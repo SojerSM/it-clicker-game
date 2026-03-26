@@ -6,7 +6,7 @@ import { StatisticService } from '../../domains/statistics/services/statistic.se
   selector: '[appClickableImpact]',
 })
 export class ClickableImpactDirective {
-  @Input({ required: true }) value!: number;
+  @Input({ required: true }) value!: number | string;
 
   constructor(
     private floatingMpiService: FloatingMpiService,

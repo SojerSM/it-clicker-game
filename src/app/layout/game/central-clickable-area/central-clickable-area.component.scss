@@ -2,7 +2,7 @@
 @use '../../../../styles/mixins.scss' as *;
 
 .clickable-area {
-  @include flexbox(column, $justify: flex-start);
+  @include flexbox(column, $justify: space-between);
 
   flex-grow: 1;
   overflow: hidden;

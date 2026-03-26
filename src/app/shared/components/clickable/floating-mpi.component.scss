@@ -10,9 +10,12 @@
 .floating-mpi {
   position: fixed;
   pointer-events: none;
-  animation: floatUp 1.2s ease-out forwards;
+  animation: floatUp 2s ease-out forwards;
   font-weight: 600;
   color: $accent-glow;
+
+  white-space: nowrap;
+  display: inline-block;
 
   @keyframes floatUp {
     0% {
@@ -21,7 +24,7 @@
     }
     100% {
       opacity: 0;
-      transform: translate(-50%, -80px);
+      transform: translate(-50%, -120px);
     }
   }
 }

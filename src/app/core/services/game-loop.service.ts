@@ -3,6 +3,7 @@ import { HeroService } from '../../domains/heroes/services/hero.service';
 import { ImpactService } from '../../domains/impact/impact.service';
 import { BALANCE } from '../config/state/balance';
 import { StatisticService } from '../../domains/statistics/services/statistic.service';
+import { EmailService } from '../../domains/progress/messages/services/email.service';
 
 @Injectable({ providedIn: 'root' })
 export class GameLoopService {
@@ -14,7 +15,8 @@ export class GameLoopService {
   constructor(
     private impactService: ImpactService,
     private heroService: HeroService,
-    private statisticService: StatisticService
+    private statisticService: StatisticService,
+    private emailService: EmailService
   ) {}
 
   start(): void {
@@ -38,5 +40,6 @@ export class GameLoopService {
   private handlePassiveMechanics(): void {
     this.impactService.applyPpsDamage();
     this.heroService.increaseExp();
+    this.emailService.receiveNewEmail();
   }
 }

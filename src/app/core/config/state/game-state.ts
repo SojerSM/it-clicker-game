@@ -2,6 +2,7 @@ import { Company } from '../../../domains/company/types/company.model';
 import { Project } from '../../../domains/progress/projects/types/project.model';
 import { Ticket } from '../../../domains/progress/tickets/types/ticket.model';
 import { StatisticState } from '../../types/state.model';
+import { BALANCE } from './balance';
 import { GameState } from './game-state.model';
 
 const STATISTIC_STATE: StatisticState = {
@@ -60,6 +61,12 @@ export const INITIAL_GAME_STATE: GameState = {
       documentation: { cp: 0.5, reward: 0.25 },
       refactoring: { cp: 2.5, reward: 0.5 },
     },
+  },
+  email: {
+    unanswered: 0,
+    maxSize: 10,
+    probability: BALANCE.EMAIL_BASE_PROBABILITY,
+    emailCp: BALANCE.EMAIL_BASE_CP,
   },
   recruitment: {
     effectiveness: 0,
