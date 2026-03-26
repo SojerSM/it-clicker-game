@@ -9,7 +9,7 @@ import { FloatingMpiComponent } from './floating-mpi.component';
 
 @Injectable({ providedIn: 'root' })
 export class FloatingMpiService {
-  FLOATING_DURATION_MS: number = 2000;
+  FLOATING_DURATION_MS: number = 2500;
 
   constructor(private appRef: ApplicationRef, private injector: EnvironmentInjector) {}
 

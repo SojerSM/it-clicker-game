@@ -3,6 +3,7 @@ import { ClickableImpactDirective } from '../../../../../shared/directives/click
 import { ProgressBarComponent } from '../../../../../shared/components/progress-bar/progress-bar.component';
 import { GameStateService } from '../../../../../core/services/game-state.service';
 import { EmailService } from '../../services/email.service';
+import { EmailBuilder } from '../../services/email-builder.service';
 
 @Component({
   selector: 'app-messages-app-panel',
@@ -11,10 +12,15 @@ import { EmailService } from '../../services/email.service';
   styleUrl: './messages-app-panel.component.scss',
 })
 export class MessagesAppPanelComponent {
-  constructor(private gameStateService: GameStateService, private emailService: EmailService) {}
+  constructor(
+    private gameStateService: GameStateService,
+    private emailService: EmailService,
+    private emailBuilder: EmailBuilder
+  ) {}
 
   get floatingText(): string {
-    return 'test';
+    const complexity = this.gameStateService.emailState().emailCp;
+    return this.emailBuilder.getRandomFragment(complexity);
   }
 
   get emailMaxSize(): number {
